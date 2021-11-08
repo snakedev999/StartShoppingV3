@@ -32,4 +32,18 @@
         android:minHeight="48dp"
         android:text="Switch" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="499dp"
+        android:layout_marginEnd="272dp"
+        android:layout_marginBottom="213dp"
+        android:text="TextView" />
+
 </RelativeLayout>

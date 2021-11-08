@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class AdminFragment extends Fragment {
 
 
+    String idUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,10 @@ public class AdminFragment extends Fragment {
                              Bundle savedInstanceState) {
         View viewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
-
+        TextView t = viewAdmin.findViewById(R.id.textView3);
+        Bundle b = getArguments();
+        idUser = b.getString("idUsuario1");
+        t.setText(idUser);
 
         Button salir = viewAdmin.findViewById(R.id.buttonLeave);
         salir.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +46,7 @@ public class AdminFragment extends Fragment {
                 main.putExtra("boolean",true);
                 main.putExtra("boolean2", false);
                 main.putExtra("credencial2", true);
+                main.putExtra("idusuario","");
                 startActivity(main);
                 getActivity().finishAffinity();
             }

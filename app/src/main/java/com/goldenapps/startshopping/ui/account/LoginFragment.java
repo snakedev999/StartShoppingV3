@@ -105,9 +105,9 @@ public class LoginFragment extends Fragment {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                                    Intent main = new Intent(getActivity(), LoadingAccountActivity.class);
-                                                    main.putExtra("idUser", userID);
-                                                    startActivity(main);
+                                                    Intent mainLogin = new Intent(getActivity(), LoadingAccountActivity.class);
+                                                    mainLogin.putExtra("idUser", userID);
+                                                    startActivity(mainLogin);
                                                     getActivity().finishAffinity();
                                                 }
 

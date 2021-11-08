@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.model.ModelAccount;
+import com.goldenapps.startshopping.ui.AdminFragment;
+import com.goldenapps.startshopping.ui.UsuarioFragment;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,8 +38,8 @@ public class LoadingAccountActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_loading_account);
 
-        Intent main = getIntent();
-        idUser = main.getStringExtra("idUser");
+        Intent mainLogin = getIntent();
+        idUser = mainLogin.getStringExtra("idUser");
 
         i = 0;
         progressBar = findViewById(R.id.progressBar);
@@ -52,17 +54,21 @@ public class LoadingAccountActivity extends AppCompatActivity {
     private void verficacion(){
         if(getCredencial().equals("usuario")){
             Toast.makeText(getApplicationContext(),"Usuario",Toast.LENGTH_LONG).show();
-            Intent main = new Intent(LoadingAccountActivity.this, MenuActivity.class);
-            main.putExtra("boolean",false);
-            main.putExtra("credencial", false);
-            startActivity(main);
+            Intent mainMenu = new Intent(LoadingAccountActivity.this, MenuActivity.class);
+            mainMenu.putExtra("boolean",false);
+            mainMenu.putExtra("credencial", false);
+            mainMenu.putExtra("credencial2", true);
+            mainMenu.putExtra("idusuario",idUser);
+            startActivity(mainMenu);
             finish();
         }else if(getCredencial().equals("admin")){
             Toast.makeText(getApplicationContext(),"ADMIN",Toast.LENGTH_LONG).show();
-            Intent main = new Intent(LoadingAccountActivity.this, MenuActivity.class);
-            main.putExtra("boolean",false);
-            main.putExtra("credencial2", false);
-            startActivity(main);
+            Intent mainMenu = new Intent(LoadingAccountActivity.this, MenuActivity.class);
+            mainMenu.putExtra("boolean",false);
+            mainMenu.putExtra("credencial", true);
+            mainMenu.putExtra("credencial2", false);
+            mainMenu.putExtra("idusuario",idUser);
+            startActivity(mainMenu);
             finish();
         }
     }
