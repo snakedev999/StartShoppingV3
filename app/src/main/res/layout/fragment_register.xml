@@ -55,6 +55,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="561dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/vie_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,9 +76,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.322"
-            tools:ignore="SpeakableTextPresentCheck">
-
-        </androidx.viewpager.widget.ViewPager>
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
         <com.google.android.material.tabs.TabLayout
@@ -153,7 +152,30 @@
             app:layout_constraintWidth_percent=".8"
             tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
-        <EditText
+
+        <ImageButton
+            android:id="@+id/btnOjo"
+            android:layout_width="46dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/ojo"
+            android:translationY="-50dp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextAuthPass"
+            app:layout_constraintTop_toTopOf="@+id/editTextAuthPass"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck,TouchTargetSizeCheck" />
+
+        <!--<ImageButton
+            android:id="@+id/btnOjo2"
+            android:layout_width="46dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="115dp"
+            android:background="@drawable/ojo"
+            android:translationY="-50dp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextAuthPass"
+            app:layout_constraintTop_toTopOf="@+id/editTextAuthPass"
+            tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck,TouchTargetSizeCheck" />-->
+
+        <!--<EditText
             android:id="@+id/editTextAuthPassConfirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -170,23 +192,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextAuthPass"
             app:layout_constraintWidth_percent=".8"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+            app:endIconMode="password_toggle"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextAuthPassConfirm"
+            android:layout_width="328dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/edit_text_bg"
+            android:layout_marginBottom="8dp"
+            android:translationX="30dp"
+            android:translationY="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+            app:layout_constraintStart_toStartOf="@+id/view_pager"
+            app:layout_constraintTop_toTopOf="@+id/editTextAuthPass"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+
+                android:hint="Repita Contraseña" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_bg"
+
             android:text="@string/new_login"
-            android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold"
+            android:translationY="100dp"
             app:layout_constraintBottom_toTopOf="@id/editTextAuthPass"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAuthPassConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/editTextAuthPass"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintWidth_percent=".8" />
 
@@ -200,7 +244,7 @@
             android:layout_marginStart="53dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/google"
-            android:translationY="-30dp"
+            android:translationY="-50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -213,7 +257,7 @@
             android:layout_marginEnd="65dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/fb"
-            android:translationY="-30dp"
+            android:translationY="-50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnE"
             app:layout_constraintStart_toEndOf="@+id/btnG"
@@ -226,7 +270,7 @@
             android:layout_marginEnd="53dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/email"
-            android:translationY="-30dp"
+            android:translationY="-50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
