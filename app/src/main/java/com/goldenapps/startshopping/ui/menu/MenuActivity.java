@@ -15,9 +15,6 @@ import android.widget.Toast;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.ui.AdminFragment;
 import com.goldenapps.startshopping.ui.UsuarioFragment;
-import com.goldenapps.startshopping.ui.account.AccountFragment;
-import com.goldenapps.startshopping.ui.account.AccountOpcionFragment;
-import com.goldenapps.startshopping.ui.account.RegisterFragment;
 import com.goldenapps.startshopping.ui.category.CategoryFragment;
 import com.goldenapps.startshopping.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,11 +22,23 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MenuActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences2;
     private SharedPreferences.Editor editor;
+    private SharedPreferences.Editor editor2;
 
     private Boolean aBoolean;
     private Boolean boolean2;
-    private String credencial;
+    private int tipoCuenta;
+    private Boolean credencial;
+    private Boolean credencial2;
+
+    public int getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public void setTipoCuenta(int tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
+    }
 
     public int getNumeroVerificador() {
         return numeroVerificador;
@@ -48,8 +57,6 @@ public class MenuActivity extends AppCompatActivity {
     UsuarioFragment usuarioFragment = new UsuarioFragment();
     AdminFragment adminFragment = new AdminFragment();
 
-    AccountFragment accountFragment = new AccountFragment();
-    AccountOpcionFragment accountOpcionFragment = new AccountOpcionFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +68,14 @@ public class MenuActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectListener);
 
         inicializarPreferences();
+        inicializarPreferences2();
 
         Intent main = getIntent();
         boolean2 = main.getBooleanExtra("boolean",true);
         aBoolean = main.getBooleanExtra("boolean2",true);
-        credencial = main.getStringExtra("credencial");
-        verificadorOpc(boolean2,aBoolean);
+        credencial = main.getBooleanExtra("credencial",true);
+        credencial2 = main.getBooleanExtra("credencial2",true);
+        verificadorOpc(boolean2,aBoolean,credencial,credencial2);
 
         loadFragment(homeFragment);
     }
@@ -86,9 +95,9 @@ public class MenuActivity extends AppCompatActivity {
                         AccountFragment accountFragment = new AccountFragment();
                         loadFragment(accountFragment);
                     }else{
-                        if (credencial.equals("usuario")){
+                        if (tipoCuenta == 0) {
                             loadFragment(usuarioFragment);
-                        }else if(credencial.equals("admin")){
+                        }else{
                             loadFragment(adminFragment);
                         }
                     }
@@ -109,7 +118,12 @@ public class MenuActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
     }
 
-    private void verificadorOpc(Boolean booleanResult,Boolean b){
+    private void inicializarPreferences2(){
+        sharedPreferences2 = this.getPreferences(Context.MODE_PRIVATE);
+        editor2 = sharedPreferences2.edit();
+    }
+
+    private void verificadorOpc(Boolean booleanResult,Boolean b, Boolean credencial,Boolean credencial2){
         setNumeroVerificador(this.sharedPreferences.getInt("llave",0));
         if(!booleanResult){
             setNumeroVerificador(1);
@@ -121,6 +135,17 @@ public class MenuActivity extends AppCompatActivity {
             setNumeroVerificador(0);
             guardarOpc();
         }
+
+        setTipoCuenta(this.sharedPreferences2.getInt("credencial",0));
+        if (!credencial){
+            setTipoCuenta(0);
+            guardarOpc2();
+        }
+        setTipoCuenta(this.sharedPreferences2.getInt("credencial2",0));
+        if(!credencial2) {
+            setTipoCuenta(1);
+            guardarOpc2();
+        }
     }
 
     private void guardarOpc(){
@@ -128,4 +153,8 @@ public class MenuActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    private void guardarOpc2(){
+        editor2.putInt("credencial",getTipoCuenta());
+        editor2.apply();
+    }
 }

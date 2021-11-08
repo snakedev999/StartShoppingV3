@@ -54,14 +54,14 @@ public class LoadingAccountActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Usuario",Toast.LENGTH_LONG).show();
             Intent main = new Intent(LoadingAccountActivity.this, MenuActivity.class);
             main.putExtra("boolean",false);
-            main.putExtra("credencial", getCredencial());
+            main.putExtra("credencial", false);
             startActivity(main);
             finish();
         }else if(getCredencial().equals("admin")){
             Toast.makeText(getApplicationContext(),"ADMIN",Toast.LENGTH_LONG).show();
             Intent main = new Intent(LoadingAccountActivity.this, MenuActivity.class);
             main.putExtra("boolean",false);
-            main.putExtra("credencial", getCredencial());
+            main.putExtra("credencial2", false);
             startActivity(main);
             finish();
         }

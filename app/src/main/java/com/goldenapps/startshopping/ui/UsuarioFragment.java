@@ -37,6 +37,7 @@ public class UsuarioFragment extends Fragment {
                 fAuth.signOut();
                 main.putExtra("boolean",true);
                 main.putExtra("boolean2", false);
+                main.putExtra("credencial", true);
                 startActivity(main);
                 getActivity().finishAffinity();
             }
