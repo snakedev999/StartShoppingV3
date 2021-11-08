@@ -29,6 +29,8 @@ public class AdminFragment extends Fragment {
                              Bundle savedInstanceState) {
         View viewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
+
+
         Button salir = viewAdmin.findViewById(R.id.buttonLeave);
         salir.setOnClickListener(new View.OnClickListener() {
             @Override
