@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "406409323613",
+    "firebase_url": "https://start-shopping-ea79b-default-rtdb.firebaseio.com",
+    "project_id": "start-shopping-ea79b",
+    "storage_bucket": "start-shopping-ea79b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406409323613:android:ee73a150c575053a21d9b4",
+        "android_client_info": {
+          "package_name": "com.goldenapps.startshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406409323613-t0sdsq6rsuel02q5b64tlumjeipfbcec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCchxilqDhfoieM4Hz3oNYpZMEu2mLlqJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406409323613-t0sdsq6rsuel02q5b64tlumjeipfbcec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

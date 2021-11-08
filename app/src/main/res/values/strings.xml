@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Start Shopping</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_category">Categorias</string>
+    <string name="title_account">Cuenta</string>
+
+    /* Strings Activity Auth*/
+    <string name="EditTextEmail">Correo</string>
+    <string name="EditTextName">Nombre</string>
+    <string name="EditTextPass">Contraseña</string>
+    <string name="EditTextPassConfirm">Confirmar Contraseña</string>
+    <string name="ButtonRegister">Registrarse</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="entrar">Entrar</string>
+</resources>
