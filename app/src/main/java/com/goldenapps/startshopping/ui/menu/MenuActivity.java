@@ -13,9 +13,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.goldenapps.startshopping.R;
-import com.goldenapps.startshopping.ui.BlankFragment;
+import com.goldenapps.startshopping.ui.AdminFragment;
+import com.goldenapps.startshopping.ui.UsuarioFragment;
 import com.goldenapps.startshopping.ui.account.AccountFragment;
 import com.goldenapps.startshopping.ui.account.AccountOpcionFragment;
+import com.goldenapps.startshopping.ui.account.RegisterFragment;
 import com.goldenapps.startshopping.ui.category.CategoryFragment;
 import com.goldenapps.startshopping.ui.home.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +29,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private Boolean aBoolean;
     private Boolean boolean2;
+    private String credencial;
 
     public int getNumeroVerificador() {
         return numeroVerificador;
@@ -42,7 +45,8 @@ public class MenuActivity extends AppCompatActivity {
 
     HomeFragment homeFragment = new HomeFragment();
     CategoryFragment categoryFragment = new CategoryFragment();
-    BlankFragment blankFragment = new BlankFragment();
+    UsuarioFragment usuarioFragment = new UsuarioFragment();
+    AdminFragment adminFragment = new AdminFragment();
 
     AccountFragment accountFragment = new AccountFragment();
     AccountOpcionFragment accountOpcionFragment = new AccountOpcionFragment();
@@ -61,6 +65,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent main = getIntent();
         boolean2 = main.getBooleanExtra("boolean",true);
         aBoolean = main.getBooleanExtra("boolean2",true);
+        credencial = main.getStringExtra("credencial");
         verificadorOpc(boolean2,aBoolean);
 
         loadFragment(homeFragment);
@@ -81,7 +86,11 @@ public class MenuActivity extends AppCompatActivity {
                         AccountFragment accountFragment = new AccountFragment();
                         loadFragment(accountFragment);
                     }else{
-                        loadFragment(blankFragment);
+                        if (credencial.equals("usuario")){
+                            loadFragment(usuarioFragment);
+                        }else if(credencial.equals("admin")){
+                            loadFragment(adminFragment);
+                        }
                     }
                     return true;
             }

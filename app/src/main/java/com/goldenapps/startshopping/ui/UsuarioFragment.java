@@ -14,7 +14,7 @@ import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class BlankFragment extends Fragment {
+public class UsuarioFragment extends Fragment {
 
 
     @Override
@@ -26,7 +26,7 @@ public class BlankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View blank = inflater.inflate(R.layout.fragment_blank, container, false);
+        View blank = inflater.inflate(R.layout.fragment_usuario, container, false);
 
         Button n2 = (Button) blank.findViewById(R.id.button2);
         n2.setOnClickListener(new View.OnClickListener() {
