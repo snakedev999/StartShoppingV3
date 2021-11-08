@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.account.LoginFragment">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="414dp"
@@ -28,9 +29,9 @@
         android:layout_width="116dp"
         android:layout_height="116dp"
         android:src="@drawable/start"
+        android:translationY="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        android:translationY="20dp"
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,9 +43,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
         android:text="@string/slogan"
-        android:translationY="30dp"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:translationY="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -52,15 +53,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="415dp"
-        android:layout_height="561dp"
+        android:layout_width="413dp"
+        android:layout_height="519dp"
         android:background="@drawable/vie_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".78"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
@@ -91,10 +90,6 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
 
-
-
-
-
         <!--FORMULARIO-->
 
         <EditText
@@ -103,11 +98,12 @@
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
             android:hint="Correo"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             app:flow_firstHorizontalBias=".5"
-            android:inputType="textEmailAddress"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
@@ -115,7 +111,7 @@
             app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.722"
             app:layout_constraintWidth_percent=".8"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/password"
@@ -231,7 +227,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

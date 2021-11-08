@@ -31,7 +31,7 @@ public class RegisterFragment extends Fragment {
 
     private String tipoUsuario = "usuario";
     private String id;
-    private Button btnRegister;
+    private Button btnRegister1;
     private EditText editTextEmail,editTextName,editTextPass,editTextPassConfirm;
     private FirebaseAuth mAuth;
 
@@ -50,72 +50,84 @@ public class RegisterFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
         mAuth = FirebaseAuth.getInstance();
-        editTextEmail = (EditText) view.findViewById(R.id.email);
-        editTextName = (EditText) view.findViewById(R.id.name);
-        editTextPass = (EditText) view.findViewById(R.id.password);
-        editTextPassConfirm =(EditText) view.findViewById(R.id.confirmPass);
+        editTextEmail = (EditText) view.findViewById(R.id.editTextAuthEmail);
+        editTextName = (EditText) view.findViewById(R.id.editTextAuthName);
+        editTextPass = (EditText) view.findViewById(R.id.editTextAuthPass);
+        editTextPassConfirm =(EditText) view.findViewById(R.id.editTextAuthPassConfirm);
+        btnRegister1 = (Button) view.findViewById(R.id.btnRegister);
 
-        btnRegister = (Button) view.findViewById(R.id.newCount);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        ImageButton Ibtn = (ImageButton) view.findViewById(R.id.btnG);
+        ImageButton Ibtn1 = (ImageButton) view.findViewById(R.id.btnF);
+        ImageButton Ibtn2= (ImageButton) view.findViewById(R.id.btnE);
 
-        Button Ncuenta = (Button)view.findViewById(R.id.newCount);
-
-            ImageButton Ibtn = (ImageButton) view.findViewById(R.id.btnG);
-            ImageButton Ibtn1 = (ImageButton) view.findViewById(R.id.btnF);
-            ImageButton Ibtn2= (ImageButton) view.findViewById(R.id.btnE);
-
+        Ibtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerUser();
-
-                tabLayout = view.findViewById(R.id.tab_layout);
-                viewPager = view.findViewById(R.id.view_pager);
-                google = view.findViewById(R.id.btnG);
-                fb = view.findViewById(R.id.btnF);
-                email1= view.findViewById(R.id.btnE);
-                float v=0;
-
-                Ibtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getActivity(), "Google", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                Ibtn1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getActivity(), "Facebook", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                Ibtn2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getActivity(), "Email", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                email1.setTranslationY(300);
-                google.setTranslationY(300);
-                fb.setTranslationY(300);
-                tabLayout.setTranslationY(300);
-
-                email1.setAlpha(v);
-                google.setAlpha(v);
-                fb.setAlpha(v);
-                tabLayout.setAlpha(v);
-
-
-                email1.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
-                google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
-                fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
-                fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
-
-
+                Toast.makeText(getActivity(), "Google", Toast.LENGTH_SHORT).show();
             }
         });
 
+        Ibtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Facebook", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Ibtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Email", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnRegister1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registerUser();
+            }
+        });
+
+
+        tabLayout = view.findViewById(R.id.tab_layout);
+        viewPager = view.findViewById(R.id.view_pager);
+        google = view.findViewById(R.id.btnG);
+        fb = view.findViewById(R.id.btnF);
+        email1= view.findViewById(R.id.btnE);
+        float v=0;
+
+        email1.setTranslationY(300);
+        google.setTranslationY(300);
+        fb.setTranslationY(300);
+        tabLayout.setTranslationY(300);
+
+        editTextEmail.setTranslationX(300);
+        editTextName.setTranslationX(300);
+        editTextPass.setTranslationX(300);
+        editTextPassConfirm.setTranslationX(300);
+        btnRegister1.setTranslationX(300);
+
+        email1.setAlpha(v);
+        google.setAlpha(v);
+        fb.setAlpha(v);
+        tabLayout.setAlpha(v);
+        editTextEmail.setAlpha(v);
+        editTextName.setAlpha(v);
+        editTextPass.setAlpha(v);
+        editTextPassConfirm.setAlpha(v);
+        btnRegister1.setAlpha(v);
+
+
+        email1.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
+        google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
+
+        editTextEmail.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
+        editTextName.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        editTextPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        editTextPassConfirm.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
+        btnRegister1.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
 
         // Inflate the layout for this fragment
         return view;

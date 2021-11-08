@@ -46,7 +46,7 @@ import java.util.Objects;
 public class LoginFragment extends Fragment {
 
     private View loginFragment;
-    private Button btnLogin;
+    private Button btnLogin,n;
     private TextView recoverPass;
     private EditText edtEmail,edtPass;
     private FirebaseAuth mAuth;
@@ -86,7 +86,10 @@ public class LoginFragment extends Fragment {
         loginFragment = inflater.inflate(R.layout.fragment_login,container,false);
 
         ///Button n2 = (Button) loginFragment.findViewById(R.id.button);
-        Button SignUp = (Button)loginFragment.findViewById(R.id.signup);
+        Button signUp = (Button)loginFragment.findViewById(R.id.signup);
+        Button olvi = loginFragment.findViewById(R.id.cambiaPass);
+
+        n = (Button) loginFragment.findViewById(R.id.btn_login);
 
         ImageButton Ibtn = (ImageButton) loginFragment.findViewById(R.id.btnG);
         ImageButton Ibtn1 = (ImageButton) loginFragment.findViewById(R.id.btnF);
@@ -98,6 +101,9 @@ public class LoginFragment extends Fragment {
         google = loginFragment.findViewById(R.id.btnG);
         fb = loginFragment.findViewById(R.id.btnF);
         email1= loginFragment.findViewById(R.id.btnE);
+
+        edtEmail = (EditText) loginFragment.findViewById(R.id.email);
+        edtPass = (EditText) loginFragment.findViewById(R.id.password);
         float v = 0;
 
         Ibtn.setOnClickListener(new View.OnClickListener() {
@@ -134,15 +140,33 @@ public class LoginFragment extends Fragment {
         fb.setTranslationY(300);
         tabLayout.setTranslationY(300);
 
+        edtEmail.setTranslationX(300);
+        edtPass.setTranslationX(300);
+        n.setTranslationX(300);
+        signUp.setTranslationX(300);
+        olvi.setTranslationX(300);
+
         email1.setAlpha(v);
         google.setAlpha(v);
         fb.setAlpha(v);
         tabLayout.setAlpha(v);
+        edtEmail.setAlpha(v);
+        edtPass.setAlpha(v);
+        n.setAlpha(v);
+        signUp.setAlpha(v);
+        olvi.setAlpha(v);
 
         email1.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
         google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
         fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
+
+        edtEmail.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        edtPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
+        n.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(200).start();
+        signUp.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        olvi.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+
 
         initialize();
 
@@ -153,14 +177,6 @@ public class LoginFragment extends Fragment {
     private void initialize(){
         try {
             mAuth = FirebaseAuth.getInstance();
-
-            edtEmail = (EditText) loginFragment.findViewById(R.id.email);
-            edtPass = (EditText) loginFragment.findViewById(R.id.password);
-
-            Button n = (Button) loginFragment.findViewById(R.id.btn_login);
-
-
-
 
             n.setOnClickListener(new View.OnClickListener() {
                 @Override

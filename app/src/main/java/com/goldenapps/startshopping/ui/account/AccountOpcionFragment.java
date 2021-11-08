@@ -15,6 +15,7 @@ import com.goldenapps.startshopping.R;
 
 public class AccountOpcionFragment extends Fragment {
 
+    public static int slideleft = R.anim.translate_left_side;
     LoginFragment loginFragment = new LoginFragment();
     RegisterFragment registerFragment = new RegisterFragment();
 
@@ -41,6 +42,7 @@ public class AccountOpcionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.translate_left_side,R.anim.translate_left_side);
                 transaction.replace(R.id.frame_container_account, loginFragment);
                 transaction.addToBackStack(getContext().getClass().getName());
                 transaction.commit();
@@ -51,6 +53,7 @@ public class AccountOpcionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.translate_left_side,R.anim.translate_left_side);
                 transaction.replace(R.id.frame_container_account, registerFragment);
                 transaction.addToBackStack(getContext().getClass().getName());
                 transaction.commit();
