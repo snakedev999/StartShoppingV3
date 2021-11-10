@@ -76,8 +76,20 @@ public class RegisterFragment extends Fragment {
             return;
         }
 
+        if(name.isEmpty()){
+            editTextName.setError("Ingrese su nombre");
+            editTextName.requestFocus();
+            return;
+        }
+
         if(pass.isEmpty()){
             editTextPass.setError("Contraseña requerida");
+            editTextPass.requestFocus();
+            return;
+        }
+
+        if(pass.length() < 6){
+            editTextPass.setError("Minimo 6 caracteres");
             editTextPass.requestFocus();
             return;
         }
@@ -85,12 +97,6 @@ public class RegisterFragment extends Fragment {
         if(passConfirm.isEmpty()){
             editTextPassConfirm.setError("Contraseña requerida");
             editTextPassConfirm.requestFocus();
-            return;
-        }
-
-        if(pass.length() < 6){
-            editTextPass.setError("Minimo 6 caracteres");
-            editTextPass.requestFocus();
             return;
         }
 
