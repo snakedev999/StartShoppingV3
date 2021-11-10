@@ -158,7 +158,7 @@
             android:layout_width="46dp"
             android:layout_height="43dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/ojo"
+
             android:translationY="-50dp"
             app:layout_constraintEnd_toEndOf="@+id/editTextAuthPass"
             app:layout_constraintTop_toTopOf="@+id/editTextAuthPass"
