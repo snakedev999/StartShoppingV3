@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="230dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondosalmon"
+        android:src="@drawable/degradado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".27"
@@ -28,25 +28,27 @@
         android:id="@+id/logo"
         android:layout_width="116dp"
         android:layout_height="116dp"
+        android:layout_marginTop="28dp"
         android:src="@drawable/start"
         android:translationY="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="282dp"
         android:layout_height="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="64dp"
         android:text="@string/slogan"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:translationY="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -127,19 +129,21 @@
                     android:translationY="-30dp"
                     app:layout_constraintBottom_toBottomOf="@+id/btnE"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.068"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/btnE"
                     app:layout_constraintTop_toTopOf="@+id/btnE"
+                    app:layout_constraintVertical_bias="0.0"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
                     android:id="@+id/btnE"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="68dp"
                     android:background="@drawable/email"
                     android:translationY="-30dp"
                     app:layout_constraintEnd_toEndOf="@+id/signup"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/signup"
                     app:layout_constraintTop_toBottomOf="@+id/signup"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -156,6 +160,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/btnE"
+                    app:layout_constraintVertical_bias="0.0"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
@@ -170,11 +175,14 @@
 
                 <Button
                     android:id="@+id/btn_Login"
-                    android:layout_width="170dp"
-                    android:layout_height="48dp"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="92dp"
                     android:layout_marginTop="20dp"
+                    android:background="@drawable/button_bg"
                     android:text="LOGUEARSE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.124"
                     app:layout_constraintStart_toStartOf="@+id/password1"
                     app:layout_constraintTop_toBottomOf="@+id/cambiaPass" />
 
@@ -183,9 +191,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:layout_marginEnd="52dp"
                     android:text="TextView"
                     app:layout_constraintEnd_toEndOf="@+id/btn_Login"
+                    app:layout_constraintStart_toStartOf="@+id/btn_Login"
                     app:layout_constraintTop_toBottomOf="@+id/btn_Login" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 

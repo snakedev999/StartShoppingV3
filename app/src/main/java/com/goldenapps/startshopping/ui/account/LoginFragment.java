@@ -78,6 +78,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -165,66 +166,85 @@ public class LoginFragment extends Fragment {
         passLayout.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         n.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(200).start();
 
-
-
-        initialize();
+        n.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginUser();
+            }
+        });
 
         return loginFragment;
 
     }
 
-    private void initialize(){
+    private void loginUser(){
+        String email = edtEmail.getText().toString().trim();
+        String pass = edtPass.getText().toString().trim();
+
+        if(email.isEmpty()){
+            edtEmail.setError("Correo requerido");
+            edtEmail.requestFocus();
+            return;
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            edtEmail.setError("Ingrese un correo válido");
+            edtEmail.requestFocus();
+            return;
+        }
+
+        if(pass.isEmpty()){
+            edtPass.setError("Contraseña requerida");
+            edtPass.requestFocus();
+            return;
+        }
+
+        if(pass.length() < 6){
+            edtPass.setError("Minimo 6 caracteres");
+            edtPass.requestFocus();
+            return;
+        }
+
         try {
-            mAuth = FirebaseAuth.getInstance();
+            mAuth.signInWithEmailAndPassword(edtEmail.getText().toString().trim(),edtPass.getText().toString().trim())
+                    .addOnCompleteListener(getActivity(),new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                String userID = user.getUid();
 
-            n.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mAuth.signInWithEmailAndPassword(edtEmail.getText().toString().trim(),edtPass.getText().toString().trim())
-                            .addOnCompleteListener(getActivity(),new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()){
-                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                        String userID = user.getUid();
+                                //Si no está verificado el correo, se debera enviar un correo al usuario para aquello
+                                if(user.isEmailVerified()){
+                                    reference = FirebaseDatabase.getInstance().getReference("Usuarios");
+                                    reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                        //Si no está verificado el correo, se debera enviar un correo al usuario para aquello
-                                        if(user.isEmailVerified()){
-                                            reference = FirebaseDatabase.getInstance().getReference("Usuarios");
-                                            reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                                    Intent mainLogin = new Intent(getActivity(), LoadingAccountActivity.class);
-                                                    mainLogin.putExtra("idUser", userID);
-                                                    startActivity(mainLogin);
-                                                    getActivity().finishAffinity();
-                                                }
-
-                                                @Override
-                                                public void onCancelled(@NonNull DatabaseError error) {
-                                                }
-                                            });
-                                        }else{
-                                            Toast.makeText(getActivity().getApplicationContext(), "Revise su correo, Necesita verificación", LENGTH_SHORT).show();
-                                            user.sendEmailVerification();
+                                            Intent mainLogin = new Intent(getActivity(), LoadingAccountActivity.class);
+                                            mainLogin.putExtra("idUser", userID);
+                                            startActivity(mainLogin);
+                                            getActivity().finishAffinity();
                                         }
-                                    }else{
-                                        Toast.makeText(getActivity().getApplicationContext(),"Error al ingresar, verifique los datos ingresados", LENGTH_SHORT).show();
-                                    }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                        }
+                                    });
+                                }else{
+                                    Toast.makeText(getActivity().getApplicationContext(), "Revise su correo, Necesita verificación", LENGTH_SHORT).show();
+                                    user.sendEmailVerification();
                                 }
-                            });
-                }
-            });
-
-
-
+                            }else{
+                                Toast.makeText(getActivity().getApplicationContext(),"Error al ingresar, verifique los datos ingresados", LENGTH_SHORT).show();
+                            }
+                        }
+                    });
         }catch (Exception e){
             Toast.makeText(getContext(),e.getMessage(), LENGTH_SHORT).show();
         }
-
-
     }
+
     public void act2(View View) {
         Intent act = new Intent(getActivity(), RegisterFragment.class);
         startActivity(act);
