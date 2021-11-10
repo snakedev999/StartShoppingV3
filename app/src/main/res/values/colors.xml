@@ -15,5 +15,6 @@
     <color name="fondo">#191414</color>
     <color name="crearCuenta">#0F39DD</color>
     <color name="transparente">#00234234</color>
+    <color name="grey">#F6F6F6</color>
 
 </resources>

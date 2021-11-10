@@ -15,7 +15,6 @@ import com.goldenapps.startshopping.R;
 
 public class AccountOpcionFragment extends Fragment {
 
-    public static int slideleft = R.anim.translate_left_side;
     LoginFragment loginFragment = new LoginFragment();
     RegisterFragment registerFragment = new RegisterFragment();
 

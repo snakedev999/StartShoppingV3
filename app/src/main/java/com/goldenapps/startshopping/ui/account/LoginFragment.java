@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -86,21 +87,23 @@ public class LoginFragment extends Fragment {
         loginFragment = inflater.inflate(R.layout.fragment_login,container,false);
 
         ///Button n2 = (Button) loginFragment.findViewById(R.id.button);
-        Button signUp = (Button)loginFragment.findViewById(R.id.signup);
-        Button olvi = loginFragment.findViewById(R.id.cambiaPass);
 
-        n = (Button) loginFragment.findViewById(R.id.btn_login);
+        //Cambiar a boton!
+        TextView signUp = (TextView) loginFragment.findViewById(R.id.signup);
+        TextView NPass = (TextView) loginFragment.findViewById(R.id.cambiaPass);
 
+
+        n = (Button) loginFragment.findViewById(R.id.btn_Login);
         ImageButton Ibtn = (ImageButton) loginFragment.findViewById(R.id.btnG);
         ImageButton Ibtn1 = (ImageButton) loginFragment.findViewById(R.id.btnF);
         ImageButton Ibtn2= (ImageButton) loginFragment.findViewById(R.id.btnE);
-        Button NPass = (Button) loginFragment.findViewById(R.id.cambiaPass);
 
-        tabLayout = loginFragment.findViewById(R.id.tab_layout);
-        viewPager = loginFragment.findViewById(R.id.view_pager);
         google = loginFragment.findViewById(R.id.btnG);
         fb = loginFragment.findViewById(R.id.btnF);
         email1= loginFragment.findViewById(R.id.btnE);
+
+        TextInputLayout emailLayout = loginFragment.findViewById(R.id.email1);
+        TextInputLayout passLayout = loginFragment.findViewById(R.id.password1);
 
         edtEmail = (EditText) loginFragment.findViewById(R.id.email);
         edtPass = (EditText) loginFragment.findViewById(R.id.password);
@@ -138,34 +141,30 @@ public class LoginFragment extends Fragment {
         email1.setTranslationY(300);
         google.setTranslationY(300);
         fb.setTranslationY(300);
-        tabLayout.setTranslationY(300);
 
-        edtEmail.setTranslationX(300);
-        edtPass.setTranslationX(300);
+        emailLayout.setTranslationX(300);
+        passLayout.setTranslationX(300);
         n.setTranslationX(300);
-        signUp.setTranslationX(300);
-        olvi.setTranslationX(300);
+
 
         email1.setAlpha(v);
         google.setAlpha(v);
         fb.setAlpha(v);
-        tabLayout.setAlpha(v);
-        edtEmail.setAlpha(v);
-        edtPass.setAlpha(v);
+        emailLayout.setAlpha(v);
+        passLayout.setAlpha(v);
         n.setAlpha(v);
-        signUp.setAlpha(v);
-        olvi.setAlpha(v);
+
+
 
         email1.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
         google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
         fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
 
-        edtEmail.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
-        edtPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
+        emailLayout.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+        passLayout.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         n.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(200).start();
-        signUp.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
-        olvi.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
+
 
 
         initialize();
