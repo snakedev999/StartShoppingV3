@@ -35,7 +35,7 @@ public class RegisterFragment extends Fragment {
     private EditText editTextEmail,editTextName,editTextPass,editTextPassConfirm;
     private FirebaseAuth mAuth;
 
-    ImageButton google,fb,email1;
+    ImageButton google,fb,email1, btnOjo, btnOjo2;
     TabLayout tabLayout;
     ViewPager viewPager;
 
@@ -56,9 +56,13 @@ public class RegisterFragment extends Fragment {
         editTextPassConfirm =(EditText) view.findViewById(R.id.editTextAuthPassConfirm);
         btnRegister1 = (Button) view.findViewById(R.id.btnRegister);
 
+
         ImageButton Ibtn = (ImageButton) view.findViewById(R.id.btnG);
         ImageButton Ibtn1 = (ImageButton) view.findViewById(R.id.btnF);
         ImageButton Ibtn2= (ImageButton) view.findViewById(R.id.btnE);
+        ImageButton btnOjo= (ImageButton) view.findViewById(R.id.btnOjo);
+        ImageButton btnOjo2= (ImageButton) view.findViewById(R.id.btnOjo2);
+
 
         Ibtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +91,22 @@ public class RegisterFragment extends Fragment {
                 registerUser();
             }
         });
+
+        btnOjo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnOjo2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
 
 
         tabLayout = view.findViewById(R.id.tab_layout);
@@ -131,6 +151,10 @@ public class RegisterFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    private void VerPass(){
+        editTextPass.
     }
 
     private void registerUser(){
