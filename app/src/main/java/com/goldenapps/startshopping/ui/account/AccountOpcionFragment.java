@@ -17,7 +17,6 @@ public class AccountOpcionFragment extends Fragment {
 
     LoginFragment loginFragment = new LoginFragment();
     RegisterFragment registerFragment = new RegisterFragment();
-    BlankFragment blankFragment = new BlankFragment();
 
     public AccountOpcionFragment() {
         // Required empty public constructor
@@ -61,13 +60,6 @@ public class AccountOpcionFragment extends Fragment {
         });
         // Inflate the layout for this fragment
         return viewFragmentBlank;
-    }
-
-    private void blank(){
-        FragmentTransaction transaction1 = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction1.replace(R.id.frame_container_account, blankFragment);
-        transaction1.addToBackStack(getContext().getClass().getName());
-        transaction1.commit();
     }
 
     public void act2(View View) {
