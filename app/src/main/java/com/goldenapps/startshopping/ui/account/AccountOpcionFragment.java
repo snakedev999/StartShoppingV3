@@ -17,6 +17,7 @@ public class AccountOpcionFragment extends Fragment {
 
     LoginFragment loginFragment = new LoginFragment();
     RegisterFragment registerFragment = new RegisterFragment();
+    BlankFragment blankFragment = new BlankFragment();
 
     public AccountOpcionFragment() {
         // Required empty public constructor
@@ -41,7 +42,7 @@ public class AccountOpcionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.translate_left_side,R.anim.translate_left_side);
+                transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
                 transaction.replace(R.id.frame_container_account, loginFragment);
                 transaction.addToBackStack(getContext().getClass().getName());
                 transaction.commit();
@@ -52,7 +53,7 @@ public class AccountOpcionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.translate_left_side,R.anim.translate_left_side);
+                transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
                 transaction.replace(R.id.frame_container_account, registerFragment);
                 transaction.addToBackStack(getContext().getClass().getName());
                 transaction.commit();
@@ -60,6 +61,13 @@ public class AccountOpcionFragment extends Fragment {
         });
         // Inflate the layout for this fragment
         return viewFragmentBlank;
+    }
+
+    private void blank(){
+        FragmentTransaction transaction1 = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction1.replace(R.id.frame_container_account, blankFragment);
+        transaction1.addToBackStack(getContext().getClass().getName());
+        transaction1.commit();
     }
 
     public void act2(View View) {
