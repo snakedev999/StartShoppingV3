@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context="ui.account.RegisterFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.account.RegisterFragment">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="421dp"
-        android:layout_height="229dp"
+        android:layout_width="414dp"
+        android:layout_height="230dp"
         android:scaleType="centerCrop"
         android:src="@drawable/fondosalmon"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,12 +30,10 @@
         android:layout_height="116dp"
         android:src="@drawable/start"
         android:translationY="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="282dp"
@@ -52,230 +50,139 @@
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="561dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/vie_bg"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".78"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.21">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".7"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.322"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="31dp"
+            tools:layout_editor_absoluteY="173dp">
 
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintBaseline_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-
-        <!--FORMULARIO-->
-
-
-        <EditText
-            android:id="@+id/editTextAuthEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Correo"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:flow_firstHorizontalBias=".5"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.824"
-            app:layout_constraintWidth_percent=".8"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-
-        <EditText
-            android:id="@+id/editTextAuthName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Nombre"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:flow_firstHorizontalBias=".5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAuthEmail"
-            app:layout_constraintWidth_percent=".8"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-
-        <EditText
-            android:id="@+id/editTextAuthPass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:flow_firstHorizontalBias=".5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAuthName"
-            app:layout_constraintWidth_percent=".8"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-
-
-        <ImageButton
-            android:id="@+id/btnOjo"
-            android:layout_width="46dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="50dp"
-
-            android:translationY="-50dp"
-            app:layout_constraintEnd_toEndOf="@+id/editTextAuthPass"
-            app:layout_constraintTop_toTopOf="@+id/editTextAuthPass"
-            tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck,TouchTargetSizeCheck" />
-
-        <!--<ImageButton
-            android:id="@+id/btnOjo2"
-            android:layout_width="46dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="115dp"
-            android:background="@drawable/ojo"
-            android:translationY="-50dp"
-            app:layout_constraintEnd_toEndOf="@+id/editTextAuthPass"
-            app:layout_constraintTop_toTopOf="@+id/editTextAuthPass"
-            tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck,TouchTargetSizeCheck" />-->
-
-        <!--<EditText
-            android:id="@+id/editTextAuthPassConfirm"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="Confirmar Contraseña"
-            android:inputType="textPassword"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:flow_firstHorizontalBias=".5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAuthPass"
-            app:layout_constraintWidth_percent=".8"
-            app:endIconMode="password_toggle"
-            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />-->
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextAuthPassConfirm"
-            android:layout_width="328dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/edit_text_bg"
-            android:layout_marginBottom="8dp"
-            android:translationX="30dp"
-            android:translationY="75dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-            app:layout_constraintStart_toStartOf="@+id/view_pager"
-            app:layout_constraintTop_toTopOf="@+id/editTextAuthPass"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_bg"
-
-                android:hint="Repita Contraseña" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-
-            android:text="@string/new_login"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:translationY="100dp"
-            app:layout_constraintBottom_toTopOf="@id/editTextAuthPass"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAuthPass"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintWidth_percent=".8" />
+                android:layout_height="match_parent">
 
 
-        <!--INICIOS DE SESION-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editTextAuthEmail1"
+                    android:layout_width="360dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="72dp"
+                    android:elevation="10dp"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/OrangeFirst"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/OrangeFirst"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.484"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@drawable/ic_baseline_person_24"
+                    app:startIconTint="@color/OrangeFirst">
 
-        <ImageButton
-            android:id="@+id/btnG"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="53dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/google"
-            android:translationY="-50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextAuthEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/EditTextEmail"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageButton
-            android:id="@+id/btnF"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="65dp"
-            android:layout_marginEnd="65dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/fb"
-            android:translationY="-50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnE"
-            app:layout_constraintStart_toEndOf="@+id/btnG"
-            tools:ignore="SpeakableTextPresentCheck" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editTextAuthName1"
+                    android:layout_width="360dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:elevation="10dp"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/OrangeFirst"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/OrangeFirst"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextAuthEmail1"
+                    app:layout_constraintStart_toStartOf="@+id/editTextAuthEmail1"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextAuthEmail1"
+                    app:startIconDrawable="@drawable/ic_baseline_person_24"
+                    app:startIconTint="@color/OrangeFirst">
 
-        <ImageButton
-            android:id="@+id/btnE"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="53dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/email"
-            android:translationY="-50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextAuthName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/EditTextName"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editTextAuthPass1"
+                    android:layout_width="360dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:elevation="10dp"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/OrangeFirst"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/OrangeFirst"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextAuthName1"
+                    app:layout_constraintStart_toStartOf="@+id/editTextAuthName1"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextAuthName1"
+                    app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                    app:startIconTint="@color/OrangeFirst">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextAuthPass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Contraseña"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editTextAuthPassConfirm1"
+                    android:layout_width="360dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="12dp"
+                    android:elevation="10dp"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/OrangeFirst"
+                    app:endIconMode="password_toggle"
+
+                    app:endIconTint="@color/OrangeFirst"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextAuthPass1"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/editTextAuthPass1"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextAuthPass1"
+                    app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                    app:startIconTint="@color/OrangeFirst">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextAuthPassConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Confirmar Contraseña"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_Register"
+                    android:layout_width="170dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/ButtonRegister"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextAuthPassConfirm1"
+                    app:layout_constraintStart_toStartOf="@+id/editTextAuthPassConfirm1"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextAuthPassConfirm1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

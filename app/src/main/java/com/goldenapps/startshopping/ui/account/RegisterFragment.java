@@ -1,12 +1,9 @@
 package com.goldenapps.startshopping.ui.account;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -14,14 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.model.ModelAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,13 +30,10 @@ public class RegisterFragment extends Fragment {
     private EditText editTextEmail,editTextName,editTextPass,editTextPassConfirm;
     private FirebaseAuth mAuth;
 
-    ImageButton google,fb,email1, btnOjo, btnOjo2;
-    TabLayout tabLayout;
-    ViewPager viewPager;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -54,36 +46,7 @@ public class RegisterFragment extends Fragment {
         editTextName = (EditText) view.findViewById(R.id.editTextAuthName);
         editTextPass = (EditText) view.findViewById(R.id.editTextAuthPass);
         editTextPassConfirm =(EditText) view.findViewById(R.id.editTextAuthPassConfirm);
-        btnRegister1 = (Button) view.findViewById(R.id.btnRegister);
-
-
-        ImageButton Ibtn = (ImageButton) view.findViewById(R.id.btnG);
-        ImageButton Ibtn1 = (ImageButton) view.findViewById(R.id.btnF);
-        ImageButton Ibtn2= (ImageButton) view.findViewById(R.id.btnE);
-        ImageButton btnOjo= (ImageButton) view.findViewById(R.id.btnOjo);
-        ImageButton btnOjo2= (ImageButton) view.findViewById(R.id.btnOjo2);
-
-
-        Ibtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Google", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Ibtn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Facebook", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Ibtn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Email", Toast.LENGTH_SHORT).show();
-            }
-        });
+        btnRegister1 = (Button) view.findViewById(R.id.btn_Register);
 
         btnRegister1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,69 +55,7 @@ public class RegisterFragment extends Fragment {
             }
         });
 
-        btnOjo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        btnOjo2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-
-
-        tabLayout = view.findViewById(R.id.tab_layout);
-        viewPager = view.findViewById(R.id.view_pager);
-        google = view.findViewById(R.id.btnG);
-        fb = view.findViewById(R.id.btnF);
-        email1= view.findViewById(R.id.btnE);
-        float v=0;
-
-        email1.setTranslationY(300);
-        google.setTranslationY(300);
-        fb.setTranslationY(300);
-        tabLayout.setTranslationY(300);
-
-        editTextEmail.setTranslationX(300);
-        editTextName.setTranslationX(300);
-        editTextPass.setTranslationX(300);
-        editTextPassConfirm.setTranslationX(300);
-        btnRegister1.setTranslationX(300);
-
-        email1.setAlpha(v);
-        google.setAlpha(v);
-        fb.setAlpha(v);
-        tabLayout.setAlpha(v);
-        editTextEmail.setAlpha(v);
-        editTextName.setAlpha(v);
-        editTextPass.setAlpha(v);
-        editTextPassConfirm.setAlpha(v);
-        btnRegister1.setAlpha(v);
-
-
-        email1.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
-        google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
-        fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
-        fb.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
-
-        editTextEmail.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(1000).start();
-        editTextName.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(800).start();
-        editTextPass.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(600).start();
-        editTextPassConfirm.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
-        btnRegister1.animate().translationX(0).alpha(1).setDuration(1000).setStartDelay(400).start();
-
-        // Inflate the layout for this fragment
         return view;
-    }
-
-    private void VerPass(){
-        editTextPass.
     }
 
     private void registerUser(){
@@ -244,12 +145,6 @@ public class RegisterFragment extends Fragment {
         editTextName.setText("");
         editTextPass.setText("");
         editTextPassConfirm.setText("");
-    }
-
-    public void cambio(View View) {
-        Intent info = new Intent(getActivity(),LoginFragment.class);
-        startActivity(info);
-        getActivity().overridePendingTransition(R.anim.zoom_in,R.anim.zoom_out);
     }
 
     public void onBackPressed() {
