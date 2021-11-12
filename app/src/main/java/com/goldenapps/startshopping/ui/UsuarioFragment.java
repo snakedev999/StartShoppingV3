@@ -3,6 +3,8 @@ package com.goldenapps.startshopping.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,12 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UsuarioFragment extends Fragment {
+
+    DbHelper helper;
+    SQLiteDatabase db;
 
     private SharedPreferences sharedPreferences3;
     private SharedPreferences.Editor editor3;
@@ -45,10 +52,8 @@ public class UsuarioFragment extends Fragment {
         View blank = inflater.inflate(R.layout.fragment_usuario, container, false);
 
         id = blank.findViewById(R.id.textView);
-        Bundle b = getArguments();
-        idUser = b.getString("idUsuario1");
-        id.setText(idUser);
-
+        consultaUsuario(1);
+        id.setText(getIdUser());
 
         Button n2 = (Button) blank.findViewById(R.id.button2);
         n2.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +65,7 @@ public class UsuarioFragment extends Fragment {
                 mainMenu.putExtra("boolean",true);
                 mainMenu.putExtra("boolean2", false);
                 mainMenu.putExtra("credencial", true);
+                eliminarDatos(1);
                 startActivity(mainMenu );
                 getActivity().finishAffinity();
             }
@@ -67,5 +73,38 @@ public class UsuarioFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return blank;
+    }
+
+    private void consultaUsuario(int id){
+        helper = new DbHelper(getActivity());
+        db = helper.getWritableDatabase();
+
+        Cursor fila = db.rawQuery("SELECT IDUSUARIO FROM USUARIO WHERE ID = '"+id+"'",null);
+
+        if(fila.moveToFirst()){
+            setIdUser(fila.getString(0));
+
+            Toast.makeText(getActivity(),"Consulta realizada correctamente",Toast.LENGTH_SHORT).show();
+        }else{
+            setIdUser("");
+            Toast.makeText(getActivity(),"No se ha registrado el usuario ",Toast.LENGTH_SHORT).show();
+        }
+        db.close();
+
+    }
+
+    private void eliminarDatos(int id){
+        helper = new DbHelper(getActivity());
+        db = helper.getWritableDatabase();
+
+        int cantidad_filas;
+
+        cantidad_filas = db.delete("USUARIO","ID = '"+id+"'",null);
+        if(cantidad_filas == 1){
+            Toast.makeText(getActivity(),"Los datos del usuario se han eliminado correctamente",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getActivity(),"El usuario no esta registrado",Toast.LENGTH_SHORT).show();
+        }
+        db.close();
     }
 }

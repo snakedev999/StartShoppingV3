@@ -12,13 +12,7 @@
         android:layout_height="230dp"
         android:scaleType="centerCrop"
         android:src="@drawable/degradado"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".27"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
     <!--LOGO-->
@@ -176,7 +170,7 @@
                 <Button
                     android:id="@+id/btn_Login"
                     android:layout_width="140dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="92dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/button_bg"

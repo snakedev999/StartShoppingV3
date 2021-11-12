@@ -2,8 +2,11 @@ package com.goldenapps.startshopping.ui.account;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.model.ModelAccount;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.goldenapps.startshopping.R;
@@ -46,6 +50,11 @@ import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 
+    private String idUsuarioSave;
+    DbHelper helper;
+    SQLiteDatabase db;
+
+
     private View loginFragment;
     private Button btnLogin,n;
     private TextView recoverPass;
@@ -59,6 +68,14 @@ public class LoginFragment extends Fragment {
     ConstraintLayout cl;
     TabLayout tabLayout;
     ViewPager viewPager;
+
+    public String getIdUsuarioSave() {
+        return idUsuarioSave;
+    }
+
+    public void setIdUsuarioSave(String idUsuarioSave) {
+        this.idUsuarioSave = idUsuarioSave;
+    }
 
     public String getTipoUsuario() {
         return tipoUsuario;
@@ -220,7 +237,7 @@ public class LoginFragment extends Fragment {
                                     reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                                            registrarUsuario(userID);
                                             Intent mainLogin = new Intent(getActivity(), LoadingAccountActivity.class);
                                             mainLogin.putExtra("idUser", userID);
                                             startActivity(mainLogin);
@@ -249,6 +266,28 @@ public class LoginFragment extends Fragment {
         Intent act = new Intent(getActivity(), RegisterFragment.class);
         startActivity(act);
         getActivity().overridePendingTransition(R.anim.translate_left_side, 0);
+    }
+
+    private void registrarUsuario(String idUsuario){
+        helper = new DbHelper(getActivity());
+        db = helper.getWritableDatabase();
+        int id = 1;
+        String idU = idUsuario;
+
+        ContentValues registroUsuario = new ContentValues();
+        registroUsuario.put("id",id);
+        registroUsuario.put("idUsuario",idU);
+
+        Cursor fila = db.rawQuery("SELECT IDUSUARIO FROM USUARIO WHERE IDUSUARIO = '"+idU+"'",null);
+
+        if(fila.moveToFirst()){
+            setIdUsuarioSave(fila.getString(0));
+            Toast.makeText(getActivity(),"El id del usuario ya esta registrado",Toast.LENGTH_SHORT).show();
+        }else{
+            db.insert("USUARIO",null,registroUsuario);
+            Toast.makeText(getActivity(),"Se ha registrado correctamente el id del usuario",Toast.LENGTH_SHORT).show();
+        }
+        db.close();
     }
 
 

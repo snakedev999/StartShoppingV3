@@ -1,6 +1,8 @@
 package com.goldenapps.startshopping.ui;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class AdminFragment extends Fragment {
 
 
+    DbHelper helper;
+    SQLiteDatabase db;
     String idUser;
 
     @Override
@@ -32,9 +38,8 @@ public class AdminFragment extends Fragment {
         View viewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
         TextView t = viewAdmin.findViewById(R.id.textView3);
-        Bundle b = getArguments();
-        idUser = b.getString("idUsuario1");
-        t.setText(idUser);
+        consultaUsuario(1);
+        t.setText(getIdUser());
 
         Button salir = viewAdmin.findViewById(R.id.buttonLeave);
         salir.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +52,7 @@ public class AdminFragment extends Fragment {
                 main.putExtra("boolean2", false);
                 main.putExtra("credencial2", true);
                 main.putExtra("idusuario","");
+                eliminarDatos(1);
                 startActivity(main);
                 getActivity().finishAffinity();
             }
@@ -54,5 +60,46 @@ public class AdminFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return viewAdmin;
+    }
+
+    private void consultaUsuario(int id){
+        helper = new DbHelper(getActivity());
+        db = helper.getWritableDatabase();
+
+        Cursor fila = db.rawQuery("SELECT IDUSUARIO FROM USUARIO WHERE ID = '"+id+"'",null);
+
+        if(fila.moveToFirst()){
+            setIdUser(fila.getString(0));
+
+            Toast.makeText(getActivity(),"Consulta realizada correctamente",Toast.LENGTH_SHORT).show();
+        }else{
+            setIdUser("");
+            Toast.makeText(getActivity(),"No se ha registrado el usuario ",Toast.LENGTH_SHORT).show();
+        }
+        db.close();
+
+    }
+
+    private void eliminarDatos(int id){
+        helper = new DbHelper(getActivity());
+        db = helper.getWritableDatabase();
+
+        int cantidad_filas;
+
+        cantidad_filas = db.delete("USUARIO","ID = '"+id+"'",null);
+        if(cantidad_filas == 1){
+            Toast.makeText(getActivity(),"Los datos del usuario se han eliminado correctamente",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getActivity(),"El usuario no esta registrado",Toast.LENGTH_SHORT).show();
+        }
+        db.close();
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 }
