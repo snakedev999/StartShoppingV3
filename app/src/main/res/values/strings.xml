@@ -18,4 +18,43 @@
 
     <string name="slogan">Tus productos al alcance de tu bolsillo</string>
     <string name="new_login">crear cuenta</string>
+
+    /* CATEGORIAS */
+
+    <string name="gorros">SOMBREROS</string>
+    <string name="gorrosImg">GORROS</string>
+
+    <string name="bolsos">BOLSOS</string>
+    <string name="bolsosImg">BOLSOS</string>
+
+    <string name="abrigos">ABRIGOS</string>
+    <string name="abrigosImg">ABRIGOS</string>
+
+    <string name="categorias"> CATEGORIAS</string>
+
+    <string name="ropa_interior">ROPA INTERIOR</string>
+    <string name="braImg">ROPA INTERIOR</string>
+
+    <string name="calcetas">CALCETAS</string>
+    <string name="calcetaImg">CALCETAS</string>
+
+    <string name="mujeres">MUJERES</string>
+    <string name="mujerImg">MUJER</string>
+
+    <string name="reloj_y_accesorios">RELOJ Y ACCESORIOS</string>
+    <string name="relojImg">RELOJ</string>
+
+    <string name="recomendados">RECOMENDADOS</string>
+    <string name="recomendadosImg">RECOMENDADOS</string>
+
+    <string name="calzado">CALZADO</string>
+    <string name="zapatosImg">ZAPATOS</string>
+
+    <string name="hombre">HOMBRE</string>
+    <string name="hombreImg">HOMBRE</string>
+
+    <string name="poleras">POLERAS</string>
+    <string name="polerasImg">POLERAS</string>
+
+
 </resources>
