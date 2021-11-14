@@ -1,12 +1,15 @@
 package com.goldenapps.startshopping.ui.category;
 
+import android.media.Image;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.goldenapps.startshopping.R;
 
@@ -28,6 +31,7 @@ public class CategoryFragment extends Fragment {
 
     public CategoryFragment() {
         // Required empty public constructor
+
     }
 
     /**
@@ -46,6 +50,7 @@ public class CategoryFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
@@ -54,8 +59,14 @@ public class CategoryFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
+
     }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,4 +74,9 @@ public class CategoryFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_category, container, false);
     }
+
+
+
 }
+
+

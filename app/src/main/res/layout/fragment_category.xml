@@ -41,7 +41,7 @@
             <!--ABRIGOS-->
 
             <androidx.cardview.widget.CardView
-
+                android:id="@+id/CVAbrigo"
                 android:layout_width="390dp"
                 android:layout_height="137dp"
                 android:layout_marginTop="-19dp"

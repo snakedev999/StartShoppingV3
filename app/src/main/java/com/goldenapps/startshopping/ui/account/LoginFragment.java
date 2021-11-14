@@ -64,10 +64,6 @@ public class LoginFragment extends Fragment {
     private String tipo = "tipoUsuario";
 
     ImageButton google,fb,email1;
-    Button button;
-    ConstraintLayout cl;
-    TabLayout tabLayout;
-    ViewPager viewPager;
 
     public String getIdUsuarioSave() {
         return idUsuarioSave;
