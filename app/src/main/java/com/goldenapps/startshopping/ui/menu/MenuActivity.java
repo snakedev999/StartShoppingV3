@@ -73,11 +73,10 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
-    HomeFragment homeFragment = new HomeFragment();
     CategoryFragment categoryFragment = new CategoryFragment();
     UsuarioFragment usuarioFragment = new UsuarioFragment();
     AdminFragment adminFragment = new AdminFragment();
-
+    HomeFragment homeFragment = new HomeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

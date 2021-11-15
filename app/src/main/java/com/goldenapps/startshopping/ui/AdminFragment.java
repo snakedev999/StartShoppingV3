@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.registros.RegistroCategoriaActivity;
+import com.goldenapps.startshopping.registros.RegistroProductoActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -37,9 +39,12 @@ public class AdminFragment extends Fragment {
                              Bundle savedInstanceState) {
         View viewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
+        Button registroCategoria = viewAdmin.findViewById(R.id.btn_categoria);
+        Button registroProducto = viewAdmin.findViewById(R.id.btn_producto);
         TextView t = viewAdmin.findViewById(R.id.textView3);
         consultaUsuario(1);
         t.setText(getIdUser());
+
 
         Button salir = viewAdmin.findViewById(R.id.buttonLeave);
         salir.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +60,22 @@ public class AdminFragment extends Fragment {
                 eliminarDatos(1);
                 startActivity(main);
                 getActivity().finishAffinity();
+            }
+        });
+
+        registroCategoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainLogin = new Intent(getActivity(), RegistroCategoriaActivity.class);
+                startActivity(mainLogin);
+            }
+        });
+
+        registroProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainLogin = new Intent(getActivity(), RegistroProductoActivity.class);
+                startActivity(mainLogin);
             }
         });
 

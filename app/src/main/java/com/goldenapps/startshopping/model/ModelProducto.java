@@ -1,43 +1,27 @@
 package com.goldenapps.startshopping.model;
 
+import android.view.Display;
+
 import java.util.Date;
 
 public class ModelProducto {
 
-    private int idProducto;
     private String nombreProducto;
-    private int cantidadProducto;
-    private String descripcion;
-    private Date fechaRegistroProducto;
-    private int precioProducto;
-    private int imagenProducto;
-    private double puntajeProducto;
+    private String marcaProducto;
+    private String precioProducto;
+    private String imagenProducto;
 
-    public ModelProducto(int idProducto, String nombreProducto, int cantidadProducto, String descripcion, int precioProducto, int imagenProducto, double puntajeProducto) {
-        this.idProducto = idProducto;
-        this.nombreProducto = nombreProducto;
-        this.cantidadProducto = cantidadProducto;
-        this.descripcion = descripcion;
-        this.precioProducto = precioProducto;
-        this.imagenProducto = imagenProducto;
-        this.puntajeProducto = puntajeProducto;
+    public ModelProducto() {
+
     }
 
-    public ModelProducto(int idProducto, String nombreProducto, String descripcion, int precioProducto, int imagenProducto) {
-        this.idProducto = idProducto;
+    public ModelProducto(String marcaProducto, String nombreProducto, String precioProducto, String imagenProducto) {
         this.nombreProducto = nombreProducto;
-        this.descripcion = descripcion;
+        this.marcaProducto = marcaProducto;
         this.precioProducto = precioProducto;
         this.imagenProducto = imagenProducto;
     }
 
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
-    }
 
     public String getNombreProducto() {
         return nombreProducto;
@@ -47,51 +31,28 @@ public class ModelProducto {
         this.nombreProducto = nombreProducto;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getMarcaProducto() {
+        return marcaProducto;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setMarcaProducto(String marcaProducto) {
+        this.marcaProducto = marcaProducto;
     }
 
-    public Date getFechaRegistroProducto() {
-        return fechaRegistroProducto;
-    }
 
-    public void setFechaRegistroProducto(Date fechaRegistroProducto) {
-        this.fechaRegistroProducto = fechaRegistroProducto;
-    }
-
-    public int getPrecioProducto() {
+    public String getPrecioProducto() {
         return precioProducto;
     }
 
-    public void setPrecioProducto(int precioProducto) {
+    public void setPrecioProducto(String precioProducto) {
         this.precioProducto = precioProducto;
     }
 
-    public int getImagenProducto() {
+    public String getImagenProducto() {
         return imagenProducto;
     }
 
-    public void setImagenProducto(int imagenProducto) {
+    public void setImagenProducto(String imagenProducto) {
         this.imagenProducto = imagenProducto;
-    }
-
-    public double getPuntajeProducto() {
-        return puntajeProducto;
-    }
-
-    public void setPuntajeProducto(double puntajeProducto) {
-        this.puntajeProducto = puntajeProducto;
-    }
-
-    public int getCantidadProducto() {
-        return cantidadProducto;
-    }
-
-    public void setCantidadProducto(int cantidadProducto) {
-        this.cantidadProducto = cantidadProducto;
     }
 }

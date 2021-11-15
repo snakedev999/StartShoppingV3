@@ -10,8 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartShopping">
         <activity
-            android:name=".ui.account.LoadingAccountActivity"
+            android:name=".registros.RegistroProductoActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.productoDetalle.DetalleActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".registros.RegistroCategoriaActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.account.LoadingAccountActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.menu.MenuActivity"
             android:exported="true"
