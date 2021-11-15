@@ -1,4 +1,5 @@
 package com.goldenapps.startshopping.adapterss;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -8,9 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.goldenapps.startshopping.activity.DetailActivity;
 import com.goldenapps.startshopping.model.ItemList;
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.model.ModelCategoria;
+import com.goldenapps.startshopping.model.ModelProducto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,32 +24,32 @@ import java.util.stream.Collectors;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerHolder> {
 
-    private List<ItemList> items;
-    private List<ItemList> originalItems;
-    private RecyclerItemClick itemClick;
+    Context context;
+    ArrayList<ModelCategoria> list; //OriginalItems?
+    private List<ModelCategoria> items;
+    private List<ModelCategoria> originalItems;
 
-    public RecyclerAdapter(List<ItemList> items, RecyclerItemClick itemClick) {
-        this.items = items;
-        this.itemClick = itemClick;
-        this.originalItems = new ArrayList<>();
-        originalItems.addAll(items);
+
+    public RecyclerAdapter(Context context, ArrayList<ModelCategoria> list) {
+        this.context = context;
+        this.list = list;
     }
 
     @NonNull
     @Override
     public RecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_view, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_list_view, parent, false);
         return new RecyclerHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerHolder holder, final int position) {
-        final ItemList item = items.get(position);
-        holder.imgItem.setImageResource(item.getImgResource());
-        holder.tvTitulo.setText(item.getTitulo());
+        ModelCategoria categoria = list.get(position);
+        holder.tvTitulo.setText(categoria.getNombreCategoria());
+        Glide.with(context).load(categoria.getImagenCategoria()).into(holder.imgItem);
 
 
-
+       /*
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,14 +64,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
                 intent.putExtra("itemDetail", item);
                 holder.itemView.getContext().startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return list.size();
     }
 
+    /*
     public void filter(final String strSearch) {
         if (strSearch.length() == 0) {
             items.clear();
@@ -90,7 +97,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             }
         }
         notifyDataSetChanged();
-    }
+    }*/
 
 
     public class RecyclerHolder extends RecyclerView.ViewHolder {

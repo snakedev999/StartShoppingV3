@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fondo"
+        android:background="@color/fondoSalmon"
         android:padding="6dp">
 
         <TextView
@@ -37,8 +37,7 @@
                 android:layout_height="156dp"
                 android:src="@drawable/star"
                 android:translationX="130dp"
-                android:translationY="19dp"
-                />
+                android:translationY="19dp" />
 
         </LinearLayout>
 
