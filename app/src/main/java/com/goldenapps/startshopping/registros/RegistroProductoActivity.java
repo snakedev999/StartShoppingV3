@@ -41,6 +41,7 @@ public class RegistroProductoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_registro_producto);
 
         edtMarca = (EditText) findViewById(R.id.edt_marcaProducto);

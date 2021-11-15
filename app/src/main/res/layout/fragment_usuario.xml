@@ -6,6 +6,18 @@
     tools:context=".ui.UsuarioFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="245dp"
+        android:text="ID_USUARIO:"
+        android:textSize="16sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,16 +25,16 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="251dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="277dp"
-        android:layout_marginEnd="326dp"
-        android:layout_marginBottom="435dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="465dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="247dp"
         android:text="TextView" />
 
     <Button
@@ -31,19 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="173dp"
-        android:layout_marginBottom="405dp"
+        android:layout_marginEnd="183dp"
+        android:layout_marginBottom="117dp"
         android:text="SALIR" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="198dp"
-        android:layout_marginBottom="549dp"
-        android:minHeight="48dp"
-        android:text="Switch" />
 
 </RelativeLayout>

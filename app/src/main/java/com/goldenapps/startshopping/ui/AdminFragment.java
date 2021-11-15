@@ -18,6 +18,7 @@ import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.registros.RegistroCategoriaActivity;
 import com.goldenapps.startshopping.registros.RegistroProductoActivity;
+import com.goldenapps.startshopping.registros.RegistroRegionActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -41,6 +42,7 @@ public class AdminFragment extends Fragment {
 
         Button registroCategoria = viewAdmin.findViewById(R.id.btn_categoria);
         Button registroProducto = viewAdmin.findViewById(R.id.btn_producto);
+        Button registroRegion = viewAdmin.findViewById(R.id.btn_region);
         TextView t = viewAdmin.findViewById(R.id.textView3);
         consultaUsuario(1);
         t.setText(getIdUser());
@@ -75,6 +77,14 @@ public class AdminFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent mainLogin = new Intent(getActivity(), RegistroProductoActivity.class);
+                startActivity(mainLogin);
+            }
+        });
+
+        registroRegion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainLogin = new Intent(getActivity(), RegistroRegionActivity.class);
                 startActivity(mainLogin);
             }
         });

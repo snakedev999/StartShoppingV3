@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartShopping">
         <activity
+            android:name=".registros.RegistroRegionActivity"
+            android:exported="true" />
+        <activity
             android:name=".registros.RegistroProductoActivity"
             android:exported="true" />
         <activity

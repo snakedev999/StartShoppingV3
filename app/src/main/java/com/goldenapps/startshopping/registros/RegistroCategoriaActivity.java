@@ -48,6 +48,7 @@ public class RegistroCategoriaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_registro_categoria);
 
         imageCategoria = (ImageView) findViewById(R.id.imageCategoria);
@@ -116,19 +117,12 @@ public class RegistroCategoriaActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-
                         }
                     });
-
-
-
                 }
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
