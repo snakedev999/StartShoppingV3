@@ -57,7 +57,7 @@ public class CategoryFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rvLista);
         database = FirebaseDatabase.getInstance().getReference("Categorias");
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         // Inflate the layout for this fragment
 
         list = new ArrayList<>();

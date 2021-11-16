@@ -24,13 +24,14 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoadingAccountActivity extends AppCompatActivity {
 
+    private DatabaseReference usuario;
     private String credencial;
     private String idUser;
+    
+
     private ProgressBar progressBar;
     private int i;
     private boolean progress=false;
-    private DatabaseReference usuario;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

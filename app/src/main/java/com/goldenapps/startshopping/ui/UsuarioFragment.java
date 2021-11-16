@@ -23,14 +23,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class UsuarioFragment extends Fragment {
 
-    DbHelper helper;
-    SQLiteDatabase db;
+    private DbHelper helper;
+    private SQLiteDatabase db;
+    private String idUser;
+    private TextView id;
 
     private SharedPreferences sharedPreferences3;
     private SharedPreferences.Editor editor3;
     private Boolean guardaIdBoolean;
-    String idUser;
-    TextView id;
 
     public String getIdUser() {
         return idUser;
@@ -65,7 +65,10 @@ public class UsuarioFragment extends Fragment {
                 mainMenu.putExtra("boolean",true);
                 mainMenu.putExtra("boolean2", false);
                 mainMenu.putExtra("credencial", true);
+
+
                 eliminarDatos(1);
+
                 startActivity(mainMenu );
                 getActivity().finishAffinity();
             }

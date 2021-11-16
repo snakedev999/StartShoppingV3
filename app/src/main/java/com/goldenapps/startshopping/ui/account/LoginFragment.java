@@ -51,8 +51,8 @@ import java.util.Objects;
 public class LoginFragment extends Fragment {
 
     private String idUsuarioSave;
-    DbHelper helper;
-    SQLiteDatabase db;
+    private DbHelper helper;
+    private SQLiteDatabase db;
 
 
     private View loginFragment;
@@ -61,28 +61,8 @@ public class LoginFragment extends Fragment {
     private EditText edtEmail,edtPass;
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
-    private String tipo = "tipoUsuario";
 
     ImageButton google,fb,email1;
-
-    public String getIdUsuarioSave() {
-        return idUsuarioSave;
-    }
-
-    public void setIdUsuarioSave(String idUsuarioSave) {
-        this.idUsuarioSave = idUsuarioSave;
-    }
-
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
-
-    private String tipoUsuario;
-
 
     public LoginFragment() {
         // Required empty public constructor
@@ -258,12 +238,6 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    public void act2(View View) {
-        Intent act = new Intent(getActivity(), RegisterFragment.class);
-        startActivity(act);
-        getActivity().overridePendingTransition(R.anim.translate_left_side, 0);
-    }
-
     private void registrarUsuario(String idUsuario){
         helper = new DbHelper(getActivity());
         db = helper.getWritableDatabase();
@@ -285,6 +259,30 @@ public class LoginFragment extends Fragment {
         }
         db.close();
     }
+
+    public void act2(View View) {
+        Intent act = new Intent(getActivity(), RegisterFragment.class);
+        startActivity(act);
+        getActivity().overridePendingTransition(R.anim.translate_left_side, 0);
+    }
+
+    public String getIdUsuarioSave() {
+        return idUsuarioSave;
+    }
+
+    public void setIdUsuarioSave(String idUsuarioSave) {
+        this.idUsuarioSave = idUsuarioSave;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    private String tipoUsuario;
 
 
 }
