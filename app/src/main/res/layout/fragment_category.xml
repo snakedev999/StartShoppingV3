@@ -11,17 +11,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Buscar categorías" />
+        app:queryHint="Buscar categorías">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLista"
+    </androidx.appcompat.widget.SearchView>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="735dp"
+        android:layout_height="687dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/svSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/svSearch">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
