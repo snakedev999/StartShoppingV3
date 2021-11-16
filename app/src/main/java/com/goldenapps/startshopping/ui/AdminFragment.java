@@ -89,9 +89,6 @@ public class AdminFragment extends Fragment {
             }
         });
 
-        registroCategoria.setVisibility(View.INVISIBLE);
-        registroProducto.setVisibility(View.INVISIBLE);
-
         // Inflate the layout for this fragment
         return viewAdmin;
     }
