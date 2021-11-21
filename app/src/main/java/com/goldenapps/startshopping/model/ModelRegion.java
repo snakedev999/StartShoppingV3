@@ -2,17 +2,35 @@ package com.goldenapps.startshopping.model;
 
 public class ModelRegion {
 
+    private String idRegion;
     private String nombreRegion;
     private String abreviaturaRegion;
     private String numeroRomano;
+    private Boolean b;
 
-    public ModelRegion() {
+   public ModelRegion(){
+
+   }
+
+    public ModelRegion(String idRegion, String nombreRegion, String numeroRomano,Boolean b) {
+        this.idRegion = idRegion;
+        this.nombreRegion = nombreRegion;
+        this.numeroRomano = numeroRomano;
+        this.b = b;
     }
 
     public ModelRegion(String nombreRegion, String abreviaturaRegion, String numeroRomano) {
         this.nombreRegion = nombreRegion;
         this.abreviaturaRegion = abreviaturaRegion;
         this.numeroRomano = numeroRomano;
+    }
+
+    public String getIdRegion() {
+        return idRegion;
+    }
+
+    public void setIdRegion(String idRegion) {
+        this.idRegion = idRegion;
     }
 
     public String getNombreRegion() {
@@ -41,8 +59,6 @@ public class ModelRegion {
 
     @Override
     public String toString() {
-        return "Nombre region: " + nombreRegion + '\'' +'\n'+
-                "Abreviatura region: " + abreviaturaRegion + '\"' +'\n'+
-                "Numero romano='" + numeroRomano + '\'' +'\n';
+        return nombreRegion +" "+numeroRomano;
     }
 }

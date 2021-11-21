@@ -31,9 +31,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/userList"
                     android:layout_width="410dp"
-                    android:layout_height="384dp"
+                    android:layout_height="300dp"
                     android:layout_marginTop="8dp"
-                    android:foregroundGravity="center_vertical|center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"

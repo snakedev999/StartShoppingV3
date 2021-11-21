@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
     DatabaseReference database;
     ProductoAdapter myAdapter;
     ArrayList<ModelProducto> list;
@@ -42,12 +45,15 @@ public class HomeFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.userList);
         database = FirebaseDatabase.getInstance().getReference("Productos");
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        // Inflate the layout for this fragment
-
         list = new ArrayList<>();
         myAdapter = new ProductoAdapter(getContext(),list);
+
+        /*layoutManager = new GridLayoutManager(getActivity(),2);
+        recyclerView.setLayoutManager(layoutManager);*/
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(myAdapter);
 
         database.addValueEventListener(new ValueEventListener() {
