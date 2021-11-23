@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartShopping">
         <activity
+            android:name=".ui.productoDetalle.ProductoCategoriaActivity"
+            android:exported="true" />
+        <activity
             android:name=".registros.SeleccionComunaActivity"
             android:exported="true" />
         <activity

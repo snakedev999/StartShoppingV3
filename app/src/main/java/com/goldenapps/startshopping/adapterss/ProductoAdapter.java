@@ -1,6 +1,7 @@
 package com.goldenapps.startshopping.adapterss;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.model.ModelProducto;
+import com.goldenapps.startshopping.ui.productoDetalle.DetalleActivity;
 
 import java.util.ArrayList;
 
@@ -36,13 +38,28 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     @Override
     public void onBindViewHolder(@NonNull ProductoViewHolder holder, int position) {
-
         ModelProducto user = list.get(position);
-        holder.marca.setText(user.getMarcaProducto());
-        holder.precio.setText(user.getPrecioProducto());
+        holder.precio.setText(Double.toString(user.getPrecioProducto()));
         holder.nombre.setText(user.getNombreProducto());
         Glide.with(context).load(user.getImagenProducto()).into(holder.image);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                context = holder.itemView.getContext();
+
+                Intent i=new Intent(context.getApplicationContext(), DetalleActivity.class);
+                i.putExtra("name", user.getNombreProducto());
+                i.putExtra("descrip", user.getDescripcionProducto());
+                i.putExtra("cantidad", user.getCantidadProducto());
+                i.putExtra("price", user.getPrecioProducto());
+                i.putExtra("image", user.getImagenProducto());
+
+                context.startActivity(i);
+
+            }
+        });
 
     }
 

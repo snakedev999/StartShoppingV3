@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,6 +17,8 @@ import com.goldenapps.startshopping.model.ItemList;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.model.ModelCategoria;
 import com.goldenapps.startshopping.model.ModelProducto;
+import com.goldenapps.startshopping.ui.productoDetalle.DetalleActivity;
+import com.goldenapps.startshopping.ui.productoDetalle.ProductoCategoriaActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,22 +52,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         Glide.with(context).load(categoria.getImagenCategoria()).into(holder.imgItem);
 
 
-       /*
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                itemClick.itemClick(item);
+            public void onClick(View view) {
+
+                context = holder.itemView.getContext();
+
+                Intent i2 =new Intent(context.getApplicationContext(), ProductoCategoriaActivity.class);
+                i2.putExtra("idCategoriaProducto", categoria.getIdCategoria());
+
+                context.startActivity(i2);
             }
         });
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(), DetailActivity.class);
-                intent.putExtra("itemDetail", item);
-                holder.itemView.getContext().startActivity(intent);
-            }
-        });*/
     }
 
     @Override

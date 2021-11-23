@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 
@@ -18,8 +19,9 @@ public class DetalleActivity extends AppCompatActivity {
     TextView proName, proPrice, proDesc,proPuntaje,proCantidad;
     RatingBar ratingBar;
 
-    String name, price, desc,punt,cantidad;
-    int image;
+    String name, descrip,image;
+    int cantidad;
+    double price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,29 +31,27 @@ public class DetalleActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         name = i.getStringExtra("name");
-        image = i.getIntExtra("image", 0);
-        price = i.getStringExtra("price");
-        desc = i.getStringExtra("desc");
-        punt = i.getStringExtra("puntaje");
-        cantidad = i.getStringExtra("cantidad");
+        image = i.getStringExtra("image");
+        descrip = i.getStringExtra("descrip");
+        cantidad = i.getIntExtra("cantidad",0);
+        price = i.getDoubleExtra("price",0.0);
 
 
         proName = findViewById(R.id.productName);
         proDesc = findViewById(R.id.prodDesc);
         proPrice = findViewById(R.id.prodPrice);
         proPuntaje = findViewById(R.id.puntaje);
-        proCantidad = findViewById(R.id.cantidade);
+        proCantidad = findViewById(R.id.tv_cantidadProducto);
 
         img = findViewById(R.id.big_image);
         back = findViewById(R.id.back2);
 
         proName.setText(name);
         proPrice.setText("Precio: $"+price);
-        proDesc.setText(desc);
-        proPuntaje.setText(punt);
+        proDesc.setText(descrip);
         proCantidad.setText("Cantidad: "+cantidad);
 
-        img.setImageResource(image);
+        Glide.with(getApplicationContext()).load(image).into(img);
 
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
