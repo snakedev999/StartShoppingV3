@@ -34,11 +34,12 @@ public class ProductoCategoriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto_categoria);
 
-        Intent i2 = getIntent();
-        idCategoriaProducto = i2.getStringExtra("idCategoriaProducto");
-
         recyclerView = findViewById(R.id.productoCategoriaList);
-        databaseReferenceProductoCategoria = FirebaseDatabase.getInstance().getReference();
+
+        Intent i = getIntent();
+        idCategoriaProducto = i.getStringExtra("idCategoriaProducto");
+        databaseReferenceProductoCategoria = FirebaseDatabase.getInstance().getReference("Productos");
+
         listaProductoCategoria = new ArrayList<>();
         productoAdapter = new ProductoAdapter(getApplicationContext(),listaProductoCategoria);
 
@@ -47,7 +48,7 @@ public class ProductoCategoriaActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(productoAdapter);
 
-        databaseReferenceProductoCategoria.child("Productos").orderByChild("idCategoriaProducto").equalTo(idCategoriaProducto).addValueEventListener(new ValueEventListener() {
+        databaseReferenceProductoCategoria.orderByChild("idCategoriaProducto").equalTo(idCategoriaProducto).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listaProductoCategoria.removeAll(listaProductoCategoria);

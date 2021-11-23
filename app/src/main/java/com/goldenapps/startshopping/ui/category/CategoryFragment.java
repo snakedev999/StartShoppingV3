@@ -18,6 +18,7 @@ import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.ProductoAdapter;
 import com.goldenapps.startshopping.adapterss.RecyclerAdapter;
 import com.goldenapps.startshopping.model.ModelCategoria;
+import com.goldenapps.startshopping.model.ModelComuna;
 import com.goldenapps.startshopping.model.ModelProducto;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -68,12 +69,12 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.removeAll(list);
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-
-                    ModelCategoria categoria = dataSnapshot.getValue(ModelCategoria.class);
-                    list.add(categoria);
-
-
+                for (DataSnapshot oCategoria : snapshot.getChildren()){
+                    ModelCategoria categoria = oCategoria.getValue(ModelCategoria.class);
+                    String id = oCategoria.getKey();
+                    String nombre = categoria.getNombreCategoria();
+                    String imagen = categoria.getImagenCategoria();
+                    list.add(new ModelCategoria(id,nombre,imagen,false));
                 }
                 recyclerAdapter.notifyDataSetChanged();
 

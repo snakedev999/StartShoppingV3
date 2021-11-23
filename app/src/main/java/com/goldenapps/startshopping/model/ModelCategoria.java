@@ -18,6 +18,12 @@ public class ModelCategoria {
         this.nombreCategoria = nombreCategoria;
     }
 
+    public ModelCategoria(String idCategoria, String nombreCategoria,String imagenCategoria, Boolean b) {
+        this.idCategoria = idCategoria;
+        this.nombreCategoria = nombreCategoria;
+        this.imagenCategoria = imagenCategoria;
+    }
+
     public String getIdCategoria() {
         return idCategoria;
     }

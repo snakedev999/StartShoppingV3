@@ -58,10 +58,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
 
                 context = holder.itemView.getContext();
 
-                Intent i2 =new Intent(context.getApplicationContext(), ProductoCategoriaActivity.class);
-                i2.putExtra("idCategoriaProducto", categoria.getIdCategoria());
+                Intent i =new Intent(context.getApplicationContext(), ProductoCategoriaActivity.class);
+                i.putExtra("idCategoriaProducto", categoria.getIdCategoria());
 
-                context.startActivity(i2);
+                context.startActivity(i);
             }
         });
     }
