@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406409323613:android:b1a2ce30ab90ebf421d9b4",
+        "android_client_info": {
+          "package_name": "com.miapp.carritofb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406409323613-t0sdsq6rsuel02q5b64tlumjeipfbcec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCchxilqDhfoieM4Hz3oNYpZMEu2mLlqJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406409323613-t0sdsq6rsuel02q5b64tlumjeipfbcec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
