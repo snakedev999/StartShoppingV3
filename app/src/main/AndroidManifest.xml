@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartShopping">
         <activity
+            android:name=".SetupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ConfirmarOrdenActivity"
+            android:exported="true" />
+        <activity
             android:name=".CarritoActivity"
             android:exported="true" />
         <activity

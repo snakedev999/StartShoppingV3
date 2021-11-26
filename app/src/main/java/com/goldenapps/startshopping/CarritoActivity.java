@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,6 +33,17 @@ public class CarritoActivity extends AppCompatActivity {
         Siguiente = (Button) findViewById(R.id.siguiente);
         TotalPrecio = (TextView) findViewById(R.id.precio_total) ;
         mensaje1 = (TextView) findViewById(R.id.mensaje1);
+
+        //Siguiente.setOnClickListener(new View.OnClickListener(){
+          Siguiente.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(CarritoActivity.this, ConfirmarOrdenActivity.class);
+                  intent.putExtra("Total", String.valueOf(PrecioTotalId));
+                  startActivity(intent);
+                  finish();
+              }
+          });
 
 
 
