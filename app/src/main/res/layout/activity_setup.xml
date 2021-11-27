@@ -1,9 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SetupActivity">
+    tools:context=".ui.carrito.SetupActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/relleneDatos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/OrangeFirst"
+        android:text="Complete sus datos"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold|italic"
+        />
+
+    <!--Logo-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logo1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/start_uno"
+        app:civ_border_color="@color/OrangeFirst"
+        app:civ_border_width="2dp" />
+
+    <!--NOMBRE-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameUser"
+        android:layout_below="@id/logo1"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameuser1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese su nombre completo"
+            android:textSize="20dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--TELEFONO-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fono"
+        android:layout_below="@id/nameUser"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fono1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese su numero de contacto"
+            android:textSize="20dp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--REGION-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/region"
+        android:layout_below="@id/fono"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_home_black_24dp"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/region1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese Región"
+            android:textSize="20dp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--CIUDAD-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/city"
+        android:layout_below="@id/region"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_home_black_24dp"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/city1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese Ciudad"
+            android:textSize="20dp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--DIRECCION-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/adress"
+        android:layout_below="@id/city"
+        android:layout_width="235dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/adress1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de la calle"
+            android:textSize="20dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--N°CALLE-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Ncalle"
+        android:layout_below="@id/city"
+        android:layout_width="155dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        android:textAlignment="center"
+        app:boxBackgroundColor="@color/white"
+        android:layout_toRightOf="@id/adress"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Ncalle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="N° Calle"
+            android:textSize="20dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/sgte"
+        android:layout_width="390dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/Ncalle"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
+        android:text="continuar"
+        android:textSize="21dp" />
+
+
+</RelativeLayout>

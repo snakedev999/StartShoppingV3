@@ -1,8 +1,10 @@
-package com.goldenapps.startshopping;
+package com.goldenapps.startshopping.ui.carrito;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.goldenapps.startshopping.R;
 
 public class ConfirmarOrdenActivity extends AppCompatActivity {
 

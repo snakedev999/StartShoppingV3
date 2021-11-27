@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarritoActivity">
+    tools:context=".ui.carrito.CarritoActivity">
 
     <RelativeLayout
         android:id="@+id/id1"

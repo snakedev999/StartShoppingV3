@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartShopping">
         <activity
-            android:name=".SetupActivity"
+            android:name=".ui.carrito.SetupActivity"
             android:exported="true" />
         <activity
-            android:name=".ConfirmarOrdenActivity"
+            android:name=".ui.carrito.ConfirmarOrdenActivity"
             android:exported="true" />
         <activity
-            android:name=".CarritoActivity"
+            android:name=".ui.carrito.CarritoActivity"
             android:exported="true" />
         <activity
             android:name=".ui.productoDetalle.ProductoCategoriaActivity"

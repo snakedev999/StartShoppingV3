@@ -12,6 +12,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.ProductoAdapter;
@@ -64,18 +65,19 @@ public class HomeFragment extends Fragment {
 
                     ModelProducto user = dataSnapshot.getValue(ModelProducto.class);
                     list.add(user);
-
-
                 }
                 myAdapter.notifyDataSetChanged();
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
+
         return view;
+
+
     }
 }

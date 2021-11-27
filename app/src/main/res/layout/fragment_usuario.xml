@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,10 +19,31 @@
         android:text="ID_USUARIO:"
         android:textSize="16sp" />
 
+    <Button
+        android:id="@+id/carrito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textView6"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="100dp"
+        android:text="Carrito"
+        android:textAlignment="center"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="USUARIO" />
+
+    <Button
+        android:id="@+id/perfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button2"
+        android:layout_marginLeft="100dp"
+        android:text="Editar Perfil"
+        android:textAlignment="center" />
+
 
     <TextView
         android:id="@+id/textView"

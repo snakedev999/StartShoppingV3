@@ -28,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_below="@id/producto_nombre"
-            android:scaleType="centerCrop"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="2dp"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/producto_descripcion"
