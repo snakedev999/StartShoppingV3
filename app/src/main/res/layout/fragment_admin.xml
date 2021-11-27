@@ -62,6 +62,17 @@
         android:textColor="#424242" />
 
     <Button
+        android:id="@+id/btn_mapa1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="636dp"
+        android:text="Mapa"
+        android:textColor="#424242" />
+
+    <Button
         android:id="@+id/btn_region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

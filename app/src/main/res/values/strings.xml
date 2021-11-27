@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Start Shopping</string>
-    <string name="sitio">Sitio</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_home">Inicio</string>
     <string name="title_category">Categorias</string>
@@ -56,8 +55,7 @@
 
     <string name="poleras">POLERAS</string>
     <string name="polerasImg">POLERAS</string>
-    <string name="title_activity_maps1">MapsActivity1</string>
-    <string name="marker_detail_latlng">(%1$.2f,%2$.2f)</string>
-    <string name="title_activity_map_mi_localizacion">MapMiLocalizacion</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
 
 </resources>

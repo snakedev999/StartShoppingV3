@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
-import com.goldenapps.startshopping.activity.SpinnerActivity;
+import com.goldenapps.startshopping.activity.MapsActivity;
 import com.goldenapps.startshopping.registros.RegistroCategoriaActivity;
 import com.goldenapps.startshopping.registros.RegistroComunaActivity;
 import com.goldenapps.startshopping.registros.RegistroProductoActivity;
@@ -48,6 +48,8 @@ public class AdminFragment extends Fragment {
         Button registroRegion = viewAdmin.findViewById(R.id.btn_region);
         Button spinner = viewAdmin.findViewById(R.id.button6);
         Button comuna = viewAdmin.findViewById(R.id.button7);
+        Button mapa = viewAdmin.findViewById(R.id.btn_mapa1);
+
         TextView t = viewAdmin.findViewById(R.id.textView3);
         consultaUsuario(1);
         t.setText(getIdUser());
@@ -106,6 +108,14 @@ public class AdminFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent mainLogin = new Intent(getActivity(), SeleccionComunaActivity.class);
+                startActivity(mainLogin);
+            }
+        });
+
+        mapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainLogin = new Intent(getActivity(), MapsActivity.class);
                 startActivity(mainLogin);
             }
         });
