@@ -10,8 +10,6 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.goldenapps.startshopping.MapMiLocalizacion;
-import com.goldenapps.startshopping.MapsActivity1;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.RecyclerAdapter;
 import com.goldenapps.startshopping.model.ItemList;
@@ -33,22 +31,6 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.fragment_category);
 
         initViews();
-        btn_sitio=(Button)findViewById(R.id.btn_sitio);// creamos un casting de tipo button y lo buscamos mediante su ID
-        btn_ubicacion=(Button)findViewById(R.id.btn_ubicacion);
-        btn_sitio.setOnClickListener(new View.OnClickListener() {//programamos el boton btn_sitio con el fin de que nos proporcione un mapa
-
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), MapsActivity1.class);
-                startActivity(intent);
-            }
-            //Metodo de Localizacion
-            public void Milocalizacion(View v){
-            Intent intent = new Intent(getApplicationContext(), MapMiLocalizacion.class);
-            startActivity(intent);
-            }
-        });
-
     }
 
     private void initViews(){

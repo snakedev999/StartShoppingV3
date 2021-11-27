@@ -18,8 +18,6 @@ import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
-import com.goldenapps.startshopping.ui.carrito.CarritoActivity;
-import com.goldenapps.startshopping.ui.carrito.SetupActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -57,23 +55,7 @@ public class UsuarioFragment extends Fragment {
         consultaUsuario(1);
         id.setText(getIdUser());
 
-       Button perfil = (Button) blank.findViewById(R.id.perfil);
-        perfil.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent p = new Intent(getActivity(), SetupActivity.class);
-                startActivity(p);
-            }
-        });
 
-        Button cart = (Button) blank.findViewById(R.id.carrito);
-        cart.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent p2 = new Intent(getActivity(), CarritoActivity.class);
-                startActivity(p2);
-            }
-        });
 
         Button n2 = (Button) blank.findViewById(R.id.button2);
         n2.setOnClickListener(new View.OnClickListener() {

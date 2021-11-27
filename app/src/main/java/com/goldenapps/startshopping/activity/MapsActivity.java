@@ -157,7 +157,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onMyLocationButtonClick() {
         if (markerSelectBoolean){
             miUbicacion = new LatLng(location1, location2);
-            markerSelect = mMap.addMarker(new MarkerOptions().position(miUbicacion).draggable(true).title("ubicacion actual"));
+            markerSelect = mMap.addMarker(new MarkerOptions().position(miUbicacion).draggable(true).title("Ubicación actual"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbicacion));
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(miUbicacion)
