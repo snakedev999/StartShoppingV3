@@ -34,11 +34,11 @@
     <!--Logo-->
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/logo1"
+        android:id="@+id/setup_logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/start_uno"
         app:civ_border_color="@color/OrangeFirst"
         app:civ_border_width="2dp" />
@@ -46,8 +46,8 @@
     <!--NOMBRE-->
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameUser"
-        android:layout_below="@id/logo1"
+        android:id="@+id/nameUser1"
+        android:layout_below="@id/setup_logo"
         android:layout_width="390dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -62,7 +62,7 @@
         app:startIconTint="@color/OrangeFirst">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameuser1"
+            android:id="@+id/nameUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese su nombre completo"
@@ -74,8 +74,8 @@
     <!--TELEFONO-->
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fono"
-        android:layout_below="@id/nameUser"
+        android:id="@+id/fono1"
+        android:layout_below="@id/nameUser1"
         android:layout_width="390dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -90,7 +90,7 @@
         app:startIconTint="@color/OrangeFirst">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fono1"
+            android:id="@+id/fono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese su numero de contacto"
@@ -101,8 +101,8 @@
 
     <!--REGION-->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/region"
-        android:layout_below="@id/fono"
+        android:id="@+id/region1"
+        android:layout_below="@id/fono1"
         android:layout_width="390dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -117,19 +117,19 @@
         app:startIconTint="@color/OrangeFirst">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/region1"
+            android:id="@+id/region"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese Región"
             android:textSize="20dp"
-            android:inputType="number" />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <!--CIUDAD-->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/city"
-        android:layout_below="@id/region"
+        android:id="@+id/city1"
+        android:layout_below="@id/region1"
         android:layout_width="390dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -144,19 +144,19 @@
         app:startIconTint="@color/OrangeFirst">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/city1"
+            android:id="@+id/city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese Ciudad"
             android:textSize="20dp"
-            android:inputType="number" />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--DIRECCION-->
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/adress"
-        android:layout_below="@id/city"
+        android:id="@+id/adress1"
+        android:layout_below="@id/city1"
         android:layout_width="235dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -167,7 +167,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/adress1"
+            android:id="@+id/adress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre de la calle"
@@ -178,26 +178,26 @@
     <!--N°CALLE-->
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Ncalle"
-        android:layout_below="@id/city"
+        android:id="@+id/Ncalle1"
+        android:layout_below="@id/city1"
         android:layout_width="155dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:elevation="10dp"
         android:textAlignment="center"
         app:boxBackgroundColor="@color/white"
-        android:layout_toRightOf="@id/adress"
+        android:layout_toRightOf="@id/adress1"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/OrangeFirst"
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Ncalle1"
+            android:id="@+id/Ncalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="N° Calle"
             android:textSize="20dp"
-            android:inputType="text" />
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -205,9 +205,9 @@
         android:id="@+id/sgte"
         android:layout_width="390dp"
         android:layout_height="70dp"
-        android:layout_below="@id/Ncalle"
+        android:layout_below="@id/Ncalle1"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:text="continuar"
         android:textSize="21dp" />
 

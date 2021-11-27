@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/drawable/ic_baseline_add_photo_alternate_24.xml" value="0.221875" />
+        <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/drawable/ic_baseline_person1_24.xml" value="0.221875" />
+        <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.221875" />
+        <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/layout/activity_carrito.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/layout/activity_confirmar_orden.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/layout/activity_setup.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/layout/fragment_login.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/terre/AndroidStudioProjects/StartShoppingV3/app/src/main/res/layout/fragment_register.xml" value="0.20572916666666666" />
       </map>
     </option>
   </component>
