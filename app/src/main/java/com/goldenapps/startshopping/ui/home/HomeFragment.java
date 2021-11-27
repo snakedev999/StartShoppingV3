@@ -1,5 +1,6 @@
 package com.goldenapps.startshopping.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.widget.Button;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.ProductoAdapter;
 import com.goldenapps.startshopping.model.ModelProducto;
+import com.goldenapps.startshopping.ui.carrito.CarritoActivity;
+import com.goldenapps.startshopping.ui.carrito.SetupActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +54,17 @@ public class HomeFragment extends Fragment {
 
         /*layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);*/
+
+        Button carrito1 = (Button) view.findViewById(R.id.carrito);
+        carrito1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent cart = new Intent(getActivity(), CarritoActivity.class);
+                startActivity(cart);
+            }
+        });
+
+
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
