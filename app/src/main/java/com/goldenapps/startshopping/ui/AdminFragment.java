@@ -22,6 +22,7 @@ import com.goldenapps.startshopping.registros.RegistroComunaActivity;
 import com.goldenapps.startshopping.registros.RegistroProductoActivity;
 import com.goldenapps.startshopping.registros.RegistroRegionActivity;
 import com.goldenapps.startshopping.registros.SeleccionComunaActivity;
+import com.goldenapps.startshopping.registros.VerProductosActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -44,7 +45,7 @@ public class AdminFragment extends Fragment {
         View viewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
         Button registroCategoria = viewAdmin.findViewById(R.id.btn_categoria);
-        Button registroProducto = viewAdmin.findViewById(R.id.btn_producto);
+        Button verProductos = viewAdmin.findViewById(R.id.btn_verProductos);
         Button registroRegion = viewAdmin.findViewById(R.id.btn_region);
         Button spinner = viewAdmin.findViewById(R.id.button6);
         Button comuna = viewAdmin.findViewById(R.id.button7);
@@ -80,10 +81,10 @@ public class AdminFragment extends Fragment {
             }
         });
 
-        registroProducto.setOnClickListener(new View.OnClickListener() {
+        verProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mainLogin = new Intent(getActivity(), RegistroProductoActivity.class);
+                Intent mainLogin = new Intent(getActivity(), VerProductosActivity.class);
                 startActivity(mainLogin);
             }
         });

@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartShopping">
         <activity
+            android:name=".registros.VerProductosActivity"
+            android:exported="false" />
+        <activity
             android:name=".carrito.CarritoActivity"
             android:exported="true" />
         <activity

@@ -84,8 +84,6 @@ public class UsuarioFragment extends Fragment {
 
 
 
-
-
         Button n2 = (Button) blank.findViewById(R.id.button2);
         n2.setOnClickListener(new View.OnClickListener() {
             @Override

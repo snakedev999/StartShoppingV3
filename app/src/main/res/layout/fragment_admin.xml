@@ -51,14 +51,14 @@
         android:textColor="#424242" />
 
     <Button
-        android:id="@+id/btn_producto"
+        android:id="@+id/btn_verProductos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="115dp"
         android:layout_marginBottom="159dp"
-        android:text="Registro producto"
+        android:text="Ver Productos"
         android:textColor="#424242" />
 
     <Button

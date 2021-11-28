@@ -24,6 +24,7 @@ import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.model.ModelCategoria;
 import com.goldenapps.startshopping.model.ModelProducto;
 import com.goldenapps.startshopping.model.ModelRegion;
+import com.goldenapps.startshopping.model.ModelTallaProducto;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -43,7 +44,7 @@ import java.util.List;
 public class RegistroProductoActivity extends AppCompatActivity {
 
     private String idCategoria,categoriaSeleccionada,fechaRegistroProducto;
-    private EditText edtNombre,edtDescripcion,edtCantidad,edtPrecio;
+    private EditText edtNombre,edtDescripcion,edtCantidad,edtPrecio, edt_tallaProducto;
     private Uri uri;
     private ImageView imageProducto;
     private Button registrarProducto;
@@ -51,6 +52,7 @@ public class RegistroProductoActivity extends AppCompatActivity {
     private ActivityResultLauncher<String> mGetContent;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Productos");
     private DatabaseReference databaseReferenceCategoria = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference databaseReferenceTallaProducto = FirebaseDatabase.getInstance().getReference("TallaProducto");
     private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
     @Override
@@ -65,6 +67,7 @@ public class RegistroProductoActivity extends AppCompatActivity {
         edtCantidad = (EditText) findViewById(R.id.edt_cantidadProducto);
         edtPrecio = (EditText) findViewById(R.id.edt_precioProducto);
         imageProducto = (ImageView) findViewById(R.id.imageProducto);
+        edt_tallaProducto = (EditText) findViewById(R.id.edt_tallaProducto);
 
         registrarProducto = (Button) findViewById(R.id.btn_registrarProducto);
 
@@ -142,6 +145,7 @@ public class RegistroProductoActivity extends AppCompatActivity {
         String descripcion = edtDescripcion.getText().toString();
         int cantidad = Integer.parseInt(edtCantidad.getText().toString());
         double precio = Double.parseDouble(edtPrecio.getText().toString());
+        String talla = edt_tallaProducto.getText().toString();
 
         StorageReference fileRef = storageReference.child(System.currentTimeMillis() + "." +getFileExtension(uri));
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -151,7 +155,7 @@ public class RegistroProductoActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Calendar calendar = Calendar.getInstance();
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
                         fechaRegistroProducto = simpleDateFormat.format(calendar.getTime());
 
                         ModelProducto modelProducto = new ModelProducto(idCategoria,nombre,descripcion,fechaRegistroProducto,cantidad,precio,uri.toString());
@@ -159,6 +163,16 @@ public class RegistroProductoActivity extends AppCompatActivity {
                         databaseReference.child(modelId).setValue(modelProducto);
                         limpiar();
                         registrarProducto.setVisibility(View.VISIBLE);
+                        try {
+                            ModelTallaProducto modelTallaProducto = new ModelTallaProducto(modelId,talla);
+                            String idTalla = databaseReferenceTallaProducto.push().getKey();
+                            if(idTalla != null){
+                                databaseReferenceTallaProducto.child(idTalla).setValue(modelTallaProducto);
+                                limpiar();
+                            }
+                        }catch (Exception e){
+                            e.getStackTrace();
+                        }
                         Toast.makeText(RegistroProductoActivity.this,"Subida correctamente",Toast.LENGTH_SHORT).show();
 
                     }
@@ -189,6 +203,7 @@ public class RegistroProductoActivity extends AppCompatActivity {
         edtPrecio.setText("");
         edtCantidad.setText("");
         edtDescripcion.setText("");
+        edt_tallaProducto.setText("");
         edtNombre.setText("");
         imageProducto.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
     }
