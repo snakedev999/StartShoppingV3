@@ -23,6 +23,9 @@
             android:name=".registros.EditProductoActivity"
             android:exported="false" />
         <activity
+            android:name=".carrito.SetupActivity"
+            android:exported="true" />
+        <activity
             android:name=".carrito.CarritoActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
