@@ -39,8 +39,8 @@
 
         <TextView
             android:id="@+id/tvlastName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="87dp"
+            android:layout_height="28dp"
             android:layout_marginTop="4dp"
             android:text="Stark"
             android:textColor="@color/black"
@@ -52,8 +52,8 @@
 
         <TextView
             android:id="@+id/tvage"
-            android:layout_width="34dp"
-            android:layout_height="35dp"
+            android:layout_width="123dp"
+            android:layout_height="33dp"
             android:text="18"
             android:textColor="@color/black"
             android:textSize="20sp"
