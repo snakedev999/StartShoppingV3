@@ -158,8 +158,8 @@ public class RegistroProductoActivity extends AppCompatActivity {
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
                         fechaRegistroProducto = simpleDateFormat.format(calendar.getTime());
 
-                        ModelProducto modelProducto = new ModelProducto(idCategoria,nombre,descripcion,fechaRegistroProducto,cantidad,precio,uri.toString());
                         String modelId = databaseReference.push().getKey();
+                        ModelProducto modelProducto = new ModelProducto(idCategoria,nombre,descripcion,fechaRegistroProducto,cantidad,precio,uri.toString());
                         databaseReference.child(modelId).setValue(modelProducto);
                         limpiar();
                         registrarProducto.setVisibility(View.VISIBLE);

@@ -87,9 +87,8 @@ public class AdminFragment extends Fragment {
         verProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_containerSettings, verProductosFragment);
-                transaction.commit();
+                Intent mainLogin = new Intent(getActivity(), SettingsFirebaseActivity.class);
+                startActivity(mainLogin);
             }
         });
 

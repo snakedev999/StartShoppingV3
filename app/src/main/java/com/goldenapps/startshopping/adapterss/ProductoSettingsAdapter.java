@@ -17,6 +17,8 @@ import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.model.ModelProducto;
 import com.goldenapps.startshopping.registros.EditProductoActivity;
 import com.goldenapps.startshopping.ui.productoDetalle.DetalleActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -24,6 +26,7 @@ public class ProductoSettingsAdapter extends RecyclerView.Adapter<ProductoSettin
 
     private Context context;
     ArrayList<ModelProducto> list;
+    private DatabaseReference databaseReferenceProducto = FirebaseDatabase.getInstance().getReference("Productos");
 
     public ProductoSettingsAdapter(Context context, ArrayList<ModelProducto> list) {
         this.context = context;
@@ -43,12 +46,26 @@ public class ProductoSettingsAdapter extends RecyclerView.Adapter<ProductoSettin
         holder.nombre.setText(user.getNombreProducto());
         Glide.with(context).load(user.getImagenProducto()).into(holder.imagenProducto);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.imagenEditProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 context = holder.itemView.getContext();
-                Intent i = new Intent(context.getApplicationContext(), EditProductoActivity.class);
-                context.startActivity(i);
+                Intent i2 = new Intent(context.getApplicationContext(), EditProductoActivity.class);
+                i2.putExtra("id1",user.getIdProducto());
+                i2.putExtra("name1", user.getNombreProducto());
+                i2.putExtra("descrip1", user.getDescripcionProducto());
+                i2.putExtra("cantidad1", user.getCantidadProducto());
+                i2.putExtra("price1", user.getPrecioProducto());
+                i2.putExtra("image1", user.getImagenProducto());
+                i2.putExtra("categoria",user.getIdCategoriaProducto());
+                context.startActivity(i2);
+            }
+        });
+
+        holder.deleteProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                databaseReferenceProducto.child(user.getIdProducto()).removeValue();
             }
         });
     }
@@ -60,13 +77,14 @@ public class ProductoSettingsAdapter extends RecyclerView.Adapter<ProductoSettin
 
     public class ProductoSettingsViewHolder extends RecyclerView.ViewHolder {
         TextView nombre;
-        ImageView imagenProducto,imagenEditProducto;
+        ImageView imagenProducto,imagenEditProducto,deleteProducto;
         public ProductoSettingsViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imagenProducto = itemView.findViewById(R.id.imageViewProductoSettings);
             nombre = itemView.findViewById(R.id.tv_nombreProductoEditSettings);
             imagenEditProducto = itemView.findViewById(R.id.imageView_productoEditSettings);
+            deleteProducto = itemView.findViewById(R.id.deleteProducto);
         }
     }
 }

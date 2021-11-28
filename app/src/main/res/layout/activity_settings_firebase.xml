@@ -9,8 +9,5 @@
     <FrameLayout
         android:id="@+id/frame_containerSettings"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="0dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent" />
 </RelativeLayout>

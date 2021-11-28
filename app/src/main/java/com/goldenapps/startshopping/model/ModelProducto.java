@@ -24,6 +24,25 @@ public class ModelProducto {
         this.puntajeProducto = puntajeProducto;
     }
 
+    public ModelProducto(String idProducto, String idCategoriaProducto, String nombreProducto, String descripcionProducto, String imagenProducto, int cantidadProducto, double precioProducto) {
+        this.idProducto = idProducto;
+        this.idCategoriaProducto = idCategoriaProducto;
+        this.nombreProducto = nombreProducto;
+        this.descripcionProducto = descripcionProducto;
+        this.imagenProducto = imagenProducto;
+        this.cantidadProducto = cantidadProducto;
+        this.precioProducto = precioProducto;
+    }
+
+    public ModelProducto(String idCategoriaProducto,String nombreProducto, String descripcionProducto, String fechaRegistroProducto,int cantidadProducto, double precioProducto, String imagenProducto, Boolean b){
+        this.idCategoriaProducto = idCategoriaProducto;
+        this.nombreProducto = nombreProducto;
+        this.descripcionProducto = descripcionProducto;
+        this.imagenProducto = imagenProducto;
+        this.cantidadProducto = cantidadProducto;
+        this.precioProducto = precioProducto;
+    }
+
     public ModelProducto(String idProducto, String nombreProducto, String descripcionProducto, String imagenProducto, int cantidadProducto, double precioProducto) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;

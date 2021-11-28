@@ -20,11 +20,9 @@ public class SettingsFirebaseActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_settings_firebase);
 
-    }
-
-    private void loadFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_containerSettings,fragment);
+        transaction.replace(R.id.frame_containerSettings, verProductosFragment);
         transaction.commit();
+
     }
 }

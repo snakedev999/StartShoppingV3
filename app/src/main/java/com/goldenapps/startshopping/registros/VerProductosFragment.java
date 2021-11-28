@@ -71,8 +71,9 @@ public class VerProductosFragment extends Fragment {
                     int cantidad = user1.getCantidadProducto();
                     Double precio = user1.getPrecioProducto();
                     String imagen = user1.getImagenProducto();
+                    String idCategoria = user1.getIdCategoriaProducto();
 
-                    listEdit.add(new ModelProducto(idProducto,nombre,descripcion,imagen,cantidad,precio));
+                    listEdit.add(new ModelProducto(idProducto,idCategoria,nombre,descripcion,imagen,cantidad,precio));
                 }
                 adapter.notifyDataSetChanged();
 
