@@ -21,6 +21,16 @@
 
 
     <Button
+        android:id="@+id/btnsetup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnkart"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="10dp"
+        android:text="setup"
+        android:textAlignment="center" />
+
+    <Button
         android:id="@+id/btnkart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

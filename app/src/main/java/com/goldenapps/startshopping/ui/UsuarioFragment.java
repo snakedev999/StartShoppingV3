@@ -20,6 +20,7 @@ import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.carrito.CarritoActivity;
 import com.goldenapps.startshopping.carrito.CompraActivity;
+import com.goldenapps.startshopping.carrito.SetupActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -64,6 +65,17 @@ public class UsuarioFragment extends Fragment {
             public void onClick(View v) {
                 Intent kart = new Intent(getActivity(), CompraActivity.class);
                 startActivity(kart);
+
+
+            }
+        });
+
+        Button btn = (Button) blank.findViewById(R.id.btnsetup);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), SetupActivity.class);
+                startActivity(i);
 
 
             }
