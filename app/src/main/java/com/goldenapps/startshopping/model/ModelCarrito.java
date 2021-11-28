@@ -2,27 +2,50 @@ package com.goldenapps.startshopping.model;
 
 public class ModelCarrito {
 
-    protected int idCarrito;
-    protected int total;
+    protected String idCarrito;
+    protected String idUsuarioCarrito;
+    protected double valorTotal;
 
-    public ModelCarrito(int idCarrito, int total) {
-        this.idCarrito = idCarrito;
-        this.total = total;
+    public ModelCarrito(){
+
     }
 
-    public int getIdCarrito() {
+    public ModelCarrito(String idCarrito){
+        this.idCarrito = idCarrito;
+    }
+
+    public ModelCarrito(String idUsuarioCarrito, double valorTotal) {
+        this.idUsuarioCarrito = idUsuarioCarrito;
+        this.valorTotal = valorTotal;
+    }
+
+    public ModelCarrito(String idCarrito, String idUsuarioCarrito, double valorTotal) {
+        this.idCarrito = idCarrito;
+        this.idUsuarioCarrito = idUsuarioCarrito;
+        this.valorTotal = valorTotal;
+    }
+
+    public String getIdCarrito() {
         return idCarrito;
     }
 
-    public void setIdCarrito(int idCarrito) {
+    public void setIdCarrito(String idCarrito) {
         this.idCarrito = idCarrito;
     }
 
-    public int getTotal() {
-        return total;
+    public String getIdUsuarioCarrito() {
+        return idUsuarioCarrito;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setIdUsuarioCarrito(String idUsuarioCarrito) {
+        this.idUsuarioCarrito = idUsuarioCarrito;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }

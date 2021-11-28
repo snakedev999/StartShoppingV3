@@ -18,6 +18,7 @@ import android.widget.Button;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.ProductoAdapter;
 import com.goldenapps.startshopping.model.ModelProducto;
+import com.goldenapps.startshopping.model.ModelRegion;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -62,9 +63,15 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.removeAll(list);
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-
                     ModelProducto user = dataSnapshot.getValue(ModelProducto.class);
-                    list.add(user);
+                    String idProducto = dataSnapshot.getKey();
+                    String nombre = user.getNombreProducto();
+                    String descripcion = user.getDescripcionProducto();
+                    int cantidad = user.getCantidadProducto();
+                    Double precio = user.getPrecioProducto();
+                    String imagen = user.getImagenProducto();
+
+                    list.add(new ModelProducto(idProducto,nombre,descripcion,imagen,cantidad,precio));
                 }
                 myAdapter.notifyDataSetChanged();
 
