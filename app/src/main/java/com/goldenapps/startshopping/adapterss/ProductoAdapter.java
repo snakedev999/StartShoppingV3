@@ -199,6 +199,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         db.close();
     }
 
+
     public String getIdUser() {
         return idUser;
     }

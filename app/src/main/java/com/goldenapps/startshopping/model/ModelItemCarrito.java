@@ -8,9 +8,11 @@ public class ModelItemCarrito {
     private double subTotalItem;
 
     public ModelItemCarrito(){
-
     }
 
+    public ModelItemCarrito(String idCarritoItem) {
+        this.idCarritoItem = idCarritoItem;
+    }
 
     public ModelItemCarrito(String idCarrito, String itemCarrito, int cantidadItem, double subTotalItem) {
         this.idCarrito = idCarrito;
