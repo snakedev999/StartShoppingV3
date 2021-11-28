@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +20,10 @@ import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.activity.MapsActivity;
 import com.goldenapps.startshopping.registros.RegistroCategoriaActivity;
 import com.goldenapps.startshopping.registros.RegistroComunaActivity;
-import com.goldenapps.startshopping.registros.RegistroProductoActivity;
 import com.goldenapps.startshopping.registros.RegistroRegionActivity;
 import com.goldenapps.startshopping.registros.SeleccionComunaActivity;
-import com.goldenapps.startshopping.registros.VerProductosActivity;
+import com.goldenapps.startshopping.registros.SettingsFirebaseActivity;
+import com.goldenapps.startshopping.registros.VerProductosFragment;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,6 +33,8 @@ public class AdminFragment extends Fragment {
     DbHelper helper;
     SQLiteDatabase db;
     String idUser;
+
+    VerProductosFragment verProductosFragment = new VerProductosFragment();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class AdminFragment extends Fragment {
         View viewAdmin = inflater.inflate(R.layout.fragment_admin, container, false);
 
         Button registroCategoria = viewAdmin.findViewById(R.id.btn_categoria);
-        Button verProductos = viewAdmin.findViewById(R.id.btn_verProductos);
+        Button verProductos = viewAdmin.findViewById(R.id.btn_datos);
         Button registroRegion = viewAdmin.findViewById(R.id.btn_region);
         Button spinner = viewAdmin.findViewById(R.id.button6);
         Button comuna = viewAdmin.findViewById(R.id.button7);
@@ -84,8 +87,9 @@ public class AdminFragment extends Fragment {
         verProductos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mainLogin = new Intent(getActivity(), VerProductosActivity.class);
-                startActivity(mainLogin);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_containerSettings, verProductosFragment);
+                transaction.commit();
             }
         });
 

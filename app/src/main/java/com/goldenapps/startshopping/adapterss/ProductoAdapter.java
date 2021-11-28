@@ -108,6 +108,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
             }
         });
+
         holder.imageCartProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

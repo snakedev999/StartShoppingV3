@@ -39,6 +39,7 @@ public class SeleccionComunaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_seleccion_comuna);
 
         oSpinnerRegiondComuna = findViewById(R.id.spinnerRegiondComuna);
