@@ -35,9 +35,6 @@
             android:exported="true"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".activity.MapsSelectActivity"
-            android:exported="true" />
-        <activity
             android:name=".ui.productoDetalle.ProductoCategoriaActivity"
             android:exported="true" />
         <activity
