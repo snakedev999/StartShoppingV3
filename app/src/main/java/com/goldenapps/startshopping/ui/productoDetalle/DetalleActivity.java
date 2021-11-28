@@ -19,10 +19,10 @@ import com.goldenapps.startshopping.ui.menu.MenuActivity;
 public class DetalleActivity extends AppCompatActivity {
 
     ImageView img, back, k;
-    TextView proName, proPrice, proDesc,proPuntaje,proCantidad;
+    TextView proName, proPrice, proDesc,proPuntaje,proCantidad, proTalla;
     RatingBar ratingBar;
 
-    String name, descrip,image;
+    String name, descrip,image,talla;
     int cantidad;
     double price;
 
@@ -38,13 +38,14 @@ public class DetalleActivity extends AppCompatActivity {
         descrip = i.getStringExtra("descrip");
         cantidad = i.getIntExtra("cantidad",0);
         price = i.getDoubleExtra("price",0.0);
-
+        talla = i.getStringExtra("talla");
 
         proName = findViewById(R.id.productName);
         proDesc = findViewById(R.id.prodDesc);
         proPrice = findViewById(R.id.prodPrice);
         proPuntaje = findViewById(R.id.puntaje);
         proCantidad = findViewById(R.id.tv_cantidadProducto);
+        proTalla = findViewById(R.id.textView9);
 
         img = findViewById(R.id.big_image);
         back = findViewById(R.id.back2);
@@ -54,6 +55,8 @@ public class DetalleActivity extends AppCompatActivity {
         proPrice.setText("Precio: $"+price);
         proDesc.setText(descrip);
         proCantidad.setText("Cantidad: "+cantidad);
+        proTalla.setText("Talla: "+talla);
+
 
         Glide.with(getApplicationContext()).load(image).into(img);
 

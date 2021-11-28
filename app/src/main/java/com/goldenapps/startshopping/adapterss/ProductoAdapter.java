@@ -33,6 +33,7 @@ import com.goldenapps.startshopping.model.ModelComuna;
 import com.goldenapps.startshopping.model.ModelItemCarrito;
 import com.goldenapps.startshopping.model.ModelProducto;
 import com.goldenapps.startshopping.model.ModelRegion;
+import com.goldenapps.startshopping.model.ModelTallaProducto;
 import com.goldenapps.startshopping.registros.RegistroComunaActivity;
 import com.goldenapps.startshopping.registros.RegistroRegionActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
@@ -53,14 +54,15 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     SQLiteDatabase db;
     String idUser = "";
     String idCarrito;
+    String tallaProducto;
+    String idProductoTalla = "";
 
     Context context;
     ArrayList<ModelProducto> list;
-    ArrayList<ModelCarrito> carritos;
-    TextView textView;
-    String n;
+
     private DatabaseReference databaseReferenceCarrito;
     private DatabaseReference databaseReferenceItemCarrito;
+    DatabaseReference databaseReferenceTalla = FirebaseDatabase.getInstance().getReference("TallaProducto");
 
 
     public ProductoAdapter(Context context, ArrayList<ModelProducto> list) {
@@ -82,11 +84,11 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         holder.precio.setText(Double.toString(user.getPrecioProducto()));
         holder.nombre.setText(user.getNombreProducto());
         Glide.with(context).load(user.getImagenProducto()).into(holder.image);
+        check(user.getIdProducto());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 context = holder.itemView.getContext();
 
                 Intent i=new Intent(context.getApplicationContext(), DetalleActivity.class);
@@ -96,10 +98,17 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                 i.putExtra("price", user.getPrecioProducto());
                 i.putExtra("image", user.getImagenProducto());
 
+
+                if (user.getIdProducto().equals(getIdProductoTalla())){
+                    i.putExtra("talla",getTallaProducto());
+                }else{
+                    i.putExtra("talla","");
+                }
                 context.startActivity(i);
 
             }
         });
+
         holder.imageCartProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,7 +116,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                     String idProducto = user.getIdProducto();
                     double precioProducto = user.getPrecioProducto();
                     //agregar carrito firebase
-                    f(idProducto,precioProducto);
+                    agregarCarrito1item(idProducto,precioProducto);
                 }else {
                     Toast.makeText(context, "Necesita loguearse primero", Toast.LENGTH_SHORT).show();
                 }
@@ -115,6 +124,31 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         });
 
 
+    }
+
+    private void check(String id){
+        databaseReferenceTalla.orderByChild("idProducto").equalTo(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    setTallaProductoVacio("");
+                    for(DataSnapshot oCarrito : snapshot.getChildren()){
+                        ModelTallaProducto tallaProducto = oCarrito.getValue(ModelTallaProducto.class);
+                        String id = oCarrito.getKey();
+                        setIdProductoTalla(tallaProducto.getIdProducto());
+                        setTallaProducto(tallaProducto.getTalla());
+                    }
+                }else{
+                    setTallaProductoVacio("");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
@@ -138,7 +172,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         }
     }
 
-    public void f(String idProducto, Double precioProducto){
+    public void agregarCarrito1item(String idProducto, Double precioProducto){
         databaseReferenceCarrito = FirebaseDatabase.getInstance().getReference("Carrito");
         databaseReferenceCarrito.orderByChild("idUsuarioCarrito").equalTo(getIdUser()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -214,5 +248,25 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     public void setIdCarrito(String idCarrito) {
         this.idCarrito = idCarrito;
+    }
+
+    public String getTallaProducto() {
+        return tallaProducto;
+    }
+
+    public void setTallaProducto(String tallaProducto) {
+        this.tallaProducto = this.tallaProducto + tallaProducto;
+    }
+
+    public void setTallaProductoVacio(String tallaProducto) {
+        this.tallaProducto = tallaProducto;
+    }
+
+    public String getIdProductoTalla() {
+        return idProductoTalla;
+    }
+
+    public void setIdProductoTalla(String idProductoTalla) {
+        this.idProductoTalla = idProductoTalla;
     }
 }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".registros.EditProductoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewEditProducto"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/degradado"
+            app:layout_constraintHeight_percent=".27"
+            tools:ignore="MissingConstraints" />
+
+        <!--LOGO-->
+
+
+        <TextView
+            android:id="@+id/tv_titleEditProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_mono"
+            android:text="Editar Producto"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edt_nombreEditProducto"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerCategoriaEditProducto"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinnerCategoriaEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCategoriaEditProducto" />
+
+        <EditText
+            android:id="@+id/edt_precioEditProducto"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Precio"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_cantidadEditProducto"
+            app:layout_constraintStart_toStartOf="@+id/edt_cantidadEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_cantidadEditProducto" />
+
+        <Button
+            android:id="@+id/btn_registrarEditProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Modificar"
+            app:layout_constraintEnd_toEndOf="@+id/edt_precioEditProducto"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/edt_precioEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_precioEditProducto" />
+
+        <ImageView
+            android:id="@+id/imageEditProducto"
+            android:layout_width="175dp"
+            android:layout_height="178dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_titleEditProducto"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="@+id/tv_titleEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titleEditProducto"
+            tools:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+
+        <EditText
+            android:id="@+id/edt_descripcionEditProducto"
+            android:layout_width="320dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Descripcion producto"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="@+id/edt_nombreEditProducto"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edt_nombreEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_nombreEditProducto" />
+
+        <EditText
+            android:id="@+id/edt_cantidadEditProducto"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Cantidad"
+            android:inputType="number"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_descripcionEditProducto"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edt_descripcionEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_descripcionEditProducto" />
+
+        <Spinner
+            android:id="@+id/spinnerCategoriaEditProducto"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/imageEditProducto"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="@+id/imageEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/imageEditProducto"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

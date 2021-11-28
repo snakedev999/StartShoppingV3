@@ -11,13 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/degradado"
+            app:layout_constraintHeight_percent=".27"
+            tools:ignore="MissingConstraints" />
+
+        <!--LOGO-->
+
+
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_mono"
             android:text="Registro Productos"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,19 +65,19 @@
             android:id="@+id/btn_registrarProducto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="Registrar"
             app:layout_constraintEnd_toEndOf="@+id/edt_precioProducto"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="@+id/edt_precioProducto"
-            app:layout_constraintTop_toBottomOf="@+id/edt_precioProducto" />
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="@+id/edt_tallaProducto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_tallaProducto" />
 
         <ImageView
             android:id="@+id/imageProducto"
             android:layout_width="175dp"
-            android:layout_height="185dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="178dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="@+id/textView5"
+            app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             tools:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
@@ -101,11 +114,24 @@
             android:id="@+id/spinnerCategoriaProducto"
             android:layout_width="320dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="40dp"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="@+id/imageProducto"
+            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="@+id/imageProducto"
             app:layout_constraintTop_toBottomOf="@+id/imageProducto"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <EditText
+            android:id="@+id/edt_tallaProducto"
+            android:layout_width="127dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Talla"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/edt_precioProducto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_precioProducto" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

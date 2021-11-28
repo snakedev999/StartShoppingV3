@@ -62,18 +62,6 @@ public class AccountOpcionFragment extends Fragment {
         return viewFragmentBlank;
     }
 
-    public void act2(View View) {
-        Intent act = new Intent(getActivity(), RegisterFragment.class);
-        startActivity(act);
-        getActivity().overridePendingTransition(R.anim.translate_left_side, 0);
-    }
-
-    public void cambio(View View) {
-        Intent info = new Intent(getActivity(),LoginFragment.class);
-        startActivity(info);
-        getActivity().overridePendingTransition(R.anim.zoom_in,R.anim.zoom_out);
-    }
-
     public void onBackPressed() {
         super.getActivity().onBackPressed();
         getActivity().overridePendingTransition(R.anim.zoom_in, 0);
