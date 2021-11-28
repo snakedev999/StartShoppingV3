@@ -5,17 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.carrito.CarritoActivity;
+import com.goldenapps.startshopping.carrito.CompraActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 
 public class DetalleActivity extends AppCompatActivity {
 
-    ImageView img, back;
+    ImageView img, back, k;
     TextView proName, proPrice, proDesc,proPuntaje,proCantidad;
     RatingBar ratingBar;
 
@@ -45,6 +48,7 @@ public class DetalleActivity extends AppCompatActivity {
 
         img = findViewById(R.id.big_image);
         back = findViewById(R.id.back2);
+        k = findViewById(R.id.cart123);
 
         proName.setText(name);
         proPrice.setText("Precio: $"+price);
@@ -71,6 +75,18 @@ public class DetalleActivity extends AppCompatActivity {
 
                 Intent i = new Intent(DetalleActivity.this, MenuActivity.class);
                 startActivity(i);
+                finish();
+
+            }
+        });
+
+
+        k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in = new Intent(getApplicationContext(), CarritoActivity.class);
+                startActivity(in);
                 finish();
 
             }

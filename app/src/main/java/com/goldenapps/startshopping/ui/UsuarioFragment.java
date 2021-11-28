@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.carrito.CarritoActivity;
+import com.goldenapps.startshopping.carrito.CompraActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -56,6 +58,33 @@ public class UsuarioFragment extends Fragment {
         id.setText(getIdUser());
 
 
+        Button kart = (Button) blank.findViewById(R.id.btnkart);
+        kart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent kart = new Intent(getActivity(), CompraActivity.class);
+                startActivity(kart);
+
+
+            }
+        });
+
+
+
+        Button cart = (Button) blank.findViewById(R.id.btncarrito);
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cart = new Intent(getActivity(), CarritoActivity.class);
+                startActivity(cart);
+
+
+            }
+        });
+
+
+
+
 
         Button n2 = (Button) blank.findViewById(R.id.button2);
         n2.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +96,6 @@ public class UsuarioFragment extends Fragment {
                 mainMenu.putExtra("boolean",true);
                 mainMenu.putExtra("boolean2", false);
                 mainMenu.putExtra("credencial", true);
-
 
                 eliminarDatos(1);
 

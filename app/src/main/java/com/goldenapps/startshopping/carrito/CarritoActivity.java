@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.ui.account.RegisterFragment;
+import com.goldenapps.startshopping.ui.category.CategoryFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +26,7 @@ public class CarritoActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private Button Siguiente, btnC;
+    private Button sgte;
     private TextView TotalPrecio, mensaje1;
 
     private double PrecioTotalId = 0.0;
@@ -36,10 +37,10 @@ public class CarritoActivity extends AppCompatActivity {
     private DatabaseReference UserRef;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_carrito);
 
         //  BORRAR TAMBIEN
@@ -50,20 +51,20 @@ public class CarritoActivity extends AppCompatActivity {
         //
 
 
-        recyclerView = (RecyclerView)findViewById(R.id.carrito_lista);
+        recyclerView = (RecyclerView) findViewById(R.id.carrito_lista);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        Siguiente = (Button) findViewById(R.id.siguiente);
-        TotalPrecio = (TextView) findViewById(R.id.precio_total) ;
+        sgte = (Button) findViewById(R.id.siguiente);
+        TotalPrecio = (TextView) findViewById(R.id.precio_total);
         mensaje1 = (TextView) findViewById(R.id.mensaje1);
-        btnC = (Button) findViewById(R.id.carrito);
 
-        Siguiente.setOnClickListener(new View.OnClickListener() {
+
+        sgte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CarritoActivity.this, ConfirmarOrdenActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
                 intent.putExtra("Total", String.valueOf(PrecioTotalId));
                 startActivity(intent);
                 finish();
@@ -71,8 +72,7 @@ public class CarritoActivity extends AppCompatActivity {
         });
 
     }
-
-    @Override
+   /* @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser firebaseUser = auth.getCurrentUser();
@@ -81,15 +81,7 @@ public class CarritoActivity extends AppCompatActivity {
         }else{
             VerificarUsuarioExistente();
         }
-    }
-
-    private void EnviarAlSetup() {
-        Intent intent = new Intent(CarritoActivity.this, SetupActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-
-    }
+    }*/
 
     private void EnviarAlLogin() {
         Intent intent = new Intent(CarritoActivity.this, RegisterFragment.class);
@@ -97,6 +89,15 @@ public class CarritoActivity extends AppCompatActivity {
 
         startActivity(intent);
         finish();
+    }
+
+
+    private void EnviarAlSetup() {
+        Intent intent = new Intent(CarritoActivity.this, SetupActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+
     }
 
     private void VerificarUsuarioExistente(){
