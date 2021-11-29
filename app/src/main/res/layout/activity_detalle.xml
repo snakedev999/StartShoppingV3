@@ -76,8 +76,9 @@
                     android:id="@+id/big_image"
                     android:layout_width="340dp"
                     android:layout_height="340dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.492"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_home_row" />
@@ -102,7 +103,7 @@
                     android:backgroundTint="#FF9800"
                     android:numStars="5"
                     android:stepSize="0.5"
-
+                    android:rating="3.5"
                     app:layout_constraintStart_toStartOf="@+id/productName"
                     app:layout_constraintTop_toBottomOf="@+id/productName"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -113,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto_mono"
-                    android:text="TextView"
+                    android:text="3.5"
                     app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
                     app:layout_constraintStart_toEndOf="@+id/ratingBar"
                     app:layout_constraintTop_toTopOf="@+id/ratingBar"
@@ -127,11 +128,40 @@
                     app:layout_constraintStart_toStartOf="@+id/ratingBar"
                     app:layout_constraintTop_toBottomOf="@+id/ratingBar">
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="311dp"
-                        android:layout_height="41dp"
-                        android:text="TextView" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="31dp"
+                                android:layout_marginStart="16dp"
+                                android:text="S - M"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <EditText
+                                android:id="@+id/edt_tallaDeseada"
+                                android:layout_width="170dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:hint="Talla deseada"
+                                android:inputType="textPersonName"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_cantidadProducto"

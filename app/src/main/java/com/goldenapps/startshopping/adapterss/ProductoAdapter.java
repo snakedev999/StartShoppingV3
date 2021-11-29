@@ -92,6 +92,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                 context = holder.itemView.getContext();
 
                 Intent i=new Intent(context.getApplicationContext(), DetalleActivity.class);
+                i.putExtra("idPro",user.getIdProducto());
                 i.putExtra("name", user.getNombreProducto());
                 i.putExtra("descrip", user.getDescripcionProducto());
                 i.putExtra("cantidad", user.getCantidadProducto());
