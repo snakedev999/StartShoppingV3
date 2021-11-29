@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.registros.RegistroCategoriaActivity">
+    android:orientation="vertical"
+    tools:context=".registros.RegistroCategoriaActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@color/BlueSecond"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button5"
+        <ImageView
+            android:id="@+id/imageViewCategorias"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RECUPERAR" />
+            android:layout_height="260dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/degradado"
+            app:layout_constraintHeight_percent=".27"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView4"
@@ -28,62 +27,43 @@
             android:layout_height="wrap_content"
             android:text="Registro Categoria"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageCategoria"
-            android:layout_width="match_parent"
-            android:layout_height="216dp" />
+            android:layout_width="188dp"
+            android:layout_height="166dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
 
         <EditText
             android:id="@+id/edt_nombreCategoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="255dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="84dp"
             android:ems="10"
             android:hint="Nombre categoria"
             android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/imageCategoria"
+            app:layout_constraintStart_toStartOf="@+id/imageCategoria"
+            app:layout_constraintTop_toBottomOf="@+id/imageCategoria" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/btn_subirImagen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:text="Subir imagen"
-                android:textAlignment="textStart"
-                app:icon="@drawable/ic_baseline_add_photo_alternate_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.048" />
-
-            <Button
-                android:id="@+id/btn_registrarCategoria"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Registrar"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_subirImagen"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.504"
-                app:layout_constraintStart_toEndOf="@+id/btn_subirImagen"
-                app:layout_constraintTop_toTopOf="@+id/btn_subirImagen"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="184dp"
-                android:layout_height="146dp"
-                android:layout_marginTop="80dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_subirImagen" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_registrarCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="Registrar"
+            app:layout_constraintEnd_toEndOf="@+id/edt_nombreCategoria"
+            app:layout_constraintStart_toStartOf="@+id/edt_nombreCategoria"
+            app:layout_constraintTop_toBottomOf="@+id/edt_nombreCategoria" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

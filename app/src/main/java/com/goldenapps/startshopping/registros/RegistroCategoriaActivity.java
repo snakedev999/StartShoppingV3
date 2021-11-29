@@ -35,9 +35,9 @@ import com.google.firebase.storage.UploadTask;
 public class RegistroCategoriaActivity extends AppCompatActivity {
 
     TextView t;
-    private ImageView imageCategoria,imagenRecuperada;
+    private ImageView imageCategoria;
     private EditText nombreCategoria;
-    private Button registrarCategoria,recuperarImagen;
+    private Button registrarCategoria;
     private Uri uri;
     private ActivityResultLauncher<String> mGetContent;
     private DatabaseReference data;
@@ -54,13 +54,9 @@ public class RegistroCategoriaActivity extends AppCompatActivity {
         imageCategoria = (ImageView) findViewById(R.id.imageCategoria);
         nombreCategoria = (EditText) findViewById(R.id.edt_nombreCategoria);
         registrarCategoria = (Button) findViewById(R.id.btn_registrarCategoria);
-        recuperarImagen = (Button) findViewById(R.id.button5);
-        imagenRecuperada = (ImageView) findViewById(R.id.imageView4);
         imageCategoria.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
-        imagenRecuperada.setImageResource(R.drawable.ic_baseline_add_photo_alternate_24);
-        t = findViewById(R.id.textView4);
-        data = FirebaseDatabase.getInstance().getReference();
 
+        data = FirebaseDatabase.getInstance().getReference();
         mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
@@ -87,46 +83,7 @@ public class RegistroCategoriaActivity extends AppCompatActivity {
                 }
             }
         });
-
-        recuperarImagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                solicitarDatosFirebase();
-
-            }
-        });
-
     }
-
-    private void solicitarDatosFirebase() {
-        data.child("Categorias").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-
-                for(final DataSnapshot obj : snapshot.getChildren()){
-
-                    data.child("Categorias").child(obj.getKey()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            ModelCategoria user = obj.getValue(ModelCategoria.class);
-                            String nombre = user.getNombreCategoria();
-                            String apellido = user.getImagenCategoria();
-
-                            Glide.with(RegistroCategoriaActivity.this).load(apellido).into(imagenRecuperada);
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                        }
-                    });
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-    }
-
 
     private void uploadToFireBase(Uri uri) {
         StorageReference fileRef = storageReference.child(System.currentTimeMillis() + "." +getFileExtension(uri));
