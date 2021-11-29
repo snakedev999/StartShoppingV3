@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -41,6 +42,10 @@ public class DetalleActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private String idUser = "";
     TextView textRating;
+    Button mProducto,rProducto;
+    TextView cantidadDeseada;
+    int cantidadDeseadaInt = 1;
+    int cantidadDeseadaEnviar;
     private ArrayList<ModelPuntajeProducto> listPuntajeProducto;
     private DatabaseReference databaseReferencePuntaje = FirebaseDatabase.getInstance().getReference("PuntajeProducto");
 
@@ -75,6 +80,44 @@ public class DetalleActivity extends AppCompatActivity {
         textRating = findViewById(R.id.puntaje);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         tallaDeseda = findViewById(R.id.edt_tallaDeseada);
+        mProducto = findViewById(R.id.btn_mProducto);
+        rProducto = findViewById(R.id.btn_rProducto);
+        cantidadDeseada = findViewById(R.id.tv_cantidadDesseada);
+        cantidadDeseadaEnviar = 0;
+
+        mProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cantidadDeseadaInt = cantidadDeseadaInt + 1;
+                cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
+                if (cantidadDeseadaInt < cantidad){
+                    rProducto.setEnabled(true);
+                    mProducto.setEnabled(true);
+                    cantidadDeseadaEnviar = cantidadDeseadaInt;
+                    cantidadDeseada.setText(Integer.toString(cantidadDeseadaEnviar));
+                }else{
+                    mProducto.setEnabled(false);
+                    rProducto.setEnabled(true);
+                }
+            }
+        });
+
+        rProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cantidadDeseadaInt = cantidadDeseadaInt - 1;
+                cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
+                if (cantidadDeseadaInt > 1){
+                    rProducto.setEnabled(false);
+                    mProducto.setEnabled(true);
+                    cantidadDeseadaEnviar = cantidadDeseadaInt;
+                }else{
+                    rProducto.setEnabled(false);
+                    mProducto.setEnabled(true);
+                }
+            }
+        });
+
         String s = String.valueOf(ratingBar.getRating());
         textRating.setText(s);
 
