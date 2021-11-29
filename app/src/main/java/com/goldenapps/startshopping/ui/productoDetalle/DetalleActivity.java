@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.carrito.CarritoActivity;
-import com.goldenapps.startshopping.carrito.CompraActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 
 public class DetalleActivity extends AppCompatActivity {
@@ -90,8 +88,6 @@ public class DetalleActivity extends AppCompatActivity {
 
                 Intent in = new Intent(getApplicationContext(), CarritoActivity.class);
                 startActivity(in);
-                finish();
-
             }
         });
     }

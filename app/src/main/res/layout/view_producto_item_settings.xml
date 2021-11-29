@@ -26,8 +26,10 @@
             android:id="@+id/tv_nombreProductoEditSettings"
             android:layout_width="162dp"
             android:layout_height="64dp"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="28dp"
+            android:fontFamily="@font/acme"
             android:text="nombre producto"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewProductoSettings"
             app:layout_constraintStart_toEndOf="@+id/imageViewProductoSettings"
             app:layout_constraintTop_toTopOf="@+id/imageViewProductoSettings" />

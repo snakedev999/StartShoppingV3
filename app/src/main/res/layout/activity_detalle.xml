@@ -54,17 +54,6 @@
                 app:layout_constraintVertical_bias="0.2"
                 app:srcCompat="@drawable/ic_cart_black" />
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="79dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="12dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/back2"
-                app:layout_constraintStart_toEndOf="@+id/back2"
-                app:layout_constraintTop_toTopOf="@+id/back2"
-                app:layout_constraintVertical_bias="0.4" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
@@ -139,6 +128,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/ratingBar">
 
                     <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="311dp"
+                        android:layout_height="41dp"
+                        android:text="TextView" />
+
+                    <TextView
                         android:id="@+id/tv_cantidadProducto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -181,13 +176,13 @@
 
                 <Button
                     android:id="@+id/button"
-                    android:layout_width="170dp"
-                    android:layout_height="50dp"
+                    android:layout_width="194dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/buy_now_bg"
                     android:text="Comprar"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="@+id/prodPrice"
                     app:layout_constraintTop_toBottomOf="@+id/prodPrice" />
 
@@ -207,7 +202,7 @@
                     android:id="@+id/imageView7"
                     android:layout_width="107dp"
                     android:layout_height="65dp"
-                    android:layout_marginStart="132dp"
+                    android:layout_marginStart="116dp"
                     android:src="@drawable/ic_add_shopping_cart_black_48dp"
                     app:borderWidth="@dimen/cardview_compat_inset_shadow"
                     app:layout_constraintBottom_toBottomOf="@+id/button"

@@ -24,6 +24,12 @@ public class ModelProducto {
         this.puntajeProducto = puntajeProducto;
     }
 
+    public ModelProducto(String id,String nombreProducto, String imagenProducto) {
+        this.idProducto = id;
+        this.nombreProducto = nombreProducto;
+        this.imagenProducto = imagenProducto;
+    }
+
     public ModelProducto(String idProducto, String idCategoriaProducto, String nombreProducto, String descripcionProducto, String imagenProducto, int cantidadProducto, double precioProducto) {
         this.idProducto = idProducto;
         this.idCategoriaProducto = idCategoriaProducto;

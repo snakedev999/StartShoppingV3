@@ -23,9 +23,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.carrito.CarritoActivity;
 import com.goldenapps.startshopping.model.ModelCategoria;
 import com.goldenapps.startshopping.model.ModelProducto;
 import com.goldenapps.startshopping.model.ModelTallaProducto;
+import com.goldenapps.startshopping.ui.menu.MenuActivity;
+import com.goldenapps.startshopping.ui.productoDetalle.DetalleActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -60,6 +63,7 @@ public class EditProductoActivity extends AppCompatActivity {
     private DatabaseReference databaseReferenceCategoria = FirebaseDatabase.getInstance().getReference();
     private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     private Spinner oSpinnerCategoria;
+    private Button btn_agregarTallaProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +87,7 @@ public class EditProductoActivity extends AppCompatActivity {
         proImage = findViewById(R.id.imageEditProducto);
         guardarEditProducto = findViewById(R.id.btn_registrarEditProducto);
         oSpinnerCategoria = findViewById(R.id.spinnerCategoriaEditProducto);
+        btn_agregarTallaProducto = findViewById(R.id.btn_agregarTallaProducto);
 
         loadCategoria();
 
@@ -115,6 +120,15 @@ public class EditProductoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mGetContent.launch("image/*");
+            }
+        });
+
+        btn_agregarTallaProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getApplicationContext(), TallaProductoActivity.class);
+                in.putExtra("idProducto", idProducto);
+                startActivity(in);
             }
         });
     }

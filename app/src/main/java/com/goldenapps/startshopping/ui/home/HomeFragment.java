@@ -1,6 +1,5 @@
 package com.goldenapps.startshopping.ui.home;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,16 +7,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
@@ -25,7 +21,7 @@ import com.goldenapps.startshopping.adapterss.ProductoAdapter;
 import com.goldenapps.startshopping.model.ModelCarrito;
 import com.goldenapps.startshopping.model.ModelItemCarrito;
 import com.goldenapps.startshopping.model.ModelProducto;
-import com.goldenapps.startshopping.model.ModelRegion;
+import com.goldenapps.startshopping.carrito.CarritoActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,14 +67,24 @@ public class HomeFragment extends Fragment {
         databaseReferenceItemsCountCarrito = FirebaseDatabase.getInstance().getReference("ItemCarrito");
         list = new ArrayList<>();
         listItemsCarrito = new ArrayList<>();
-        myAdapter = new ProductoAdapter(getContext(),list);
 
+        ImageButton c = view.findViewById(R.id.btnCarrito);
         /*layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);*/
 
+        c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), CarritoActivity.class);
+                startActivity(in);
+            }
+        });
+
+        myAdapter = new ProductoAdapter(getContext(),list);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(myAdapter);
+
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -120,15 +126,14 @@ public class HomeFragment extends Fragment {
                     databaseReferenceItemsCountCarrito.orderByChild("idCarrito").equalTo(idC).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            listItemsCarrito.removeAll(listItemsCarrito);
                             if(snapshot.exists()) {
-                                listItemsCarrito.removeAll(listItemsCarrito);
                                 for(DataSnapshot oItems : snapshot.getChildren()){
                                     String id = oItems.getKey();
                                     listItemsCarrito.add(new ModelItemCarrito(id));
                                 }
 
                                 int n = listItemsCarrito.size();
-
                                 notificationBadge.setNumber(n);
                             }
                         }

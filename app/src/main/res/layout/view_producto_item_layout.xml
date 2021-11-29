@@ -14,53 +14,41 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="177dp"
-            android:layout_height="146dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="156dp"
+            android:layout_height="144dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvage"
             app:layout_constraintTop_toBottomOf="@+id/tvage"
-            app:layout_constraintVertical_bias="0.0"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tvfirstName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/tvlastName"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_mono"
+            android:text="Stark"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+        <TextView
+            android:id="@+id/tvage"
+            android:layout_width="147dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="Arya"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/acme"
+            android:text="Nombre"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvlastName"
-            android:layout_width="87dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="4dp"
-            android:text="Stark"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvfirstName"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvfirstName"
-            app:layout_constraintTop_toBottomOf="@+id/tvfirstName" />
-
-        <TextView
-            android:id="@+id/tvage"
-            android:layout_width="123dp"
-            android:layout_height="33dp"
-            android:text="18"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvlastName"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvlastName"
-            app:layout_constraintTop_toBottomOf="@+id/tvlastName" />
 
         <ImageView
             android:id="@+id/imageCarritoAdd_productoView"

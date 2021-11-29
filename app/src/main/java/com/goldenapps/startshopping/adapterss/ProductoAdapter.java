@@ -81,14 +81,14 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     @Override
     public void onBindViewHolder(@NonNull ProductoViewHolder holder, int position) {
         ModelProducto user = list.get(position);
-        holder.precio.setText(Double.toString(user.getPrecioProducto()));
+        holder.precio.setText("$"+Double.toString(user.getPrecioProducto()));
         holder.nombre.setText(user.getNombreProducto());
         Glide.with(context).load(user.getImagenProducto()).into(holder.image);
-        check(user.getIdProducto());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                check(user.getIdProducto());
                 context = holder.itemView.getContext();
 
                 Intent i=new Intent(context.getApplicationContext(), DetalleActivity.class);
@@ -115,8 +115,10 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                 if(!idUser.equals("")){
                     String idProducto = user.getIdProducto();
                     double precioProducto = user.getPrecioProducto();
+                    String imagen = user.getImagenProducto();
+                    String nombre = user.getNombreProducto();
                     //agregar carrito firebase
-                    agregarCarrito1item(idProducto,precioProducto);
+                    agregarCarrito1item(idProducto,precioProducto,imagen,nombre);
                 }else {
                     Toast.makeText(context, "Necesita loguearse primero", Toast.LENGTH_SHORT).show();
                 }
@@ -136,7 +138,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                         ModelTallaProducto tallaProducto = oCarrito.getValue(ModelTallaProducto.class);
                         String id = oCarrito.getKey();
                         setIdProductoTalla(tallaProducto.getIdProducto());
-                        setTallaProducto(tallaProducto.getTalla());
+                        setTallaProducto(tallaProducto.getTalla()+" - ");
                     }
                 }else{
                     setTallaProductoVacio("");
@@ -158,13 +160,12 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     public static class ProductoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView marca, precio, nombre;
+        TextView precio, nombre;
         ImageView image,imageCartProducto;
 
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            marca = itemView.findViewById(R.id.tvfirstName);
             precio = itemView.findViewById(R.id.tvlastName);
             nombre = itemView.findViewById(R.id.tvage);
             image = itemView.findViewById(R.id.imageView5);
@@ -172,7 +173,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         }
     }
 
-    public void agregarCarrito1item(String idProducto, Double precioProducto){
+    public void agregarCarrito1item(String idProducto, Double precioProducto,String imagen, String nombre){
         databaseReferenceCarrito = FirebaseDatabase.getInstance().getReference("Carrito");
         databaseReferenceCarrito.orderByChild("idUsuarioCarrito").equalTo(getIdUser()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -187,7 +188,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                     String idC = getIdCarrito();
                     databaseReferenceItemCarrito = FirebaseDatabase.getInstance().getReference("ItemCarrito");
                     try {
-                        ModelItemCarrito modelItemCarrito = new ModelItemCarrito(idC, idProducto, 1, precioProducto);
+                        ModelItemCarrito modelItemCarrito = new ModelItemCarrito(idC, idProducto, 1, precioProducto,imagen,nombre);
                         String modelIdItemCarrito = databaseReferenceItemCarrito.push().getKey();
                         if (modelIdItemCarrito != null) {
                             databaseReferenceItemCarrito.child(modelIdItemCarrito).setValue(modelItemCarrito);
@@ -199,7 +200,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                 }else{
                     databaseReferenceCarrito = FirebaseDatabase.getInstance().getReference("Carrito");
                     try {
-                        ModelCarrito modelCarrito = new ModelCarrito(getIdUser(),0.0);
+                        ModelCarrito modelCarrito = new ModelCarrito(getIdUser(),0,0.0);
                         String modelId = databaseReferenceCarrito.push().getKey();
                         if(modelId != null){
                             databaseReferenceCarrito.child(modelId).setValue(modelCarrito);

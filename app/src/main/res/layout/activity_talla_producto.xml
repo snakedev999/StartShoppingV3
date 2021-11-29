@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".registros.TallaProductoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewTallaA"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/degradado"
+            app:layout_constraintHeight_percent=".27"
+            tools:ignore="MissingConstraints" />
+
+        <!--LOGO-->
+
+
+        <TextView
+            android:id="@+id/tv_tallaPro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="144dp"
+            android:fontFamily="@font/roboto_mono"
+            android:text="Talla Producto"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edt_Talla"
+            android:layout_width="262dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="56dp"
+            android:ems="10"
+            android:hint="Talla"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/tv_tallaPro"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="@+id/tv_tallaPro"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tallaPro" />
+
+        <Button
+            android:id="@+id/btn_agregarTalla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="AGREGAR"
+            app:layout_constraintEnd_toEndOf="@+id/edt_Talla"
+            app:layout_constraintStart_toStartOf="@+id/edt_Talla"
+            app:layout_constraintTop_toBottomOf="@+id/edt_Talla" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

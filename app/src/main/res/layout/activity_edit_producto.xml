@@ -65,10 +65,10 @@
             android:id="@+id/btn_registrarEditProducto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="Modificar"
             app:layout_constraintEnd_toEndOf="@+id/edt_precioEditProducto"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.128"
             app:layout_constraintStart_toStartOf="@+id/edt_precioEditProducto"
             app:layout_constraintTop_toBottomOf="@+id/edt_precioEditProducto" />
 
@@ -122,6 +122,17 @@
             app:layout_constraintStart_toStartOf="@+id/imageEditProducto"
             app:layout_constraintTop_toBottomOf="@+id/imageEditProducto"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btn_agregarTallaProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Agregar talla"
+            app:layout_constraintEnd_toEndOf="@+id/edt_precioEditProducto"
+            app:layout_constraintHorizontal_bias="0.547"
+            app:layout_constraintStart_toEndOf="@+id/btn_registrarEditProducto"
+            app:layout_constraintTop_toBottomOf="@+id/edt_precioEditProducto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

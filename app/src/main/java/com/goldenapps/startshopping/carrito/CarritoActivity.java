@@ -1,31 +1,49 @@
 package com.goldenapps.startshopping.carrito;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
-import com.goldenapps.startshopping.ui.account.RegisterFragment;
-import com.goldenapps.startshopping.ui.category.CategoryFragment;
+import com.goldenapps.startshopping.adapterss.CarritoAdapter;
+import com.goldenapps.startshopping.model.ModelCarrito;
+import com.goldenapps.startshopping.model.ModelItemCarrito;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class CarritoActivity extends AppCompatActivity {
 
+    private DbHelper helper;
+    private SQLiteDatabase db;
+    private String idUser = "";
+    private String idCarrito;
+    private String idCa;
+    private ArrayList<ModelItemCarrito> listItemsCarrito;
+    private ArrayList<ModelCarrito> listCarrito;
+    private CarritoAdapter carritoAdapter;
+    private DatabaseReference databaseReferenceCarritoUsuario;
+    private DatabaseReference databaseReferenceItemCarritoUsuario;
+
+
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
+
+
     private Button sgte;
     private TextView TotalPrecio, mensaje1;
 
@@ -37,83 +55,20 @@ public class CarritoActivity extends AppCompatActivity {
     private DatabaseReference UserRef;
 
 
+    //hacer consulta de un carrito por id del usuario y que el estado de este sea 0 = no comprado
+
+    private CarritoFragment carritoFragment = new CarritoFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_carrito);
 
-        //  BORRAR TAMBIEN
-        auth = FirebaseAuth.getInstance();
-        CurrentUserId = auth.getCurrentUser().getUid();
-        UserRef = FirebaseDatabase.getInstance().getReference().child("Usuarios");
-
-        //
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.carrito_lista);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        sgte = (Button) findViewById(R.id.siguiente);
-        TotalPrecio = (TextView) findViewById(R.id.precio_total);
-        mensaje1 = (TextView) findViewById(R.id.mensaje1);
-
-
-        sgte.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
-                intent.putExtra("Total", String.valueOf(PrecioTotalId));
-                startActivity(intent);
-                finish();
-            }
-        });
-
-    }
-   /* @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser firebaseUser = auth.getCurrentUser();
-        if(firebaseUser == null){
-            EnviarAlLogin();
-        }else{
-            VerificarUsuarioExistente();
-        }
-    }*/
-
-    private void EnviarAlLogin() {
-        Intent intent = new Intent(CarritoActivity.this, RegisterFragment.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-        startActivity(intent);
-        finish();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_containerCarrito, carritoFragment);
+        transaction.commit();
     }
 
 
-    private void EnviarAlSetup() {
-        Intent intent = new Intent(CarritoActivity.this, SetupActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-
-    }
-
-    private void VerificarUsuarioExistente(){
-        final String CurrentUserId = auth.getCurrentUser().getUid();
-        UserRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.hasChild(CurrentUserId));
-                EnviarAlSetup();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}});
-
-
-
-
-    }
 }

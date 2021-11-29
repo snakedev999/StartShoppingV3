@@ -1,40 +1,52 @@
 package com.goldenapps.startshopping.model;
 
 public class ModelItemCarrito {
-    private String idCarritoItem;
+    private String idItemCarrito;
     private String idCarrito;
-    private String itemCarrito;
+    private String idProducto;
     private int cantidadItem;
+    private String imagen;
+    private String nombre;
     private double subTotalItem;
 
     public ModelItemCarrito(){
     }
 
     public ModelItemCarrito(String idCarritoItem) {
-        this.idCarritoItem = idCarritoItem;
+        this.idItemCarrito = idItemCarrito;
     }
 
-    public ModelItemCarrito(String idCarrito, String itemCarrito, int cantidadItem, double subTotalItem) {
-        this.idCarrito = idCarrito;
-        this.itemCarrito = itemCarrito;
+    public ModelItemCarrito(String idProducto, int cantidadItem, double subTotalItem) {
+        this.idProducto = idProducto;
         this.cantidadItem = cantidadItem;
         this.subTotalItem = subTotalItem;
     }
 
-    public ModelItemCarrito(String idCarritoItem, String idCarrito, String itemCarrito, int cantidadItem, double subTotalItem) {
-        this.idCarritoItem = idCarritoItem;
+    public ModelItemCarrito(String idCarrito, String idProducto, int cantidadItem, double subTotalItem, String imagen,String nombre) {
         this.idCarrito = idCarrito;
-        this.itemCarrito = itemCarrito;
+        this.idProducto = idProducto;
         this.cantidadItem = cantidadItem;
+        this.subTotalItem = subTotalItem;
+        this.imagen = imagen;
+        this.nombre = nombre;
+    }
+
+    public ModelItemCarrito(String idCarritoItem, String idCarrito, String idProducto, int cantidadItem, double subTotalItem,String imagen,String nombre) {
+        this.idItemCarrito = idCarritoItem;
+        this.idCarrito = idCarrito;
+        this.idProducto = idProducto;
+        this.cantidadItem = cantidadItem;
+        this.imagen = imagen;
+        this.nombre = nombre;
         this.subTotalItem = subTotalItem;
     }
 
-    public String getIdCarritoItem() {
-        return idCarritoItem;
+    public String getIdItemCarrito() {
+        return idItemCarrito;
     }
 
-    public void setIdCarritoItem(String idCarritoItem) {
-        this.idCarritoItem = idCarritoItem;
+    public void setIdItemCarrito(String idItemCarrito) {
+        this.idItemCarrito = idItemCarrito;
     }
 
     public String getIdCarrito() {
@@ -45,12 +57,12 @@ public class ModelItemCarrito {
         this.idCarrito = idCarrito;
     }
 
-    public String getItemCarrito() {
-        return itemCarrito;
+    public String getIdProducto() {
+        return idProducto;
     }
 
-    public void setItemCarrito(String itemCarrito) {
-        this.itemCarrito = itemCarrito;
+    public void setIdProducto(String idProducto) {
+        this.idProducto = idProducto;
     }
 
     public int getCantidadItem() {
@@ -67,5 +79,21 @@ public class ModelItemCarrito {
 
     public void setSubTotalItem(double subTotalItem) {
         this.subTotalItem = subTotalItem;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
