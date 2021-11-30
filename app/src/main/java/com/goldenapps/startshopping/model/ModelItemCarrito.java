@@ -7,6 +7,7 @@ public class ModelItemCarrito {
     private int cantidadItem;
     private String imagen;
     private String nombre;
+    private double precioUnitario;
     private double subTotalItem;
 
     public ModelItemCarrito(){
@@ -22,19 +23,21 @@ public class ModelItemCarrito {
         this.subTotalItem = subTotalItem;
     }
 
-    public ModelItemCarrito(String idCarrito, String idProducto, int cantidadItem, double subTotalItem, String imagen,String nombre) {
+    public ModelItemCarrito(String idCarrito, String idProducto, int cantidadItem,double subTotalItem, double precioUnitario,String imagen,String nombre) {
         this.idCarrito = idCarrito;
         this.idProducto = idProducto;
         this.cantidadItem = cantidadItem;
+        this.precioUnitario = precioUnitario;
         this.subTotalItem = subTotalItem;
         this.imagen = imagen;
         this.nombre = nombre;
     }
 
-    public ModelItemCarrito(String idCarritoItem, String idCarrito, String idProducto, int cantidadItem, double subTotalItem,String imagen,String nombre) {
+    public ModelItemCarrito(String idCarritoItem, String idCarrito, String idProducto, int cantidadItem, double subTotalItem,double precioUnitario,String imagen,String nombre) {
         this.idItemCarrito = idCarritoItem;
         this.idCarrito = idCarrito;
         this.idProducto = idProducto;
+        this.precioUnitario = precioUnitario;
         this.cantidadItem = cantidadItem;
         this.imagen = imagen;
         this.nombre = nombre;
@@ -95,5 +98,13 @@ public class ModelItemCarrito {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(double precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 }

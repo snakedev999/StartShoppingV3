@@ -53,6 +53,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
         holder.nombre.setText(user.getNombre());
         holder.cantidad.setText("Cantidad: "+Integer.toString(user.getCantidadItem()));
         holder.subTotal.setText("SubTotal: $"+Double.toString(user.getSubTotalItem()));
+        holder.precioUnit.setText("Precio Unitario: $"+Double.toString(user.getPrecioUnitario()));
         Glide.with(context).load(user.getImagen()).into(holder.imagenProductoCarrito);
 
         holder.imageDeleteItem.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +70,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
     }
 
     public class CarritoViewHolder extends RecyclerView.ViewHolder {
-        TextView nombre,cantidad,subTotal;
+        TextView nombre,cantidad,subTotal,precioUnit;
         ImageView imagenProductoCarrito,imageDeleteItem;
 
         public CarritoViewHolder(@NonNull View itemView) {
@@ -80,6 +81,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.CarritoV
             subTotal = itemView.findViewById(R.id.tv_subTotalInCarrito);
             imagenProductoCarrito = itemView.findViewById(R.id.imagenProductoInCarrito);
             imageDeleteItem = itemView.findViewById(R.id.deleteProductoInCarrito);
+            precioUnit = itemView.findViewById(R.id.tv_precioUnit);
 
         }
     }

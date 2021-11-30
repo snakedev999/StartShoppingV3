@@ -3,6 +3,8 @@ package com.goldenapps.startshopping.ui.productoDetalle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,15 +15,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.carrito.CarritoActivity;
-import com.goldenapps.startshopping.model.ModelProducto;
+import com.goldenapps.startshopping.model.ModelCarrito;
+import com.goldenapps.startshopping.model.ModelItemCarrito;
 import com.goldenapps.startshopping.model.ModelPuntajeProducto;
-import com.goldenapps.startshopping.model.ModelTallaProducto;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,24 +33,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class DetalleActivity extends AppCompatActivity {
 
-    ImageView img, back, k;
-    TextView proName, proPrice, proDesc,proPuntaje,proCantidad, proTalla;
-    RatingBar ratingBar;
-    EditText tallaDeseda;
+    private ImageView img, back, k;
+    private TextView proName, proPrice, proDesc,proPuntaje,proCantidad, proTalla;
+    private RatingBar ratingBar;
+    private EditText tallaDeseda;
+    private FloatingActionButton fl_carrito;
     double ratingTotal;
     private DbHelper helper;
     private SQLiteDatabase db;
     private String idUser = "";
-    TextView textRating;
-    Button mProducto,rProducto;
-    TextView cantidadDeseada;
+    private String idCarrito;
+    private TextView textRating;
+    private Button mProducto,rProducto;
+    private TextView cantidadDeseada;
     int cantidadDeseadaInt = 1;
     int cantidadDeseadaEnviar;
     private ArrayList<ModelPuntajeProducto> listPuntajeProducto;
+    private DatabaseReference databaseReferenceCarrito;
+    private DatabaseReference databaseReferenceItemCarrito;
     private DatabaseReference databaseReferencePuntaje = FirebaseDatabase.getInstance().getReference("PuntajeProducto");
 
     String idPro,name, descrip,image,talla;
@@ -83,21 +90,25 @@ public class DetalleActivity extends AppCompatActivity {
         mProducto = findViewById(R.id.btn_mProducto);
         rProducto = findViewById(R.id.btn_rProducto);
         cantidadDeseada = findViewById(R.id.tv_cantidadDesseada);
-        cantidadDeseadaEnviar = 0;
+        fl_carrito = findViewById(R.id.fl_carrito);
+        rProducto.setEnabled(false);
+        cantidadDeseadaEnviar = 1;
 
         mProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cantidadDeseadaInt = cantidadDeseadaInt + 1;
-                cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
-                if (cantidadDeseadaInt < cantidad){
+
+                if(cantidadDeseadaInt>=cantidad){
+                    rProducto.setEnabled(true);
+                    mProducto.setEnabled(false);
+                    cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
+                    cantidadDeseadaEnviar = cantidadDeseadaInt;
+                }else{
                     rProducto.setEnabled(true);
                     mProducto.setEnabled(true);
+                    cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
                     cantidadDeseadaEnviar = cantidadDeseadaInt;
-                    cantidadDeseada.setText(Integer.toString(cantidadDeseadaEnviar));
-                }else{
-                    mProducto.setEnabled(false);
-                    rProducto.setEnabled(true);
                 }
             }
         });
@@ -106,14 +117,37 @@ public class DetalleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 cantidadDeseadaInt = cantidadDeseadaInt - 1;
-                cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
-                if (cantidadDeseadaInt > 1){
+                if(cantidadDeseadaInt<=1){
                     rProducto.setEnabled(false);
                     mProducto.setEnabled(true);
+                    cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
                     cantidadDeseadaEnviar = cantidadDeseadaInt;
-                }else{
-                    rProducto.setEnabled(false);
+                }else if (cantidadDeseadaInt > cantidad){
+                    rProducto.setEnabled(true);
+                    mProducto.setEnabled(false);
+                    cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
+                    cantidadDeseadaEnviar = cantidadDeseadaInt;
+                }else if (cantidadDeseadaInt < cantidad && cantidadDeseadaInt >= 1){
+                    rProducto.setEnabled(true);
                     mProducto.setEnabled(true);
+                    cantidadDeseada.setText(Integer.toString(cantidadDeseadaInt));
+                    cantidadDeseadaEnviar = cantidadDeseadaInt;
+                }
+            }
+        });
+
+        fl_carrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!idUser.isEmpty()){
+                    String idProducto = idPro;
+                    double precioProducto = price;
+                    String imagen = image;
+                    String nombre = name;
+                    //agregar carrito firebase
+                    agregarCarrito1item(idProducto,precioProducto,imagen,nombre);
+                }else {
+                    dialog();
                 }
             }
         });
@@ -123,7 +157,7 @@ public class DetalleActivity extends AppCompatActivity {
 
         img = findViewById(R.id.big_image);
         back = findViewById(R.id.back2);
-        k = findViewById(R.id.cart123);
+        k = findViewById(R.id.imagenViewCarritoDetalle);
 
         proName.setText(name);
         proPrice.setText("Precio: $"+price);
@@ -241,11 +275,51 @@ public class DetalleActivity extends AppCompatActivity {
         k.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent in = new Intent(getApplicationContext(), CarritoActivity.class);
-                startActivity(in);
+                if (!getIdUser().isEmpty()){
+                    Intent in = new Intent(getApplicationContext(), CarritoActivity.class);
+                    startActivity(in);
+                }else{
+                    dialog();
+                }
             }
         });
+    }
+
+    private void dialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        alertDialogBuilder.setTitle("Importante");
+
+        alertDialogBuilder
+                .setMessage("Lo sentimos, no puede utilizar esta funcionalidad para hacerlo debe registrarse o iniciar sesión :(.")
+                .setCancelable(false)
+                .setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+
+                    }
+                }).create().show();
+    }
+
+    private void dialogMakt(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getApplicationContext());
+
+        alertDialogBuilder.setTitle("Mi Dialogo");
+
+        alertDialogBuilder
+                .setMessage("Lo sentimos, no puede utilizar esta funcionalidad ingrese para hacerlo.")
+                .setCancelable(false)
+                .setPositiveButton("Si",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+
+                        //Si la respuesta es afirmativa aquí agrega tu función a realizar.
+                    }
+                })
+                .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                }).create().show();
     }
 
     private void consultaUsuario(int id){
@@ -262,11 +336,65 @@ public class DetalleActivity extends AppCompatActivity {
         db.close();
     }
 
+    public void agregarCarrito1item(String idProducto, Double precioProducto,String imagen, String nombre){
+        databaseReferenceCarrito = FirebaseDatabase.getInstance().getReference("Carrito");
+        databaseReferenceCarrito.orderByChild("idUsuarioCarrito").equalTo(getIdUser()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    for(DataSnapshot oCarrito : snapshot.getChildren()){
+                        ModelCarrito carrito = oCarrito.getValue(ModelCarrito.class);
+                        String id = oCarrito.getKey();
+                        setIdCarrito(id);
+                    }
+
+                    String idC = getIdCarrito();
+                    databaseReferenceItemCarrito = FirebaseDatabase.getInstance().getReference("ItemCarrito");
+                    try {
+                        double subtotal = precioProducto *cantidadDeseadaEnviar;
+                        ModelItemCarrito modelItemCarrito = new ModelItemCarrito(idC, idProducto, cantidadDeseadaEnviar,subtotal,precioProducto,imagen,nombre);
+                        String modelIdItemCarrito = databaseReferenceItemCarrito.push().getKey();
+                        if (modelIdItemCarrito != null) {
+                            databaseReferenceItemCarrito.child(modelIdItemCarrito).setValue(modelItemCarrito);
+                        }
+                    } catch (Exception e) {
+                        e.getStackTrace();
+                    }
+
+                }else{
+                    databaseReferenceCarrito = FirebaseDatabase.getInstance().getReference("Carrito");
+                    try {
+                        ModelCarrito modelCarrito = new ModelCarrito(getIdUser(),0,0.0);
+                        String modelId = databaseReferenceCarrito.push().getKey();
+                        if(modelId != null){
+                            databaseReferenceCarrito.child(modelId).setValue(modelCarrito);
+                        }
+                    }catch (Exception e){
+                        e.getStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public String getIdUser() {
         return idUser;
     }
 
     public void setIdUser(String idUser) {
         this.idUser = idUser;
+    }
+
+    public String getIdCarrito() {
+        return idCarrito;
+    }
+
+    public void setIdCarrito(String idCarrito) {
+        this.idCarrito = idCarrito;
     }
 }

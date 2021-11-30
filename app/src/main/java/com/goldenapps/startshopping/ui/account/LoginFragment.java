@@ -252,10 +252,8 @@ public class LoginFragment extends Fragment {
 
         if(fila.moveToFirst()){
             setIdUsuarioSave(fila.getString(0));
-            Toast.makeText(getActivity(),"El id del usuario ya esta registrado",Toast.LENGTH_SHORT).show();
         }else{
             db.insert("USUARIO",null,registroUsuario);
-            Toast.makeText(getActivity(),"Se ha registrado correctamente el id del usuario",Toast.LENGTH_SHORT).show();
         }
         db.close();
     }

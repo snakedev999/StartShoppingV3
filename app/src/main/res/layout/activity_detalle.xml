@@ -42,7 +42,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <ImageView
-                android:id="@+id/cart123"
+                android:id="@+id/imagenViewCarritoDetalle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="92dp"
@@ -282,7 +282,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/imageView7"
+                    android:id="@+id/fl_carrito"
                     android:layout_width="107dp"
                     android:layout_height="65dp"
                     android:layout_marginStart="116dp"

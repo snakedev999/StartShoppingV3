@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     String idCarrito;
     String tallaProducto;
     String idProductoTalla = "";
+    int estadoFav = 0;
 
     Context context;
     ArrayList<ModelProducto> list;
@@ -113,7 +115,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         holder.imageCartProducto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!idUser.equals("")){
+                if(!idUser.isEmpty()){
                     String idProducto = user.getIdProducto();
                     double precioProducto = user.getPrecioProducto();
                     String imagen = user.getImagenProducto();
@@ -126,7 +128,27 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             }
         });
 
+        holder.imagenFavorito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                helper = new DbHelper(context);
+                db = helper.getWritableDatabase();
+                String idU = getIdUser();
+                String f = user.getIdProducto();
+                ContentValues registroFav = new ContentValues();
+                registroFav.put("idProducto",f);
+                registroFav.put("idUsuario",idU);
 
+                Cursor fila = db.rawQuery("SELECT FAVPRODUCTO WHERE IDPRODUCTO = '"+f+"'",null);
+
+                if(fila.moveToFirst()){
+                    setEstadoFav(1);
+                }else{
+                    db.insert("FAVPRODUCTO",null,registroFav);
+                }
+                db.close();
+            }
+        });
     }
 
     private void check(String id){
@@ -162,7 +184,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     public static class ProductoViewHolder extends RecyclerView.ViewHolder{
 
         TextView precio, nombre;
-        ImageView image,imageCartProducto;
+        ImageView image,imageCartProducto, imagenFavorito;
 
         public ProductoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -171,6 +193,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             nombre = itemView.findViewById(R.id.tvage);
             image = itemView.findViewById(R.id.imageView5);
             imageCartProducto = itemView.findViewById(R.id.imageCarritoAdd_productoView);
+            imagenFavorito = itemView.findViewById(R.id.imagenFav);
+
         }
     }
 
@@ -189,7 +213,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                     String idC = getIdCarrito();
                     databaseReferenceItemCarrito = FirebaseDatabase.getInstance().getReference("ItemCarrito");
                     try {
-                        ModelItemCarrito modelItemCarrito = new ModelItemCarrito(idC, idProducto, 1, precioProducto,imagen,nombre);
+                        double subtotal = precioProducto *1;
+                        ModelItemCarrito modelItemCarrito = new ModelItemCarrito(idC, idProducto, 1,subtotal,precioProducto,imagen,nombre);
                         String modelIdItemCarrito = databaseReferenceItemCarrito.push().getKey();
                         if (modelIdItemCarrito != null) {
                             databaseReferenceItemCarrito.child(modelIdItemCarrito).setValue(modelItemCarrito);
@@ -217,8 +242,36 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
             }
         });
+    }
 
+    private void registrarFav(String idProductoFav){
 
+    }
+
+    private void consultaProductoFav(String idProductoFav){
+        helper = new DbHelper(context.getApplicationContext());
+        db = helper.getWritableDatabase();
+        Cursor fila = db.rawQuery("SELECT IDPRODUCTO FROM FAVPRODUCTO WHERE IDPRODUCTO = '"+idProductoFav+"'",null);
+
+        if(fila.moveToFirst()){
+            setEstadoFav(1);
+        }else{
+            setEstadoFav(0);
+        }
+        db.close();
+    }
+
+    private void eliminarDatos(String idProductoFav){
+        helper = new DbHelper(context.getApplicationContext());
+        db = helper.getWritableDatabase();
+
+        int cantidad_filas;
+
+        cantidad_filas = db.delete("FAVPRODUCTO","IDPRODUCTO = '"+idProductoFav+"'",null);
+        if(cantidad_filas == 1){
+        }else{
+        }
+        db.close();
     }
 
     private void consultaUsuario(int id){
@@ -231,8 +284,10 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             setIdUser(fila.getString(0));
         }else{
             setIdUser("");
+
         }
         db.close();
+
     }
 
 
@@ -270,5 +325,13 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     public void setIdProductoTalla(String idProductoTalla) {
         this.idProductoTalla = idProductoTalla;
+    }
+
+    public int getEstadoFav() {
+        return estadoFav;
+    }
+
+    public void setEstadoFav(int estadoFav) {
+        this.estadoFav = estadoFav;
     }
 }

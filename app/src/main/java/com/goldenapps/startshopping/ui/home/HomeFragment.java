@@ -1,5 +1,7 @@
 package com.goldenapps.startshopping.ui.home;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -72,13 +74,6 @@ public class HomeFragment extends Fragment {
         /*layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);*/
 
-        c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(getActivity(), CarritoActivity.class);
-                startActivity(in);
-            }
-        });
 
         myAdapter = new ProductoAdapter(getContext(),list);
         recyclerView.setLayoutManager(layoutManager);
@@ -152,6 +147,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent in = new Intent(getActivity(), CarritoActivity.class);
+                    startActivity(in);
+            }
+        });
 
         return view;
 
@@ -170,7 +172,6 @@ public class HomeFragment extends Fragment {
         }
         db.close();
     }
-
 
     public String getIdUsuarioCarrito() {
         return idUsuarioCarrito;

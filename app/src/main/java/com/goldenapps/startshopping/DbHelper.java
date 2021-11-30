@@ -19,6 +19,7 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
         db.execSQL("CREATE TABLE USUARIO (ID INT PRIMARY KEY NOT NULL,IDUSUARIO TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE FAVPRODUCTO (IDPRODUCTO TEXT PRIMARY KEY NOT NULL,IDUSUARIO TEXT NOT NULL)");
     }
 
     @Override

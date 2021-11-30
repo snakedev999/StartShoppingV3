@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void initViews(){
         rvLista = findViewById(R.id.rvLista);
-        svSearch = findViewById(R.id.svSearch);
+
     }
 
 

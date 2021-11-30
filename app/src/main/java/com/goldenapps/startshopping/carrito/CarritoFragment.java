@@ -34,7 +34,6 @@ public class CarritoFragment extends Fragment {
     private SQLiteDatabase db;
     private String idUser = "";
     private String idCarrito;
-    private String idCa;
     private double total;
     private ArrayList<ModelItemCarrito> listItemsCarrito;
     private ArrayList<ModelCarrito> listCarrito;
@@ -49,8 +48,6 @@ public class CarritoFragment extends Fragment {
     public CarritoFragment() {
         // Required empty public constructor
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,11 +70,10 @@ public class CarritoFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(carritoAdapter);
 
-
         databaseReferenceCarritoUsuario.orderByChild("idUsuarioCarrito").equalTo(getIdUser()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listItemsCarrito.removeAll(listItemsCarrito);
+                listCarrito.removeAll(listItemsCarrito);
                 if (snapshot.exists()) {
                     for (DataSnapshot oCarrito : snapshot.getChildren()) {
                         ModelCarrito carrito = oCarrito.getValue(ModelCarrito.class);
@@ -105,7 +101,8 @@ public class CarritoFragment extends Fragment {
                                             double subTotal = itemCarrito.getSubTotalItem();
                                             String imagenPro = itemCarrito.getImagen();
                                             String nombre = itemCarrito.getNombre();
-                                            listItemsCarrito.add(new ModelItemCarrito(idItemCarrito,idCarrito,idProductoCarrito, cantidad, subTotal,imagenPro,nombre));
+                                            double precioUnit = itemCarrito.getPrecioUnitario();
+                                            listItemsCarrito.add(new ModelItemCarrito(idItemCarrito,idCarrito,idProductoCarrito, cantidad, subTotal,precioUnit,imagenPro,nombre));
                                         }
                                         carritoAdapter.notifyDataSetChanged();
                                         for (ModelItemCarrito modelItemCarrito : listItemsCarrito){
