@@ -35,14 +35,14 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
-    DatabaseReference database;
-    DatabaseReference databaseReferenceItemsCountCarrito;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private DatabaseReference database;
+    private DatabaseReference databaseReferenceItemsCountCarrito;
     private DatabaseReference databaseReferenceCarrito;
-    ProductoAdapter myAdapter;
-    ArrayList<ModelProducto> list;
-    ArrayList<ModelItemCarrito> listItemsCarrito;
+    private ProductoAdapter myAdapter;
+    private ArrayList<ModelProducto> list;
+    private ArrayList<ModelItemCarrito> listItemsCarrito;
     private DbHelper helper;
     private SQLiteDatabase db;
     private String idUsuarioCarrito;

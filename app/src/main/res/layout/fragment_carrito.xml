@@ -31,11 +31,11 @@
         android:id="@+id/recyclerCarrito"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/siguiente"
+        android:layout_above="@+id/btn_siguiente"
         android:layout_below="@id/id1" />
 
     <Button
-        android:id="@+id/siguiente"
+        android:id="@+id/btn_siguiente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

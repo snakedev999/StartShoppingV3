@@ -68,8 +68,9 @@ public class DetalleActivity extends AppCompatActivity {
         listPuntajeProducto = new ArrayList<>();
         consultaUsuario(1);
 
-        Intent i = getIntent();
+        idPro = "";
 
+        Intent i = getIntent();
         idPro = i.getStringExtra("idPro");
         name = i.getStringExtra("name");
         image = i.getStringExtra("image");
@@ -145,6 +146,7 @@ public class DetalleActivity extends AppCompatActivity {
                     String imagen = image;
                     String nombre = name;
                     //agregar carrito firebase
+                    Toast.makeText(getApplicationContext(),"Productos agregados!",Toast.LENGTH_SHORT).show();
                     agregarCarrito1item(idProducto,precioProducto,imagen,nombre);
                 }else {
                     dialog();
@@ -228,13 +230,25 @@ public class DetalleActivity extends AppCompatActivity {
                                 }
 
                                 for (ModelPuntajeProducto modelPuntajeProducto : listPuntajeProducto){
-                                    if (modelPuntajeProducto.getIdProducto().equals(idPro) && modelPuntajeProducto.getIdUsuario().equals(getIdUser())) {
-                                        String idPro = modelPuntajeProducto.getIdProducto();
-                                        String idUser = modelPuntajeProducto.getIdUsuario();
-                                        double puntaje = ratingBar.getRating();
+                                    if (modelPuntajeProducto.getIdProducto().equals(idPro) && modelPuntajeProducto.getIdUsuario().equals(idUser)) {
+                                        databaseReferencePuntaje.orderByChild("idProducto").equalTo(idPro).addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                if(snapshot.exists()){
+                                                    String idPro = modelPuntajeProducto.getIdProducto();
+                                                    String idUser = modelPuntajeProducto.getIdUsuario();
+                                                    double puntaje = ratingBar.getRating();
 
-                                        ModelPuntajeProducto modelPuntajeProducto1 = new ModelPuntajeProducto(idPro,idUser,puntaje);
-                                        databaseReferencePuntaje.child(modelPuntajeProducto.getIdPuntaje()).setValue(modelPuntajeProducto1);
+                                                    ModelPuntajeProducto modelPuntajeProducto1 = new ModelPuntajeProducto(idPro,idUser,puntaje);
+                                                    databaseReferencePuntaje.child(modelPuntajeProducto.getIdPuntaje()).setValue(modelPuntajeProducto1);
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
                                     }
                                 }
                                 String s = String.valueOf(ratingBar.getRating());

@@ -7,17 +7,20 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.CarritoAdapter;
+import com.goldenapps.startshopping.carrito.process.ShippFragment;
 import com.goldenapps.startshopping.model.ModelCarrito;
 import com.goldenapps.startshopping.model.ModelItemCarrito;
 import com.google.firebase.database.DataSnapshot;
@@ -62,6 +65,7 @@ public class CarritoFragment extends Fragment {
         databaseReferenceItemCarritoUsuario = FirebaseDatabase.getInstance().getReference("ItemCarrito");
         recyclerView = view.findViewById(R.id.recyclerCarrito);
         tv_precioTotalCarrito = view.findViewById(R.id.tv_precioTotalCarrito);
+        Button btn_siguiente = view.findViewById(R.id.btn_siguiente);
         consultaUsuario(1);
 
         listCarrito = new ArrayList<>();
@@ -136,6 +140,22 @@ public class CarritoFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        btn_siguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!getIdUser().equals("")){
+                    ShippFragment shippFragment = new ShippFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
+                    transaction.replace(R.id.frame_containerCarrito, shippFragment);
+                    transaction.addToBackStack(getContext().getClass().getName());
+                    transaction.commit();
+                }else{
+
+                }
             }
         });
         return view;
