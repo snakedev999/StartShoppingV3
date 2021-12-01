@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.activity.MapsActivity;
 import com.goldenapps.startshopping.adapterss.CarritoAdapter;
 import com.goldenapps.startshopping.carrito.process.PayActivity;
 import com.goldenapps.startshopping.carrito.process.PayFragment;
@@ -150,8 +151,9 @@ public class CarritoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!getIdUser().equals("")){
-                    Intent in = new Intent(getActivity(), PayActivity.class);
-                    startActivity(in);
+                    Intent i =new Intent(getActivity(), PayActivity.class);
+                    i.putExtra("idCarrito", idCarrito);
+                    startActivity(i);
                 }else{
 
                 }

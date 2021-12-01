@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.Fecha;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.model.ModelDomicilio;
+import com.goldenapps.startshopping.model.ModelOrden;
+import com.goldenapps.startshopping.model.ModelPago;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,11 +42,14 @@ public class PayActivity extends AppCompatActivity {
     SQLiteDatabase db;
     String idUser;
 
+    private DatabaseReference databaseReferencePago;
+    private DatabaseReference databaseReferenceOrden;
     private DatabaseReference databaseReferenceDomicilio;
     private Spinner oSpinnerDomicilio;
+    private String idCarri,idPag;
     private String regionSeleccionada;
     private String idDomicilio;
-    private EditText venci;
+    private EditText venci,propi,numCard,cvv,cardType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +58,19 @@ public class PayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pay);
 
         consultaUsuario(1);
+
+        Intent i = getIntent();
+        idCarri = i.getStringExtra("idCarrito");
+
         oSpinnerDomicilio = findViewById(R.id.spinnerDomicilio);
+        propi = findViewById(R.id.propietario);
+        numCard = findViewById(R.id.nucard);
+        cvv = findViewById(R.id.cvv);
+        cardType = findViewById(R.id.cardType);
         venci = findViewById(R.id.vencimiento);
         databaseReferenceDomicilio = FirebaseDatabase.getInstance().getReference();
+        databaseReferencePago = FirebaseDatabase.getInstance().getReference("Pago");
+        databaseReferenceOrden = FirebaseDatabase.getInstance().getReference("Orden");
 
         loadDomicilio();
 
@@ -70,10 +86,39 @@ public class PayActivity extends AppCompatActivity {
         sgte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                pagarCarrito();
             }
         });
 
+
+    }
+
+    private void pagarCarrito(){
+        String propie = propi.getText().toString();
+        int numeCard = Integer.parseInt(numCard.getText().toString());
+        String cardTyp = cardType.getText().toString();
+        String ven = venci.getText().toString();
+        int cv = Integer.parseInt(cvv.getText().toString());
+        try {
+            ModelPago modelPago = new ModelPago(idUser,propie,numeCard,cardTyp,ven,cv);
+            String modelId = databaseReferencePago.push().getKey();
+            if(modelId != null){
+                databaseReferencePago.child(modelId).setValue(modelPago);
+                Toast.makeText(getApplicationContext(),"Dato ingresado correctamente",Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+        try {
+            ModelOrden modelOrden = new ModelOrden(idUser,idCarri,idPag,idDomicilio);
+            String modelId = databaseReferenceOrden.push().getKey();
+            if(modelId != null){
+                databaseReferenceOrden.child(modelId).setValue(modelOrden);
+                Toast.makeText(getApplicationContext(),"Dato ingresado correctamente",Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            e.getStackTrace();
+        }
 
     }
 
