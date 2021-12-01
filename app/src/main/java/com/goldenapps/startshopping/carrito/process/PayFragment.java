@@ -42,8 +42,8 @@ public class PayFragment extends Fragment {
     private DatabaseReference databaseReferenceDomicilio;
     private String id,idComuna,nombre,direccion,rut;
     private int nDomi,nTelefono;
-    private ArrayList<ModelDomicilio> listDomicilios;
-    private Spinner spinnerDomicilio;
+    private Spinner oSpinnerDomicilio;
+    private String regionSeleccionada;
     private String idDomicilio;
 
     public PayFragment() {
@@ -59,10 +59,11 @@ public class PayFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_pay, container, false);
-        spinnerDomicilio = view.findViewById(R.id.spinnerDomicilio);
-        listDomicilios = new ArrayList<>();
+        consultaUsuario(1);
+        oSpinnerDomicilio = view.findViewById(R.id.spinnerDomicilio);
         databaseReferenceDomicilio = FirebaseDatabase.getInstance().getReference();
 
+        loadDomicilio();
         getParentFragmentManager().setFragmentResultListener("infoCliente",getActivity(), new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -93,27 +94,25 @@ public class PayFragment extends Fragment {
         return view;
     }
 
-
-
     private void loadDomicilio(){
-        final List<ModelRegion> regiones = new ArrayList<>();
-        databaseReferenceDomicilio.child("Domicilio").orderByChild("idUsuario").equalTo(idUser).addListenerForSingleValueEvent(new ValueEventListener() {
+        final List<ModelDomicilio> domicilios = new ArrayList<>();
+        databaseReferenceDomicilio.child("Domicilio").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    for(DataSnapshot oDomicilio : snapshot.getChildren()){
-                        ModelDomicilio domicilio = oDomicilio.getValue(ModelDomicilio.class);
-                        String id = oDomicilio.getKey();
-                        String dire = domicilio.getDireccionDomicilio();
-                        listDomicilios.add(new ModelDomicilio(id,dire));
+                    for(DataSnapshot oRegion : snapshot.getChildren()){
+                        ModelDomicilio modelDomicilio = oRegion.getValue(ModelDomicilio.class);
+                        String id = oRegion.getKey();
+                        String nombre = modelDomicilio.getDireccionDomicilio();
                     }
 
-                    ArrayAdapter<ModelRegion> regionArrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line,regiones);
-                    spinnerDomicilio.setAdapter(regionArrayAdapter);
-                    spinnerDomicilio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    ArrayAdapter<ModelDomicilio> regionArrayAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_dropdown_item_1line,domicilios);
+                    oSpinnerDomicilio.setAdapter(regionArrayAdapter);
+                    oSpinnerDomicilio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            idDomicilio = regiones.get(i).getIdRegion();
+                            regionSeleccionada = adapterView.getItemAtPosition(i).toString();
+                            idDomicilio = domicilios.get(i).getIdDomicilio();
                         }
 
                         @Override

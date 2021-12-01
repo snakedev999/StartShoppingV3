@@ -16,8 +16,9 @@ public class ModelDomicilio {
 
     }
 
-    public ModelDomicilio(String idDomicilio, String direccionDomicilio) {
+    public ModelDomicilio(String idDomicilio, String direccionDomicilio,int numeroDomicilio) {
         this.idDomicilio = idDomicilio;
+        this.numeroDomicilio = numeroDomicilio;
         this.direccionDomicilio = direccionDomicilio;
     }
 
@@ -124,5 +125,10 @@ public class ModelDomicilio {
 
     public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    @Override
+    public String toString() {
+        return direccionDomicilio+" N°"+numeroDomicilio;
     }
 }
