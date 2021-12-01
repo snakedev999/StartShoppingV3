@@ -1,8 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".carrito.process.PayFragment">
+    tools:context=".carrito.process.PayActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/datosPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/OrangeSecond"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:text="Detalles de la Tarjeta"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinnerDomicilio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/datosPago"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+    <!--NUMERO-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameCard1"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/spinnerDomicilio"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_payment_24"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese nombre en la tarjeta"
+            android:inputType="text"
+            android:textSize="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nucard1"
+        android:layout_below="@id/nameCard1"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_payment_24"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nucard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese n򭥲o de tarjeta"
+            android:textSize="20dp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <!--TIPO DE TARJETA-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cardType1"
+        android:layout_below="@id/nucard1"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_payment_24"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cardType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tipo tarjeta"
+            android:textSize="20dp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--VENCIMIENTO-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/vencimiento1"
+        android:layout_below="@id/cardType1"
+        android:layout_width="235dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+        app:startIconTint="@color/OrangeFirst"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/vencimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vencimiento"
+            android:textSize="20dp"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--CVV-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cvv1"
+        android:layout_below="@id/cardType1"
+        android:layout_width="155dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        android:textAlignment="center"
+        app:boxBackgroundColor="@color/white"
+        android:layout_toRightOf="@id/vencimiento1"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cvv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CVV"
+            android:textSize="20dp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--PROPIETARIO-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/propietario1"
+        android:layout_below="@id/spinnerDomicilio"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginLeft="10dp"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_person1_24"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/propietario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Propietario  "
+            android:textSize="20dp"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/sgtePay"
+        android:layout_width="390dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/vencimiento1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="continuar"
+        android:textSize="21dp" />
+
+</RelativeLayout>

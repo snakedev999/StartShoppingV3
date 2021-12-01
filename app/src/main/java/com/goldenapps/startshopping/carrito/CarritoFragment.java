@@ -1,6 +1,7 @@
 package com.goldenapps.startshopping.carrito;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -20,9 +21,11 @@ import android.widget.TextView;
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.CarritoAdapter;
+import com.goldenapps.startshopping.carrito.process.PayActivity;
 import com.goldenapps.startshopping.carrito.process.PayFragment;
 import com.goldenapps.startshopping.model.ModelCarrito;
 import com.goldenapps.startshopping.model.ModelItemCarrito;
+import com.goldenapps.startshopping.registros.TallaProductoActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -147,12 +150,8 @@ public class CarritoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!getIdUser().equals("")){
-                    PayFragment payFragment = new PayFragment();
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
-                    transaction.replace(R.id.frame_containerCarrito, payFragment);
-                    transaction.addToBackStack(getContext().getClass().getName());
-                    transaction.commit();
+                    Intent in = new Intent(getActivity(), PayActivity.class);
+                    startActivity(in);
                 }else{
 
                 }
