@@ -5,12 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".carrito.CompraActivity">
-
+    tools:context=".carrito.MainCarritoActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/top_navigation"
-        style="@style/BottomNavigation"
+        android:id="@+id/bottom_navigationk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -19,18 +17,17 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:elevation="8dp"
-        app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/top_navigation" />
+        app:menu="@menu/bottom_navigation_k" />
 
-    <FrameLayout
-        android:id="@+id/frame_container1"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentview"
+        android:layout_above="@id/bottom_navigationk"
         android:layout_width="match_parent"
-        android:layout_height="677dp"
-        android:layout_below="@+id/top_navigation"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"/>
+        android:layout_height="wrap_content"
+        />
+
 
 </RelativeLayout>

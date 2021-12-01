@@ -24,6 +24,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="180dp"
                     android:onClick="carrito"
+                    android:background="@color/transparente"
                     app:layout_constraintBottom_toBottomOf="@+id/textView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView"
