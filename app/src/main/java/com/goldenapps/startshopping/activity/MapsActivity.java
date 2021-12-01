@@ -3,6 +3,7 @@ package com.goldenapps.startshopping.activity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Context;
@@ -11,9 +12,12 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.carrito.MainCarritoFragment;
 import com.goldenapps.startshopping.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,6 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double location1,location2;
     private LatLng miUbicacion;
     private Boolean markerSelectBoolean = true;
+    private Button btn_confirmarUbicacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         getLocalizacion();
         mapFragment.getMapAsync(this);
+
+        btn_confirmarUbicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainCarritoFragment mainCarritoFragment = new MainCarritoFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
+                transaction.replace(R.id.frame_containerCarrito, mainCarritoFragment);
+                transaction.addToBackStack(getApplicationContext().getClass().getName());
+                transaction.commit();
+            }
+        });
 
 
     }

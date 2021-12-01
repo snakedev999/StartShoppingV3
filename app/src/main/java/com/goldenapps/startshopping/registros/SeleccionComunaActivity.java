@@ -33,7 +33,6 @@ public class SeleccionComunaActivity extends AppCompatActivity {
     DatabaseReference databaseReferenceComuna;
     TextView txt;
     Spinner oSpinnerRegiondComuna,oSpinnerComunadRegion;
-    String idRegionComuna;
     List<ModelComuna> comunas;
 
     @Override
@@ -42,9 +41,8 @@ public class SeleccionComunaActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_seleccion_comuna);
 
-        oSpinnerRegiondComuna = findViewById(R.id.spinnerRegiondComuna);
-        oSpinnerComunadRegion = findViewById(R.id.spinnerComunasdRegion);
-        txt = findViewById(R.id.tv_spinnerRegionComuna1);
+        oSpinnerRegiondComuna = findViewById(R.id.spinnerRegiondComuna2);
+        oSpinnerComunadRegion = findViewById(R.id.spinnerComunasdRegion2);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReferenceComuna = FirebaseDatabase.getInstance().getReference();

@@ -42,7 +42,7 @@ public class MainCarritoFragment extends Fragment {
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
-        transaction.replace(R.id.fragmentView, shippF);
+        transaction.replace(R.id.fragmentViewProceso, shippF);
         transaction.commit();
         return view;
     }
@@ -66,7 +66,7 @@ public class MainCarritoFragment extends Fragment {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
         transaction.addToBackStack(getContext().getClass().getName());
-        transaction.replace(R.id.fragmentView,fragment);
+        transaction.replace(R.id.fragmentViewProceso,fragment);
         transaction.commit();
     }
 }

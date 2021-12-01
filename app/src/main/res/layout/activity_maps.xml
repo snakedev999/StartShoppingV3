@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.MapsActivity">
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
@@ -14,7 +13,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btn_confirmarUbicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/OrangeFirst"

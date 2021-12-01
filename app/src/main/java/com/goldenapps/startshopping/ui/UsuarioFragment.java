@@ -19,6 +19,7 @@ import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.carrito.CarritoActivity;
 import com.goldenapps.startshopping.carrito.SetupActivity;
+import com.goldenapps.startshopping.carrito.process.ShippActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -57,6 +58,7 @@ public class UsuarioFragment extends Fragment {
         id.setText(getIdUser());
 
 
+
         Button kart = (Button) blank.findViewById(R.id.btnkart);
         kart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +80,15 @@ public class UsuarioFragment extends Fragment {
             }
         });
 
+        Button domi = blank.findViewById(R.id.buttondomicilio);
+
+        domi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cart = new Intent(getActivity(), ShippActivity.class);
+                startActivity(cart);
+            }
+        });
 
 
         Button cart = (Button) blank.findViewById(R.id.btncarrito);

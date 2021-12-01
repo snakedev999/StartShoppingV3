@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.CarritoAdapter;
+import com.goldenapps.startshopping.carrito.process.PayFragment;
 import com.goldenapps.startshopping.carrito.process.ShippFragment;
 import com.goldenapps.startshopping.model.ModelCarrito;
 import com.goldenapps.startshopping.model.ModelItemCarrito;
@@ -147,10 +148,10 @@ public class CarritoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!getIdUser().equals("")){
-                    MainCarritoFragment mainCarritoFragment = new MainCarritoFragment();
+                    PayFragment payFragment = new PayFragment();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
-                    transaction.replace(R.id.frame_containerCarrito, mainCarritoFragment);
+                    transaction.replace(R.id.frame_containerCarrito, payFragment);
                     transaction.addToBackStack(getContext().getClass().getName());
                     transaction.commit();
                 }else{

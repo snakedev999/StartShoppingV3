@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".carrito.process.ShippFragment">
 
+    <ViewStub
+        android:id="@+id/stub_import"
+        android:inflatedId="@+id/panel_import"
+        android:layout="@layout/progress_overlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
+
     <TextView
         android:id="@+id/ContactDatos"
         android:layout_width="match_parent"
@@ -24,12 +32,11 @@
         android:id="@+id/shippList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/ContactDatos"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_below="@id/ContactDatos"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
         android:id="@+id/cbAdress"
@@ -39,7 +46,7 @@
         android:text="¿Desea añadir otra direccion?" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameUser1"
+        android:id="@+id/rutReceptor1"
         android:layout_below="@id/cbAdress"
         android:layout_width="390dp"
         android:layout_height="60dp"
@@ -55,53 +62,26 @@
         app:startIconTint="@color/OrangeFirst">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameUser"
+            android:id="@+id/rutReceptor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese su nombre completo"
+            android:hint="Rut receptor"
             android:textSize="20dp"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--CORREO-->
 
+    <!--RUT-->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailUser1"
-        android:layout_below="@id/nameUser1"
+        android:id="@+id/nombreReceptor1"
         android:layout_width="390dp"
         android:layout_height="60dp"
+        android:layout_below="@id/rutReceptor1"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
         android:elevation="10dp"
         app:boxBackgroundColor="@color/white"
-        android:layout_marginLeft="10dp"
-        app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/OrangeFirst"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/OrangeFirst"
-        app:startIconDrawable="@drawable/ic_baseline_alternate_email_24"
-        app:startIconTint="@color/OrangeFirst">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingrese su correo"
-            android:textSize="20dp"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <!--TELEFONO-->
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fono1"
-        android:layout_below="@id/emailUser1"
-        android:layout_width="390dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:elevation="10dp"
-        app:boxBackgroundColor="@color/white"
-        android:layout_marginLeft="10dp"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/OrangeFirst"
         app:endIconMode="clear_text"
@@ -110,22 +90,51 @@
         app:startIconTint="@color/OrangeFirst">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fono"
+            android:id="@+id/nombreReceptor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre receptor"
+            android:inputType="number"
+            android:textSize="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!--TELEFONO-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/numeroTelefono1"
+        android:layout_width="390dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/nombreReceptor1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:elevation="10dp"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/OrangeFirst"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/OrangeFirst"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/OrangeFirst">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/numeroTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese su numero de contacto"
-            android:textSize="20dp"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <!--DIRECCION-->
 
     <TextView
         android:id="@+id/shippDatos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fono1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_below="@id/numeroTelefono1"
+        android:layout_marginTop="22dp"
         android:background="@color/OrangeSecond"
         android:padding="10dp"
         android:text="Datos de Envío"
@@ -134,21 +143,9 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <!--DIRECCION-->
-
-    <Button
-        android:id="@+id/btnAdress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/shippDatos"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="109dp"
-        android:text="Seleccion direccion" />
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/adress1"
-        android:layout_below="@id/btnAdress"
+        android:id="@+id/direccionDomicilio1"
+        android:layout_below="@id/spinnerComunasdRegion"
         android:layout_width="235dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -159,44 +156,69 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/adress"
+            android:id="@+id/direccionDomicilio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre de la calle"
+            android:hint="Direccion receptor"
             android:textSize="20dp"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Spinner
+        android:id="@+id/spinnerRegiondComuna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shippDatos"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <!--N°CALLE-->
 
+    <Spinner
+        android:id="@+id/spinnerComunasdRegion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerRegiondComuna"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Ncalle1"
-        android:layout_below="@id/btnAdress"
+        android:id="@+id/nDomicilio1"
+        android:layout_below="@id/spinnerComunasdRegion"
         android:layout_width="155dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:elevation="10dp"
         android:textAlignment="center"
         app:boxBackgroundColor="@color/white"
-        android:layout_toRightOf="@id/adress1"
+        android:layout_toRightOf="@id/direccionDomicilio1"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/OrangeFirst"
         >
+
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Ncalle"
+            android:id="@+id/nDomicilio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="N° Calle"
-            android:textSize="20dp"
-            android:inputType="number" />
+            android:hint="N° Domicilio"
+            android:inputType="number"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
-        android:id="@+id/sgteS"
+        android:id="@+id/procesoPago"
         android:layout_width="390dp"
         android:layout_height="70dp"
-        android:layout_below="@id/Ncalle1"
+        android:layout_below="@id/nDomicilio1"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:text="continuar"

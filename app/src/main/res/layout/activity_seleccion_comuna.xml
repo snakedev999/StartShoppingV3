@@ -8,7 +8,7 @@
     tools:context=".registros.SeleccionComunaActivity">
 
     <TextView
-        android:id="@+id/tv_spinnerRegionComuna1"
+        android:id="@+id/tv_spinnerRegionComuna2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Region"
@@ -16,7 +16,7 @@
         android:layout_margin="20dp"/>
 
     <Spinner
-        android:id="@+id/spinnerRegiondComuna"
+        android:id="@+id/spinnerRegiondComuna2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -24,7 +24,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
-        android:id="@+id/spinnerComunasdRegion"
+        android:id="@+id/spinnerComunasdRegion2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -32,7 +32,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/btni"
+        android:id="@+id/btni2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
