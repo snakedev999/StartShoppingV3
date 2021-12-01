@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
@@ -44,6 +46,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<ModelProducto> list;
     private ArrayList<ModelItemCarrito> listItemsCarrito;
     private DbHelper helper;
+    private EditText busqueda;
     private SQLiteDatabase db;
     private String idUsuarioCarrito;
     private String idCarritoUsuario;
@@ -64,6 +67,7 @@ public class HomeFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.userList);
         notificationBadge = view.findViewById(R.id.badge);
+        busqueda = view.findViewById(R.id.editText);
         database = FirebaseDatabase.getInstance().getReference("Productos");
         databaseReferenceCarrito = FirebaseDatabase.getInstance().getReference("Carrito");
         databaseReferenceItemsCountCarrito = FirebaseDatabase.getInstance().getReference("ItemCarrito");
@@ -80,6 +84,24 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(myAdapter);
 
+        busqueda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+
+                alertDialogBuilder.setTitle("Importante");
+
+                alertDialogBuilder
+                        .setMessage("Lo sentimos, no está disponible esta funcionalidad :(.")
+                        .setCancelable(false)
+                        .setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+
+                            }
+                        }).create().show();
+            }
+        });
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
