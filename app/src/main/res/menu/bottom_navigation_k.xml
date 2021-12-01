@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/shipp"
+        android:id="@+id/navigation_shipp"
         android:icon="@drawable/shipping"
         android:title="Envío" />
 
     <item
-        android:id="@+id/payment"
+        android:id="@+id/navigation_payment"
         android:icon="@drawable/pay"
         android:title="Pago" />
 
     <item
-        android:id="@+id/confirm"
+        android:id="@+id/navigation_confirm"
         android:icon="@drawable/confirm"
         android:title="Confirmar" />
 

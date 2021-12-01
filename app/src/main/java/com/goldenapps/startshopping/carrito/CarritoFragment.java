@@ -147,10 +147,10 @@ public class CarritoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!getIdUser().equals("")){
-                    ShippFragment shippFragment = new ShippFragment();
+                    MainCarritoFragment mainCarritoFragment = new MainCarritoFragment();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out);
-                    transaction.replace(R.id.frame_containerCarrito, shippFragment);
+                    transaction.replace(R.id.frame_containerCarrito, mainCarritoFragment);
                     transaction.addToBackStack(getContext().getClass().getName());
                     transaction.commit();
                 }else{

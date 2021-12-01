@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.carrito.CarritoActivity;
-import com.goldenapps.startshopping.carrito.MainCarritoActivity;
 import com.goldenapps.startshopping.carrito.SetupActivity;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,8 +61,7 @@ public class UsuarioFragment extends Fragment {
         kart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent kart = new Intent(getActivity(), MainCarritoActivity.class);
-                startActivity(kart);
+
 
 
             }

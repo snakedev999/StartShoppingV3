@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".carrito.MainCarritoActivity">
+    tools:context=".carrito.MainCarritoFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigationk"
@@ -22,12 +22,11 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_navigation_k" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentview"
-        android:layout_above="@id/bottom_navigationk"
+    <FrameLayout
+        android:id="@+id/fragmentView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bottom_navigationk" />
 
 
 </RelativeLayout>
