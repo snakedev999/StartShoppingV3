@@ -1,20 +1,25 @@
 package com.goldenapps.startshopping.activity;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.databinding.ActivityMapsBinding;
+import com.goldenapps.startshopping.model.ModelDomicilio;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,6 +28,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener, GoogleMap.OnMyLocationButtonClickListener{
 
@@ -33,6 +42,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double location1,location2;
     private LatLng miUbicacion;
     private Boolean markerSelectBoolean = true;
+    private String idU,idC,dir,rut,nombre;
+    private int nDomi,nTelefono;
+    private DatabaseReference databaseReferenceDomicilio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +54,51 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(binding.getRoot());
         coordenadas = findViewById(R.id.tv_coordenadas);
 
+        Intent i = getIntent();
+        idU = i.getStringExtra("idUsuario");
+        idC = i.getStringExtra("idComuna");
+        dir = i.getStringExtra("dir");
+        nDomi = i.getIntExtra("nDomi",0);
+        nTelefono = i.getIntExtra("nTelefono",0);
+        rut = i.getStringExtra("rut");
+        nombre = i.getStringExtra("nombre");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         getLocalizacion();
         mapFragment.getMapAsync(this);
 
+        Button guardar = findViewById(R.id.btn_guardarDomicilio);
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                guardarDatosDomicilio();
+            }
+        });
 
+
+    }
+
+    private void guardarDatosDomicilio(){
+        databaseReferenceDomicilio.child("Domicilio").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    ModelDomicilio modelDomicilio = new ModelDomicilio(idU,idC,dir,nDomi,nTelefono,rut,nombre,location1,location2);
+                    String modelId = databaseReferenceDomicilio.push().getKey();
+                    if(modelId != null){
+                        databaseReferenceDomicilio.child(modelId).setValue(modelDomicilio);
+                    }
+                }catch (Exception e){
+                    e.getStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void getLocalizacion() {
