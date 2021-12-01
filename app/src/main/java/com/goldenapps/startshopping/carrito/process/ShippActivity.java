@@ -17,6 +17,7 @@ import android.widget.Spinner;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
+import com.goldenapps.startshopping.activity.MapsActivity;
 import com.goldenapps.startshopping.model.ModelComuna;
 import com.goldenapps.startshopping.model.ModelDomicilio;
 import com.goldenapps.startshopping.model.ModelRegion;
@@ -83,7 +84,7 @@ public class ShippActivity extends AppCompatActivity {
                 int numeroTelefono = Integer.parseInt(edt_numeroTelefono.getText().toString());
                 String rutRecpetor = edt_RutReceptor.getText().toString();
                 String nombreReceptor = edt_nombreReceptor.getText().toString();
-                Intent i =new Intent(getApplicationContext(), ProductoCategoriaActivity.class);
+                Intent i =new Intent(getApplicationContext(), MapsActivity.class);
                 i.putExtra("idUsuario", idUsuario);
                 i.putExtra("idComuna", idComuna);
                 i.putExtra("dir",direccion);
@@ -92,30 +93,6 @@ public class ShippActivity extends AppCompatActivity {
                 i.putExtra("rut",rutRecpetor);
                 i.putExtra("nombre",nombreReceptor);
                 startActivity(i);
-            }
-        });
-    }
-
-
-    private void guardarDatosDomicilio(){
-
-        databaseReferenceDomicilio.child("Domicilio").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                try {
-                    //ModelDomicilio modelDomicilio = new ModelDomicilio(idUsuario,idComuna,direccion,numeroDomicilio,numeroTelefono,rutRecpetor,nombreReceptor,0.0,0.0);
-                    String modelId = databaseReferenceDomicilio.push().getKey();
-                    if(modelId != null){
-                        //databaseReferenceDomicilio.child(modelId).setValue(modelDomicilio);
-                    }
-                }catch (Exception e){
-                    e.getStackTrace();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
