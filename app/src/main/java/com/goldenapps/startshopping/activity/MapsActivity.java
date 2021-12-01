@@ -1,6 +1,5 @@
 package com.goldenapps.startshopping.activity;
 
-import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -16,10 +15,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.databinding.ActivityMapsBinding;
 import com.goldenapps.startshopping.model.ModelDomicilio;
+import com.goldenapps.startshopping.ui.menu.MenuActivity;
+import com.goldenapps.startshopping.ui.menu.SplashScreen;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,10 +30,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener, GoogleMap.OnMyLocationButtonClickListener{
 
@@ -54,6 +54,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(binding.getRoot());
         coordenadas = findViewById(R.id.tv_coordenadas);
 
+        databaseReferenceDomicilio = FirebaseDatabase.getInstance().getReference("Domicilio");
         Intent i = getIntent();
         idU = i.getStringExtra("idUsuario");
         idC = i.getStringExtra("idComuna");
@@ -62,6 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         nTelefono = i.getIntExtra("nTelefono",0);
         rut = i.getStringExtra("rut");
         nombre = i.getStringExtra("nombre");
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -73,32 +75,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 guardarDatosDomicilio();
+                Intent main = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(main);
+                finish();
             }
         });
-
 
     }
 
     private void guardarDatosDomicilio(){
-        databaseReferenceDomicilio.child("Domicilio").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                try {
-                    ModelDomicilio modelDomicilio = new ModelDomicilio(idU,idC,dir,nDomi,nTelefono,rut,nombre,location1,location2);
-                    String modelId = databaseReferenceDomicilio.push().getKey();
-                    if(modelId != null){
-                        databaseReferenceDomicilio.child(modelId).setValue(modelDomicilio);
-                    }
-                }catch (Exception e){
-                    e.getStackTrace();
-                }
+        try {
+            ModelDomicilio modelDomicilio = new ModelDomicilio(idU,idC,dir,nDomi,nTelefono,rut,nombre,location1,location2);
+            String modelId = databaseReferenceDomicilio.push().getKey();
+            if(modelId != null){
+                databaseReferenceDomicilio.child(modelId).setValue(modelDomicilio);
+                Toast.makeText(getApplicationContext(),"Dato ingresado correctamente",Toast.LENGTH_SHORT).show();
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        }catch (Exception e){
+            e.getStackTrace();
+        }
     }
 
     private void getLocalizacion() {
@@ -176,6 +171,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMarkerDragEnd(Marker marker) {
         if (marker.equals(markerSelect)){
+            location1 = marker.getPosition().latitude;
+            location2 = marker.getPosition().longitude;
             coordenadas.setText("Latitud: "+marker.getPosition().latitude+" Longitud: "+marker.getPosition().longitude);
         }
     }

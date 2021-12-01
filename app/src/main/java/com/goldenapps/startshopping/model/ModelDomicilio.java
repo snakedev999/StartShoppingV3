@@ -16,6 +16,11 @@ public class ModelDomicilio {
 
     }
 
+    public ModelDomicilio(String idDomicilio, String direccionDomicilio) {
+        this.idDomicilio = idDomicilio;
+        this.direccionDomicilio = direccionDomicilio;
+    }
+
     public ModelDomicilio(String idUsuarioDomicilo, String idComunaDomicilio, String direccionDomicilio, int numeroDomicilio, int numeroTelefonoDomicilio, String rutReceptorDomicilio, String nombreReceptorDomicilio, double latitud, double longitud) {
         this.idUsuarioDomicilo = idUsuarioDomicilo;
         this.idComunaDomicilio = idComunaDomicilio;

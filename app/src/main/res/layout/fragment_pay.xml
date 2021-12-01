@@ -21,28 +21,28 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/payList"
+    <Spinner
+        android:id="@+id/spinnerDomicilio"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_below="@id/datosPago"
-        />
-
-    <!--NAMECARD-->
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/datosPago"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+    <!--NUMERO-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameCard1"
-        android:layout_below="@id/datosPago"
         android:layout_width="390dp"
         android:layout_height="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_below="@id/spinnerDomicilio"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:elevation="10dp"
         app:boxBackgroundColor="@color/white"
-        android:layout_marginLeft="10dp"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/OrangeFirst"
         app:endIconMode="clear_text"
@@ -55,11 +55,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ingrese nombre en la tarjeta"
-            android:textSize="20dp"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <!--NUMERO-->
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nucard1"

@@ -21,7 +21,6 @@ import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.adapterss.CarritoAdapter;
 import com.goldenapps.startshopping.carrito.process.PayFragment;
-import com.goldenapps.startshopping.carrito.process.ShippFragment;
 import com.goldenapps.startshopping.model.ModelCarrito;
 import com.goldenapps.startshopping.model.ModelItemCarrito;
 import com.google.firebase.database.DataSnapshot;
