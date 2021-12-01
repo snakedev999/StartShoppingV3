@@ -93,7 +93,7 @@ public class PayActivity extends AppCompatActivity {
 
     private void loadDomicilio() {
         final List<ModelDomicilio> domicilios = new ArrayList<>();
-        databaseReferenceDomicilio.child("Domicilio").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReferenceDomicilio.child("Domicilio").orderByChild("idUsuarioDomicilo").equalTo(idUser).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -101,7 +101,8 @@ public class PayActivity extends AppCompatActivity {
                         ModelDomicilio modelDomicilio = oRegion.getValue(ModelDomicilio.class);
                         String id = oRegion.getKey();
                         String nombre = modelDomicilio.getDireccionDomicilio();
-                        domicilios.add(new ModelDomicilio(id,nombre));
+                        int numero = modelDomicilio.getNumeroDomicilio();
+                        domicilios.add(new ModelDomicilio(id,nombre,numero));
                     }
 
                     ArrayAdapter aa = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,domicilios);

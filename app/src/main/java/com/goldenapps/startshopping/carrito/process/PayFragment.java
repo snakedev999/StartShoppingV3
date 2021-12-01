@@ -104,7 +104,6 @@ public class PayFragment extends Fragment {
                         ModelDomicilio modelDomicilio = oRegion.getValue(ModelDomicilio.class);
                         String id = oRegion.getKey();
                         String nombre = modelDomicilio.getDireccionDomicilio();
-                        domicilios.add(new ModelDomicilio(id,nombre));
                     }
 
                     ArrayAdapter<ModelDomicilio> regionArrayAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_dropdown_item_1line,domicilios);
