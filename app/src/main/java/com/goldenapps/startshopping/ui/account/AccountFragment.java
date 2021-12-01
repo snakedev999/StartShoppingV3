@@ -29,7 +29,7 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View viewFragmentAccount = inflater.inflate(R.layout.fragment_account, container, false);
+        View viewFragmentAccount = inflater.inflate(R.layout.activity_setup, container, false);
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container_account, accountOpcionFragment);

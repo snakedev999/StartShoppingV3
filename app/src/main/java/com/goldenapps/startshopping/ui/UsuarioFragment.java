@@ -6,22 +6,36 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
+import com.goldenapps.startshopping.MainActivity;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.carrito.CarritoActivity;
 import com.goldenapps.startshopping.carrito.SetupActivity;
 import com.goldenapps.startshopping.carrito.process.ShippActivity;
+import com.goldenapps.startshopping.model.ModelCategoria;
 import com.goldenapps.startshopping.ui.menu.MenuActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioFragment extends Fragment {
 
@@ -33,6 +47,10 @@ public class UsuarioFragment extends Fragment {
     private SharedPreferences sharedPreferences3;
     private SharedPreferences.Editor editor3;
     private Boolean guardaIdBoolean;
+
+    private DatabaseReference databaseReferenceCategoria = FirebaseDatabase.getInstance().getReference();
+    private Spinner oSpinnerCategoria;
+    private String idCategoria,nombre, imagen,descrip,idProducto,fechaRegistroProducto,categoria;
 
     public String getIdUser() {
         return idUser;
@@ -75,7 +93,6 @@ public class UsuarioFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), SetupActivity.class);
                 startActivity(i);
-
 
             }
         });
@@ -152,5 +169,31 @@ public class UsuarioFragment extends Fragment {
         }else{
         }
         db.close();
+    }
+
+    private void loadCategoria(){
+        final List<ModelCategoria> categorias = new ArrayList<>();
+        databaseReferenceCategoria.child("Categorias");
+        databaseReferenceCategoria.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot oCategoria : snapshot.getChildren()) {
+                        ModelCategoria categoria = oCategoria.getValue(ModelCategoria.class);
+                        String id = oCategoria.getKey();
+                        String nombre = categoria.getNombreCategoria();
+                        categorias.add(new ModelCategoria(id, nombre, false));
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+
     }
 }

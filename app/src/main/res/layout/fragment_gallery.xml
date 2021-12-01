@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MenuAdm.Datos.DatosFragment">
+    tools:context=".MenuAdm.RegistroDeComuna.GalleryFragment">
 
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/text_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -20,4 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fondosalmon"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

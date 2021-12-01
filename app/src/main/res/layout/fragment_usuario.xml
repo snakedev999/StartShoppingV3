@@ -30,6 +30,9 @@
         android:text="setup"
         android:textAlignment="center" />
 
+
+
+
     <Button
         android:id="@+id/btnkart"
         android:layout_width="wrap_content"

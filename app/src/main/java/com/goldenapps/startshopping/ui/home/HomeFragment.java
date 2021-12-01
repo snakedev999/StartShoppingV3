@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
 import com.goldenapps.startshopping.R;
@@ -63,7 +62,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_homed, container, false);
 
         recyclerView = view.findViewById(R.id.userList);
         notificationBadge = view.findViewById(R.id.badge);

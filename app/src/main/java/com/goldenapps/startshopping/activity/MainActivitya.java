@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.goldenapps.startshopping.R;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivitya extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

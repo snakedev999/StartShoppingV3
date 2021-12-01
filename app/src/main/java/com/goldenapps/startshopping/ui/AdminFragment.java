@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.goldenapps.startshopping.DbHelper;
+import com.goldenapps.startshopping.MainActivity;
+import com.goldenapps.startshopping.MenuAdm.Datos.DatosFragment;
 import com.goldenapps.startshopping.R;
 import com.goldenapps.startshopping.activity.MapsActivity;
 import com.goldenapps.startshopping.registros.RegistroCategoriaActivity;
@@ -51,8 +53,9 @@ public class AdminFragment extends Fragment {
         Button verProductos = viewAdmin.findViewById(R.id.btn_datos);
         Button registroRegion = viewAdmin.findViewById(R.id.btn_region);
         Button spinner = viewAdmin.findViewById(R.id.button6);
-        Button comuna = viewAdmin.findViewById(R.id.button7);
+        //Button comuna = viewAdmin.findViewById(R.id.button7);
         Button mapa = viewAdmin.findViewById(R.id.btn_mapa1);
+       // Button drawer = viewAdmin.findViewById(R.id.btnDrawer);
 
         TextView t = viewAdmin.findViewById(R.id.textView3);
         consultaUsuario(1);
@@ -92,6 +95,7 @@ public class AdminFragment extends Fragment {
             }
         });
 
+
         registroRegion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,14 +108,6 @@ public class AdminFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent mainLogin = new Intent(getActivity(), RegistroComunaActivity.class);
-                startActivity(mainLogin);
-            }
-        });
-
-        comuna.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mainLogin = new Intent(getActivity(), SeleccionComunaActivity.class);
                 startActivity(mainLogin);
             }
         });

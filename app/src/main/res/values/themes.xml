@@ -20,4 +20,9 @@
         <item name="itemIconTint">@color/OrangeFirst</item>
         <item name="itemTextColor">@color/OrangeFirst</item>
     </style>
+
+
+    <style name="Theme.MyApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MyApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
