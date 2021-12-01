@@ -136,11 +136,8 @@ public class AdminFragment extends Fragment {
 
         if(fila.moveToFirst()){
             setIdUser(fila.getString(0));
-
-            Toast.makeText(getActivity(),"Consulta realizada correctamente",Toast.LENGTH_SHORT).show();
         }else{
             setIdUser("");
-            Toast.makeText(getActivity(),"No se ha registrado el usuario ",Toast.LENGTH_SHORT).show();
         }
         db.close();
 
@@ -154,9 +151,7 @@ public class AdminFragment extends Fragment {
 
         cantidad_filas = db.delete("USUARIO","ID = '"+id+"'",null);
         if(cantidad_filas == 1){
-            Toast.makeText(getActivity(),"Los datos del usuario se han eliminado correctamente",Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(getActivity(),"El usuario no esta registrado",Toast.LENGTH_SHORT).show();
         }
         db.close();
     }
