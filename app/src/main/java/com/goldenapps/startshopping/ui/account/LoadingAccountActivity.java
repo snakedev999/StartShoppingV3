@@ -54,7 +54,6 @@ public class LoadingAccountActivity extends AppCompatActivity {
 
     private void verficacion(){
         if(getCredencial().equals("usuario")){
-            Toast.makeText(getApplicationContext(),"Usuario",Toast.LENGTH_LONG).show();
             Intent mainMenu = new Intent(LoadingAccountActivity.this, MenuActivity.class);
             mainMenu.putExtra("boolean",false);
             mainMenu.putExtra("credencial", false);
@@ -63,7 +62,6 @@ public class LoadingAccountActivity extends AppCompatActivity {
             startActivity(mainMenu);
             finish();
         }else if(getCredencial().equals("admin")){
-            Toast.makeText(getApplicationContext(),"ADMIN",Toast.LENGTH_LONG).show();
             Intent mainMenu = new Intent(LoadingAccountActivity.this, MenuActivity.class);
             mainMenu.putExtra("boolean",false);
             mainMenu.putExtra("credencial", true);
